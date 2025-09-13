@@ -26,30 +26,34 @@
       line-height: 1.6;
     }
 
-    /* Navigation Bar */
-    nav {
-      background-color: var(--black);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--gray);
-    }
+   <!-- NAVBAR -->
+<nav style="
+  background-color: #000000;
+  color: #D4AF37;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+">
+  <!-- Logo -->
+  <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <img src="images/logo.svg" alt="Luxverra Logo" style="height: 36px;">
+    <!-- Optional: You can write 'Luxverra' here next to logo -->
+    <!-- <span style="font-family: 'Cinzel', serif; font-size: 20px; color: #D4AF37;">LUXVERRA</span> -->
+  </a>
 
-    nav a {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #b8962d;
-    }
+  <!-- Navigation Links -->
+  <div style="display: flex; gap: 30px;">
+    <a href="#" style="color: #D4AF37; text-decoration: none; font-weight: 500; font-size: 16px;">Home</a>
+    <a href="#about" style="color: #D4AF37; text-decoration: none; font-weight: 500; font-size: 16px;">About</a>
+    <a href="#services" style="color: #D4AF37; text-decoration: none; font-weight: 500; font-size: 16px;">Services</a>
+    <a href="#contact" style="color: #D4AF37; text-decoration: none; font-weight: 500; font-size: 16px;">Contact</a>
+  </div>
+</nav>
 
     header {
       background-color: var(--black);
