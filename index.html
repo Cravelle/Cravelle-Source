@@ -162,7 +162,7 @@
 
   <!-- ✅ NAVIGATION BAR -->
   <nav>
-    <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" style="height: 36px;"></a>
+<a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="navbar-logo"></a>
     <div>
       <a href="#">Home</a>
       <a href="#about">About</a>
@@ -170,6 +170,15 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
+
+.navbar-logo {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
 
   <!-- ✅ HEADER -->
   <header>
