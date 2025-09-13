@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxverra</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxverra | Where Elegance Meets Purpose</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #d4af37;
+      --gold: #D4AF37;
       --black: #000000;
-      --gray: #1c1c1c;
+      --ivory: #F5F5F5;
+      --gray: #2B2B2B;
     }
 
     * {
@@ -20,65 +21,57 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
+      color: var(--ivory);
       background-color: var(--black);
-      color: white;
-      scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
-    /* ==== NAVBAR ==== */
+    /* --- NAVBAR --- */
     nav {
       background-color: var(--black);
-      padding: 15px 40px;
+      color: var(--gold);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      width: 100%;
+      padding: 15px 40px 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
       top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
+      z-index: 999;
     }
 
-    nav img.logo {
-      height: 50px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
+    nav a {
       color: var(--gold);
+      text-decoration: none;
+      margin-left: 30px;
       font-weight: 500;
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    nav ul li a:hover {
-      color: white;
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    /* ==== HEADER SECTION ==== */
+    /* Header */
     header {
-      padding-top: 100px;
       text-align: center;
+      padding: 40px 20px 20px;
     }
 
-    header img.main-logo {
-      height: 300px;
+    header img {
+      height: 280px;
+      margin-bottom: 10px;
       transition: transform 0.3s ease;
     }
 
-    header img.main-logo:hover {
+    header img:hover {
       transform: scale(1.05);
     }
 
     header p {
-      font-size: 20px;
+      font-size: 18px;
+      font-weight: 500;
       color: var(--gold);
-      margin-top: 10px;
     }
 
     section {
@@ -87,109 +80,155 @@
       margin: auto;
     }
 
-    section h2 {
-      font-family: 'Cinzel', serif;
+    h2 {
       color: var(--gold);
+      font-family: 'Cinzel', serif;
       font-size: 32px;
       margin-bottom: 20px;
     }
 
-    section p {
-      font-size: 18px;
-      line-height: 1.6;
+    .section-light {
+      background-color: var(--gray);
     }
 
-    /* ==== CTA Button ==== */
-    .cta-button {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--black);
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      margin-top: 30px;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li::before {
+      content: "\2726";
+      color: var(--gold);
+      padding-right: 10px;
+    }
+
+    .brand-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .brand-values div {
+      flex: 1 1 250px;
+      background: var(--black);
+      padding: 20px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--ivory);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--gold);
       text-decoration: none;
     }
 
-    .cta-button:hover {
-      background: #b8962d;
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* ==== Responsive ==== */
+    /* Responsive */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 10px;
+      nav a {
+        margin: 10px 0 0 0;
       }
 
-      nav img.logo {
-        height: 40px;
-      }
-
-      header img.main-logo {
-        height: 200px;
+      header img {
+        height: 180px;
       }
 
       header p {
         font-size: 16px;
       }
 
-      section h2 {
-        font-size: 26px;
-      }
-
-      section p {
-        font-size: 16px;
+      section {
+        padding: 40px 15px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- ==== NAVIGATION BAR ==== -->
+
+  <!-- ✅ NAVIGATION BAR -->
   <nav>
-    <img src="images/logo.svg" alt="Luxverra Logo" class="logo" />
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" style="height: 36px;"></a>
+    <div>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <!-- ==== HEADER ==== -->
-  <header id="home">
-    <img src="images/logo.svg" alt="Luxverra Logo" class="main-logo" />
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo.svg" alt="Luxverra Logo">
     <p>Where Elegance Meets Purpose</p>
   </header>
 
-  <!-- ==== ABOUT ==== -->
+  <!-- ✅ ABOUT SECTION -->
   <section id="about">
     <h2>About Luxverra</h2>
     <p>
-      Luxverra is a refined, multidisciplinary house of excellence. We offer bespoke services in education, diplomacy, translation, publishing, and international trade — all delivered with elegance, discretion, and strategic vision.
+      Luxverra is a refined, multidisciplinary house of excellence. We offer bespoke services in education, diplomacy,
+      translation, publishing, and international trade — all delivered with elegance, discretion, and strategic vision.
     </p>
   </section>
 
-  <!-- ==== SERVICES ==== -->
-  <section id="services" style="background-color: var(--gray);">
+  <!-- ✅ SERVICES SECTION -->
+  <section class="section-light" id="services">
     <h2>Our Services</h2>
-    <p>
-      Explore our curated services tailored to elite individuals and institutions.
-    </p>
+    <ul>
+      <li>Luxverra Academy – Elite language & personal development education</li>
+      <li>Luxverra Diplomacy – Strategic mediation and diplomatic consulting</li>
+      <li>Luxverra Translations – Professional translation & interpretation</li>
+      <li>Luxverra Editions – Premium publishing, planners, and design</li>
+      <li>Luxverra Trade – International trade & commercial relations</li>
+      <li>Luxverra Privé – Confidential bespoke services for VIP clients</li>
+    </ul>
   </section>
 
-  <!-- ==== CONTACT ==== -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      Email: <a href="mailto:info@luxverra.com" class="cta-button">Get in Touch</a>
-    </p>
+  <!-- ✅ BRAND VALUES SECTION -->
+  <section>
+    <h2>Brand Values</h2>
+    <div class="brand-values">
+      <div>
+        <h3>Elegance</h3>
+        <p>A visual and verbal language rooted in timeless style and understated luxury.</p>
+      </div>
+      <div>
+        <h3>Trust</h3>
+        <p>Built through experience, discretion, and high-caliber partnerships.</p>
+      </div>
+      <div>
+        <h3>Purpose</h3>
+        <p>We don't serve everyone — we serve with intent, precision, and meaningful impact.</p>
+      </div>
+    </div>
   </section>
+
+  <!-- ✅ CONTACT SECTION -->
+  <section class="section-light" id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
+    <p>Website: Coming soon at <strong>luxverra.com</strong></p>
+  </section>
+
+  <!-- ✅ FOOTER -->
+  <footer>
+    &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
+  </footer>
 </body>
 </html>
