@@ -26,7 +26,6 @@
       line-height: 1.6;
     }
 
-    /* --- NAVBAR --- */
     nav {
       background-color: var(--black);
       color: var(--gold);
@@ -51,17 +50,30 @@
     nav a:hover {
       text-decoration: underline;
     }
-    
-    .navbar-logo {
-  height: 60px;
-  transition: transform 0.3s ease;
-}
 
-.navbar-logo:hover {
-  transform: scale(1.05);
-}
+    .navbar-logo, .nav-logo {
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
 
-    /* Header */
+    .navbar-logo:hover,
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: var(--gold);
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
     header {
       text-align: center;
       padding: 40px 20px 20px;
@@ -141,34 +153,53 @@
     a:hover {
       text-decoration: underline;
     }
-    
-.nav-logo {
-  height: 60px;
-  transition: transform 0.3s ease;
-}
 
-.nav-logo:hover {
-  transform: scale(1.05);
-}
-
-    /* Responsive */
     @media (max-width: 768px) {
-        nav div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-  }
+      .hamburger {
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        z-index: 1001;
+      }
 
-.nav-logo {
-  height: 50px;
-  margin-bottom: 10px;
-}
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--black);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      }
 
-  nav a {
-    margin: 8px 0;
-  }
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 15px 0;
+        font-size: 18px;
+      }
+
+      .nav-logo {
+        height: 50px;
+        margin-bottom: 10px;
+      }
+
+      nav div {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 8px 0;
+      }
 
       header img {
         height: 180px;
@@ -188,8 +219,9 @@
 
   <!-- ✅ NAVIGATION BAR -->
   <nav>
-<a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
-    <div>
+    <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
       <a href="#">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -256,5 +288,13 @@
   <footer>
     &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
   </footer>
+
+  <!-- ✅ TOGGLE MENU SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
