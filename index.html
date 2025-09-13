@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luxverra | Where Elegance Meets Purpose</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --gold: #D4AF37;
@@ -124,44 +123,13 @@
       padding-right: 10px;
     }
 
-    .brand-values {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+    .faq-item {
+      margin-bottom: 20px;
     }
 
-    .brand-values div {
-      flex: 1 1 250px;
-      background: var(--black);
-      padding: 20px;
-      border: 1px solid var(--gold);
-      border-radius: 8px;
-    }
-
-    .testimonials {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .testimonial {
-      background: var(--gray);
-      padding: 20px;
-      border-left: 4px solid var(--gold);
-      font-style: italic;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .gallery img {
-      max-width: 300px;
-      border: 2px solid var(--gold);
-      border-radius: 10px;
+    .faq-item h4 {
+      color: var(--gold);
+      margin-bottom: 5px;
     }
 
     footer {
@@ -179,19 +147,6 @@
 
     a:hover {
       text-decoration: underline;
-    }
-
-    .partners, .mission, .faqs {
-      background-color: var(--black);
-    }
-
-    .faq-item {
-      margin-bottom: 20px;
-    }
-
-    .faq-item h4 {
-      color: var(--gold);
-      margin-bottom: 5px;
     }
 
     @media (max-width: 768px) {
@@ -237,26 +192,6 @@
         padding: 40px 15px;
       }
     }
-
-    .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-
-    .floating-buttons a {
-      background-color: var(--gold);
-      color: var(--black);
-      padding: 10px 14px;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
   </style>
 </head>
 <body>
@@ -277,17 +212,17 @@
     <p>Where Elegance Meets Purpose</p>
   </header>
 
-  <section id="partners" class="partners">
+  <section id="partners">
     <h2>Partners & Clients</h2>
     <p>We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
   </section>
 
-  <section id="mission" class="mission section-light">
+  <section id="mission" class="section-light">
     <h2>Our Mission</h2>
     <p>To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.</p>
   </section>
 
-  <section id="faqs" class="faqs">
+  <section id="faqs">
     <h2>FAQs</h2>
     <div class="faq-item">
       <h4>What does Luxverra specialize in?</h4>
@@ -301,6 +236,13 @@
       <h4>How can I work with Luxverra?</h4>
       <p>You can contact us directly via email or LinkedIn. We’ll arrange a discovery meeting to explore your needs.</p>
     </div>
+  </section>
+
+  <section id="contact" class="section-light">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
+    <p>Website: Coming soon at <strong>luxverra.com</strong></p>
   </section>
 
   <footer>
