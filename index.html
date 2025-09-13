@@ -26,7 +26,7 @@
       line-height: 1.6;
     }
 
-  /* Navigation Bar */
+    /* Navigation Bar */
     nav {
       background-color: var(--black);
       display: flex;
@@ -147,8 +147,12 @@
       text-decoration: underline;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
       header img {
         height: 180px;
       }
@@ -173,19 +177,26 @@
 </head>
 <body>
 
+  <nav>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header>
     <img src="images/logo.svg" alt="Luxverra Logo">
     <p>Where Elegance Meets Purpose</p>
   </header>
 
-  <section>
+  <section id="about">
     <h2>About Luxverra</h2>
     <p>
       Luxverra is a refined, multidisciplinary house of excellence. We offer bespoke services in education, diplomacy, translation, publishing, and international trade — all delivered with elegance, discretion, and strategic vision.
     </p>
   </section>
 
-  <section class="section-light">
+  <section class="section-light" id="services">
     <h2>Our Services</h2>
     <ul>
       <li>Luxverra Academy – Elite language & personal development education</li>
@@ -197,7 +208,7 @@
     </ul>
   </section>
 
-  <section>
+  <section id="values">
     <h2>Brand Values</h2>
     <div class="brand-values">
       <div>
@@ -215,7 +226,7 @@
     </div>
   </section>
 
-  <section class="section-light">
+  <section class="section-light" id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
