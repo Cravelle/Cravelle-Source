@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luxverra | Where Elegance Meets Purpose</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
@@ -139,6 +138,32 @@
       border-radius: 8px;
     }
 
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .testimonial {
+      background: var(--gray);
+      padding: 20px;
+      border-left: 4px solid var(--gold);
+      font-style: italic;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 300px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+    }
+
     footer {
       background-color: var(--black);
       color: var(--ivory);
@@ -187,22 +212,6 @@
         font-size: 18px;
       }
 
-      .nav-logo {
-        height: 50px;
-        margin-bottom: 10px;
-      }
-
-      nav div {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-      }
-
-      nav a {
-        margin: 8px 0;
-      }
-
       header img {
         height: 180px;
       }
@@ -216,7 +225,6 @@
       }
     }
 
-    /* Floating Buttons */
     .floating-buttons {
       position: fixed;
       bottom: 20px;
@@ -239,8 +247,6 @@
   </style>
 </head>
 <body>
-
-  <!-- ✅ NAVIGATION BAR -->
   <nav>
     <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -252,13 +258,11 @@
     </div>
   </nav>
 
-  <!-- ✅ HEADER -->
   <header>
     <img src="images/logo.svg" alt="Luxverra Logo">
     <p>Where Elegance Meets Purpose</p>
   </header>
 
-  <!-- ✅ ABOUT SECTION -->
   <section id="about">
     <h2>About Luxverra</h2>
     <p>
@@ -267,7 +271,6 @@
     </p>
   </section>
 
-  <!-- ✅ SERVICES SECTION -->
   <section class="section-light" id="services">
     <h2>Our Services</h2>
     <ul>
@@ -280,7 +283,6 @@
     </ul>
   </section>
 
-  <!-- ✅ BRAND VALUES SECTION -->
   <section>
     <h2>Brand Values</h2>
     <div class="brand-values">
@@ -299,7 +301,23 @@
     </div>
   </section>
 
-  <!-- ✅ CONTACT SECTION -->
+  <section class="section-light" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
+      <div class="testimonial">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="images/sample1.jpg" alt="Sample 1">
+      <img src="images/sample2.jpg" alt="Sample 2">
+      <img src="images/sample3.jpg" alt="Sample 3">
+    </div>
+  </section>
+
   <section class="section-light" id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
@@ -307,27 +325,22 @@
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
   </section>
 
-  <!-- ✅ NEW: FLOATING BUTTONS -->
   <div class="floating-buttons">
     <a href="mailto:info@luxverra.com">Email</a>
     <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
     <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a>
   </div>
 
-  <!-- ✅ FOOTER -->
   <footer>
     &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
   </footer>
 
-  <!-- ✅ TOGGLE MENU SCRIPT -->
   <script>
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
     }
   </script>
-
-  <!-- ✅ AOS Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 </body>
