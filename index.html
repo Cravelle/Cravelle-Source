@@ -141,6 +141,15 @@
     a:hover {
       text-decoration: underline;
     }
+    
+.nav-logo {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -151,6 +160,11 @@
     align-items: center;
     margin-top: 10px;
   }
+
+.nav-logo {
+  height: 50px;
+  margin-bottom: 10px;
+}
 
   nav a {
     margin: 8px 0;
@@ -174,7 +188,7 @@
 
   <!-- ✅ NAVIGATION BAR -->
   <nav>
-<a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="navbar-logo"></a>
+<a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <div>
       <a href="#">Home</a>
       <a href="#about">About</a>
