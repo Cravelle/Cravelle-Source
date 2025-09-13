@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luxverra | Where Elegance Meets Purpose</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --gold: #D4AF37;
@@ -123,13 +124,44 @@
       padding-right: 10px;
     }
 
-    .faq-item {
-      margin-bottom: 20px;
+    .brand-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .faq-item h4 {
-      color: var(--gold);
-      margin-bottom: 5px;
+    .brand-values div {
+      flex: 1 1 250px;
+      background: var(--black);
+      padding: 20px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .testimonial {
+      background: var(--gray);
+      padding: 20px;
+      border-left: 4px solid var(--gold);
+      font-style: italic;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 300px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
     }
 
     footer {
@@ -192,6 +224,26 @@
         padding: 40px 15px;
       }
     }
+
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .floating-buttons a {
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 10px 14px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
@@ -199,51 +251,85 @@
     <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#partners">Partners</a>
-      <a href="#mission">Mission</a>
-      <a href="#faqs">FAQs</a>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <header id="home">
+  <header>
     <img src="images/logo.svg" alt="Luxverra Logo">
     <p>Where Elegance Meets Purpose</p>
   </header>
 
-  <section id="partners">
-    <h2>Partners & Clients</h2>
-    <p>We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
+  <section id="about">
+    <h2>About Luxverra</h2>
+    <p>
+      Luxverra is a refined, multidisciplinary house of excellence. We offer bespoke services in education, diplomacy,
+      translation, publishing, and international trade — all delivered with elegance, discretion, and strategic vision.
+    </p>
   </section>
 
-  <section id="mission" class="section-light">
-    <h2>Our Mission</h2>
-    <p>To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.</p>
+  <section class="section-light" id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Luxverra Academy – Elite language & personal development education</li>
+      <li>Luxverra Diplomacy – Strategic mediation and diplomatic consulting</li>
+      <li>Luxverra Translations – Professional translation & interpretation</li>
+      <li>Luxverra Editions – Premium publishing, planners, and design</li>
+      <li>Luxverra Trade – International trade & commercial relations</li>
+      <li>Luxverra Privé – Confidential bespoke services for VIP clients</li>
+    </ul>
   </section>
 
-  <section id="faqs">
-    <h2>FAQs</h2>
-    <div class="faq-item">
-      <h4>What does Luxverra specialize in?</h4>
-      <p>We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Is Luxverra suitable for individuals or only institutions?</h4>
-      <p>We tailor solutions for both high-profile individuals and institutional partners.</p>
-    </div>
-    <div class="faq-item">
-      <h4>How can I work with Luxverra?</h4>
-      <p>You can contact us directly via email or LinkedIn. We’ll arrange a discovery meeting to explore your needs.</p>
+  <section>
+    <h2>Brand Values</h2>
+    <div class="brand-values">
+      <div>
+        <h3>Elegance</h3>
+        <p>A visual and verbal language rooted in timeless style and understated luxury.</p>
+      </div>
+      <div>
+        <h3>Trust</h3>
+        <p>Built through experience, discretion, and high-caliber partnerships.</p>
+      </div>
+      <div>
+        <h3>Purpose</h3>
+        <p>We don't serve everyone — we serve with intent, precision, and meaningful impact.</p>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="section-light">
+  <section class="section-light" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
+      <div class="testimonial">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="images/sample1.jpg" alt="Sample 1">
+      <img src="images/sample2.jpg" alt="Sample 2">
+      <img src="images/sample3.jpg" alt="Sample 3">
+    </div>
+  </section>
+
+  <section class="section-light" id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
   </section>
+
+  <div class="floating-buttons">
+    <a href="mailto:info@luxverra.com">Email</a>
+    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a>
+  </div>
 
   <footer>
     &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
@@ -255,5 +341,7 @@
       links.classList.toggle('show');
     }
   </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
