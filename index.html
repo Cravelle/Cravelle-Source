@@ -260,6 +260,23 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#partners">Partners</a>
+      <a href="#mission">Mission</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header id="home">
+    <img src="images/logo.svg" alt="Luxverra Logo">
+    <p>Where Elegance Meets Purpose</p>
+  </header>
+
   <section id="partners" class="partners">
     <h2>Partners & Clients</h2>
     <p>We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
@@ -285,5 +302,16 @@
       <p>You can contact us directly via email or LinkedIn. We’ll arrange a discovery meeting to explore your needs.</p>
     </div>
   </section>
+
+  <footer>
+    &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
