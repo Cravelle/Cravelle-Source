@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luxverra | Where Elegance Meets Purpose</title>
+
+  <!-- Fonts and animation stylesheets -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
+    /* Root variables for brand colors */
     :root {
       --gold: #D4AF37;
       --black: #000000;
@@ -14,6 +18,7 @@
       --gray: #2B2B2B;
     }
 
+    /* Reset default margins and paddings */
     * {
       margin: 0;
       padding: 0;
@@ -27,6 +32,7 @@
       line-height: 1.6;
     }
 
+    /* Navigation bar styles */
     nav {
       background-color: var(--black);
       color: var(--gold);
@@ -57,8 +63,7 @@
       transition: transform 0.3s ease;
     }
 
-    .navbar-logo:hover,
-    .nav-logo:hover {
+    .navbar-logo:hover, .nav-logo:hover {
       transform: scale(1.05);
     }
 
@@ -75,6 +80,7 @@
       display: flex;
     }
 
+    /* Header section */
     header {
       text-align: center;
       padding: 40px 20px 20px;
@@ -96,6 +102,7 @@
       color: var(--gold);
     }
 
+    /* General section style */
     section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -124,6 +131,7 @@
       padding-right: 10px;
     }
 
+    /* Brand value boxes */
     .brand-values {
       display: flex;
       flex-wrap: wrap;
@@ -190,6 +198,7 @@
       text-decoration: underline;
     }
 
+    /* Floating contact buttons */
     .floating-buttons {
       position: fixed;
       bottom: 20px;
@@ -210,6 +219,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
+    /* Responsive styles for small screens */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -256,6 +266,7 @@
   </style>
 </head>
 <body>
+  <!-- Navigation bar with logo and links -->
   <nav>
     <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -273,35 +284,38 @@
     </div>
   </nav>
 
+  <!-- Main logo and slogan -->
   <header id="home">
     <img src="images/logo.svg" alt="Luxverra Logo">
     <p>Where Elegance Meets Purpose</p>
   </header>
 
+  <!-- Partners section -->
   <section id="partners">
     <h2>Partners & Clients</h2>
     <p>We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
   </section>
 
+  <!-- Mission statement -->
   <section id="mission" class="section-light">
     <h2>Our Mission</h2>
     <p>To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.</p>
   </section>
 
- <section id="services">
+  <!-- Services offered by Luxverra -->
+  <section id="services">
     <h2>Our Services</h2>
     <ul>
-      <li><a href="services/academy.html">Luxverra Academy – Elite language & personal development education</a></li>
-      <li><a href="services/diplomacy.html">Luxverra Diplomacy – Strategic mediation and diplomatic consulting</a></li>
-      <li><a href="services/translation.html">Luxverra Translations and Personal Assistance – Professional translation & support services</a></li>
-      <li><a href="services/trade.html">Luxverra Trade – International trade & commercial relations</a></li>
-      <li><a href="services/prive.html">Luxverra Privé – Confidential bespoke services for VIP clients</a></li>
-      <li><a href="services/digital.html">Luxverra Digital – Web presence, branding & personal websites</a></li>
-      <li><a href="services/voice.html">Luxverra Voice – Multilingual voice-over & audio production</a></li>
-      <li><a href="services/connect.html">Luxverra Connect – B2B representation & strategic partnerships</a></li>
+      <li>Luxverra Academy – Elite language & personal development education</li>
+      <li>Luxverra Diplomacy – Strategic mediation and diplomatic consulting</li>
+      <li>Luxverra Translations – Professional translation & interpretation</li>
+      <li>Luxverra Editions – Premium publishing, planners, and design</li>
+      <li>Luxverra Trade – International trade & commercial relations</li>
+      <li>Luxverra Privé – Confidential bespoke services for VIP clients</li>
     </ul>
-  </section> 
+  </section>
 
+  <!-- Brand values -->
   <section id="values" class="section-light">
     <h2>Brand Values</h2>
     <div class="brand-values">
@@ -320,11 +334,13 @@
     </div>
   </section>
 
+  <!-- Founder bio -->
   <section id="founder">
     <h2>About the Founder</h2>
     <p>Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.</p>
   </section>
 
+  <!-- Testimonials from clients -->
   <section id="testimonials" class="section-light">
     <h2>Testimonials</h2>
     <div class="testimonials">
@@ -333,6 +349,7 @@
     </div>
   </section>
 
+  <!-- Image gallery -->
   <section id="gallery">
     <h2>Gallery</h2>
     <div class="gallery">
@@ -342,6 +359,7 @@
     </div>
   </section>
 
+  <!-- Frequently Asked Questions -->
   <section id="faqs" class="section-light">
     <h2>FAQs</h2>
     <div class="faq-item">
@@ -354,6 +372,7 @@
     </div>
   </section>
 
+  <!-- Contact section -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
@@ -361,22 +380,27 @@
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
   </section>
 
+  <!-- Floating quick contact buttons -->
   <div class="floating-buttons">
     <a href="mailto:info@luxverra.com">Email</a>
     <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
     <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a>
   </div>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
   </footer>
 
+  <!-- Script for responsive menu toggle -->
   <script>
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
     }
   </script>
+
+  <!-- AOS (scroll animations) initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 </body>
