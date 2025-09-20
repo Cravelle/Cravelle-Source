@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -176,6 +137,47 @@
       margin-bottom: 10px;
     }
 
+    .gallery-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      background-color: var(--gray);
+    }
+
+    .gallery-section h2 {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 300px;
+      height: auto;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--ivory);
+      font-style: italic;
+    }
+
     .contact-section {
       padding: 40px 20px;
       background: var(--gray);
@@ -254,6 +256,10 @@
       .service-details {
         flex-direction: column;
       }
+
+      .gallery img {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -284,27 +290,47 @@
   <!-- Service content -->
   <section class="service-content" data-aos="fade-up">
     <h1>Luxverra Connect</h1>
-    <p>Luxverra Connect offers B2B representation and strategic partnership development to foster business growth and collaboration.</p>
+    <p>Luxverra Connect offers B2B representation and strategic partnership development, linking businesses with global opportunities through trust and elegance.</p>
     <div class="service-details">
       <div>
         <h3>B2B Representation</h3>
-        <p>Representing businesses in international markets with professionalism.</p>
+        <p>Representing companies in international markets with professionalism.</p>
       </div>
       <div>
         <h3>Strategic Partnerships</h3>
-        <p>Building long-term alliances for mutual success.</p>
+        <p>Building long-term alliances to enhance business growth.</p>
       </div>
       <div>
-        <h3>Business Development</h3>
-        <p>Strategic guidance to expand your business network.</p>
+        <h3>Network Development</h3>
+        <p>Expanding business networks with curated connections.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section" data-aos="fade-up">
+    <h2>Recent Partnership Events</h2>
+    <p>Highlights from our B2B networking and partnership initiatives.</p>
+    <div class="gallery">
+      <figure>
+        <img src="../images/connect/b2b1.jpg" alt="B2B Representation">
+        <figcaption class="image-caption">B2B Representation Meeting</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/connect/partnership1.jpg" alt="Strategic Partnership">
+        <figcaption class="image-caption">Strategic Partnership Event</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/connect/network.jpg" alt="Network Development">
+        <figcaption class="image-caption">Business Network Expansion</figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- Contact section -->
   <section class="contact-section">
     <h2>Contact Us</h2>
-    <p>Interested in Luxverra Connect? Reach out for partnership opportunities.</p>
+    <p>Interested in Luxverra Connect? Reach out to build your business partnerships.</p>
     <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
     <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank">+1234567890</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
