@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -176,6 +137,47 @@
       margin-bottom: 10px;
     }
 
+    .gallery-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      background-color: var(--gray);
+    }
+
+    .gallery-section h2 {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 300px;
+      height: auto;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--ivory);
+      font-style: italic;
+    }
+
     .contact-section {
       padding: 40px 20px;
       background: var(--gray);
@@ -254,6 +256,10 @@
       .service-details {
         flex-direction: column;
       }
+
+      .gallery img {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -298,6 +304,26 @@
         <h3>VIP Support</h3>
         <p>Premium assistance for high-profile individuals and families.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section" data-aos="fade-up">
+    <h2>Recent Privé Engagements</h2>
+    <p>Highlights from our exclusive client events and services.</p>
+    <div class="gallery">
+      <figure>
+        <img src="../images/prive/event1.jpg" alt="Privé Event">
+        <figcaption class="image-caption">VIP Client Meeting</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/prive/care1.jpg" alt="Personalized Care">
+        <figcaption class="image-caption">Personalized Care Session</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/prive/support.jpg" alt="VIP Support">
+        <figcaption class="image-caption">Exclusive VIP Support</figcaption>
+      </figure>
     </div>
   </section>
 
