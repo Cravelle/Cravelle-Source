@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -50,7 +11,6 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    /* Root variables for brand colors */
     :root {
       --gold: #D4AF37;
       --black: #000000;
@@ -58,7 +18,6 @@
       --gray: #2B2B2B;
     }
 
-    /* Reset default margins and paddings */
     * {
       margin: 0;
       padding: 0;
@@ -72,7 +31,6 @@
       line-height: 1.6;
     }
 
-    /* Navigation bar styles */
     nav {
       background-color: var(--black);
       color: var(--gold);
@@ -120,7 +78,6 @@
       display: flex;
     }
 
-    /* Breadcrumb */
     .breadcrumb {
       padding: 20px;
       font-size: 14px;
@@ -139,7 +96,6 @@
       color: var(--ivory);
     }
 
-    /* Service content */
     .service-content {
       padding: 60px 20px;
       max-width: 1000px;
@@ -181,7 +137,47 @@
       margin-bottom: 10px;
     }
 
-    /* Contact section */
+    .gallery-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      background-color: var(--gray);
+    }
+
+    .gallery-section h2 {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 300px;
+      height: auto;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--ivory);
+      font-style: italic;
+    }
+
     .contact-section {
       padding: 40px 20px;
       background: var(--gray);
@@ -193,7 +189,6 @@
       font-weight: 500;
     }
 
-    /* Floating contact buttons */
     .floating-buttons {
       position: fixed;
       bottom: 20px;
@@ -215,7 +210,6 @@
       text-decoration: none;
     }
 
-    /* Footer */
     footer {
       background-color: var(--black);
       color: var(--ivory);
@@ -224,7 +218,6 @@
       font-size: 14px;
     }
 
-    /* Responsive styles */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -262,6 +255,10 @@
 
       .service-details {
         flex-direction: column;
+      }
+
+      .gallery img {
+        max-width: 100%;
       }
     }
   </style>
@@ -307,6 +304,26 @@
         <h3>Elite Education</h3>
         <p>Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section" data-aos="fade-up">
+    <h2>Recent Educational Events</h2>
+    <p>Highlights from our language workshops and training sessions.</p>
+    <div class="gallery">
+      <figure>
+        <img src="../images/academy/workshop1.jpg" alt="Language Workshop Session">
+        <figcaption class="image-caption">Language Mastery Workshop</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/academy/workshop2.jpg" alt="Personal Development Training">
+        <figcaption class="image-caption">Personal Development Seminar</figcaption>
+      </figure>
+      <figure>
+        <img src="../images/academy/elite-session.jpg" alt="Elite Education Program">
+        <figcaption class="image-caption">Elite Education Session</figcaption>
+      </figure>
     </div>
   </section>
 
