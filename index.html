@@ -54,6 +54,10 @@
       z-index: 999;
     }
 
+    nav[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     nav a {
       color: var(--gold);
       text-decoration: none;
@@ -91,6 +95,7 @@
 
     .nav-links {
       display: flex;
+      align-items: center;
     }
 
     .nav-links[dir="rtl"] {
@@ -188,6 +193,10 @@
       padding: 40px 20px 20px;
     }
 
+    header[dir="rtl"] {
+      text-align: right;
+    }
+
     header img {
       height: 280px;
       margin-bottom: 10px;
@@ -211,12 +220,20 @@
       margin: auto;
     }
 
+    section[dir="rtl"] {
+      text-align: right;
+    }
+
     h2 {
       color: var(--gold);
       font-family: 'Cinzel', serif;
       font-size: 32px;
       margin-bottom: 20px;
       text-align: center;
+    }
+
+    h2[dir="rtl"] {
+      text-align: right;
     }
 
     .section-light {
@@ -238,6 +255,10 @@
       border-radius: 8px;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card[dir="rtl"] {
+      text-align: right;
     }
 
     .service-card:hover {
@@ -280,6 +301,10 @@
       gap: 20px;
     }
 
+    .brand-values[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     .brand-values div {
       flex: 1 1 250px;
       background: var(--black);
@@ -301,11 +326,20 @@
       font-style: italic;
     }
 
+    .testimonial[dir="rtl"] {
+      border-left: none;
+      border-right: 4px solid var(--gold);
+    }
+
     .gallery {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
+    }
+
+    .gallery[dir="rtl"] {
+      justify-content: flex-end;
     }
 
     .gallery img {
@@ -316,6 +350,10 @@
 
     .faq-item {
       margin-bottom: 20px;
+    }
+
+    .faq-item[dir="rtl"] {
+      text-align: right;
     }
 
     .faq-item h4 {
@@ -329,6 +367,10 @@
       text-align: center;
       padding: 40px 20px;
       font-size: 14px;
+    }
+
+    footer[dir="rtl"] {
+      text-align: right;
     }
 
     a {
@@ -351,6 +393,12 @@
       z-index: 1000;
     }
 
+    .floating-buttons[dir="rtl"] {
+      right: auto;
+      left: 20px;
+      flex-direction: column-reverse;
+    }
+
     .floating-buttons a {
       background-color: var(--gold);
       color: var(--black);
@@ -369,6 +417,11 @@
         right: 30px;
         top: 20px;
         z-index: 1001;
+      }
+
+      .hamburger[dir="rtl"] {
+        right: auto;
+        left: 30px;
       }
 
       .nav-links {
@@ -505,7 +558,7 @@
         <p data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
         <a href="services/voice.html" data-key="learnMore">Learn More</a>
       </div>
-      <div class="service-card">
+      <div class="card">
         <h3 data-key="connect">Luxverra Connect</h3>
         <p data-key="connectDesc">B2B representation and strategic partnership development.</p>
         <a href="services/connect.html" data-key="learnMore">Learn More</a>
@@ -675,6 +728,7 @@
       } finally {
         updatePage();
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // Added to ensure body dir is set
         document.getElementById('current-flag').src = getFlagUrl(lang);
         document.getElementById('language-toggle').textContent = getLanguageName(lang);
         localStorage.setItem('selectedLanguage', lang);
