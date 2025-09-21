@@ -137,6 +137,7 @@
       margin-bottom: 10px;
     }
 
+    /* Tabs Gallery Styles */
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -150,6 +151,42 @@
       font-family: 'Cinzel', serif;
       font-size: 32px;
       margin-bottom: 30px;
+    }
+
+    .tabs-container {
+      margin-bottom: 30px;
+    }
+
+    .tabs-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      background: var(--black);
+      color: var(--ivory);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .gallery {
@@ -257,6 +294,15 @@
         flex-direction: column;
       }
 
+      .tabs-buttons {
+        flex-direction: column;
+      }
+
+      .tab-button {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
       .gallery img {
         max-width: 100%;
       }
@@ -307,23 +353,153 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Tabs Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
-    <h2>Recent Educational Events</h2>
-    <p>Highlights from our language workshops and training sessions.</p>
-    <div class="gallery">
-      <figure>
-        <img src="../images/academy/workshop1.jpg" alt="Language Workshop Session">
-        <figcaption class="image-caption">Language Mastery Workshop</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/academy/workshop2.jpg" alt="Personal Development Training">
-        <figcaption class="image-caption">Personal Development Seminar</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/academy/elite-session.jpg" alt="Elite Education Program">
-        <figcaption class="image-caption">Elite Education Session</figcaption>
-      </figure>
+    <h2>Academy Gallery</h2>
+    <p>Explore our educational programs through photos from various sessions.</p>
+    
+    <div class="tabs-container">
+      <div class="tabs-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'nursery')">Nursery Photos</button>
+        <button class="tab-button" onclick="openTab(event, 'private')">Private Lessons</button>
+        <button class="tab-button" onclick="openTab(event, 'university')">University Work</button>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="nursery" class="tab-content active">
+      <div class="gallery">
+        <figure>
+          <img src="../images/academy/nursery/preschool1.jpg" alt="Preschool Activity">
+          <figcaption class="image-caption">Preschool Language Class</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool2.jpg" alt="Preschool Play">
+          <figcaption class="image-caption">Interactive Preschool Play</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool3.jpg" alt="Preschool Group">
+          <figcaption class="image-caption">Preschool Group Learning</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool4.jpg" alt="Preschool Art">
+          <figcaption class="image-caption">Preschool Art Session</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool5.jpg" alt="Preschool Story">
+          <figcaption class="image-caption">Preschool Story Time</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool6.jpg" alt="Preschool Game">
+          <figcaption class="image-caption">Preschool Group Game</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool7.jpg" alt="Preschool Outdoor">
+          <figcaption class="image-caption">Preschool Outdoor Activity</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool8.jpg" alt="Preschool Music">
+          <figcaption class="image-caption">Preschool Music Class</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool9.jpg" alt="Preschool Craft">
+          <figcaption class="image-caption">Preschool Craft Time</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/nursery/preschool10.jpg" alt="Preschool Celebration">
+          <figcaption class="image-caption">Preschool Celebration Event</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div id="private" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/academy/private/lesson1.jpg" alt="Private Lesson">
+          <figcaption class="image-caption">One-on-One Language Lesson</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson2.jpg" alt="Private Tutoring">
+          <figcaption class="image-caption">Personalized Tutoring</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson3.jpg" alt="Private Coaching">
+          <figcaption class="image-caption">Private Development Coaching</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson4.jpg" alt="Private Session">
+          <figcaption class="image-caption">Advanced Language Session</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson5.jpg" alt="Private Practice">
+          <figcaption class="image-caption">Language Practice Session</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson6.jpg" alt="Private Review">
+          <figcaption class="image-caption">Review with Tutor</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson7.jpg" alt="Private Study">
+          <figcaption class="image-caption">Personal Study Plan</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson8.jpg" alt="Private Feedback">
+          <figcaption class="image-caption">Feedback Session</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson9.jpg" alt="Private Exam">
+          <figcaption class="image-caption">Exam Preparation</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/private/lesson10.jpg" alt="Private Success">
+          <figcaption class="image-caption">Student Success Celebration</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div id="university" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/academy/university/uni1.jpg" alt="University Lecture">
+          <figcaption class="image-caption">University Language Lecture</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni2.jpg" alt="University Workshop">
+          <figcaption class="image-caption">University Workshop</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni3.jpg" alt="University Event">
+          <figcaption class="image-caption">University Educational Event</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni4.jpg" alt="University Seminar">
+          <figcaption class="image-caption">University Seminar Session</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni5.jpg" alt="University Discussion">
+          <figcaption class="image-caption">Group Discussion</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni6.jpg" alt="University Project">
+          <figcaption class="image-caption">Student Project Presentation</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni7.jpg" alt="University Research">
+          <figcaption class="image-caption">Research Workshop</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni8.jpg" alt="University Class">
+          <figcaption class="image-caption">Language Class</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni9.jpg" alt="University Exam">
+          <figcaption class="image-caption">Exam Preparation Class</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/academy/university/uni10.jpg" alt="University Graduation">
+          <figcaption class="image-caption">Graduation Ceremony</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -353,6 +529,25 @@
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
+    }
+
+    // Tabs functionality
+    function openTab(evt, tabName) {
+      // Hide all tab contents
+      var tabcontents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabcontents.length; i++) {
+        tabcontents[i].classList.remove("active");
+      }
+      
+      // Remove active class from all buttons
+      var tablinks = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      // Show selected tab content and add active class to button
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
     }
   </script>
 
