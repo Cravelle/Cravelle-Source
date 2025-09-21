@@ -51,12 +51,21 @@
       z-index: 999;
     }
 
+    nav[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     nav a {
       color: var(--gold);
       text-decoration: none;
       margin-left: 30px;
       font-weight: 500;
       font-size: 16px;
+    }
+
+    nav[dir="rtl"] a {
+      margin-left: 0;
+      margin-right: 30px;
     }
 
     nav a:hover {
@@ -85,6 +94,10 @@
       display: flex;
     }
 
+    .nav-links[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     .language-dropdown {
       position: relative;
       display: inline-block;
@@ -102,10 +115,19 @@
       align-items: center;
     }
 
+    .language-toggle[dir="rtl"] {
+      padding: 5px 10px 5px 30px;
+    }
+
     .language-toggle img {
       width: 20px;
       height: 15px;
       margin-right: 5px;
+    }
+
+    .language-toggle[dir="rtl"] img {
+      margin-right: 0;
+      margin-left: 5px;
     }
 
     .language-menu {
@@ -119,6 +141,11 @@
       top: 100%;
       left: 0;
       margin-top: 2px;
+    }
+
+    .language-menu[dir="rtl"] {
+      left: auto;
+      right: 0;
     }
 
     .language-menu.active {
@@ -137,6 +164,10 @@
       align-items: center;
     }
 
+    .language-menu button[dir="rtl"] {
+      text-align: right;
+    }
+
     .language-menu button:hover {
       background: var(--gray);
     }
@@ -147,9 +178,18 @@
       margin-right: 8px;
     }
 
+    .language-menu button[dir="rtl"] img {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+
     .breadcrumb {
       padding: 20px;
       font-size: 14px;
+    }
+
+    .breadcrumb[dir="rtl"] {
+      text-align: right;
     }
 
     .breadcrumb a {
@@ -172,6 +212,10 @@
       text-align: center;
     }
 
+    .service-content[dir="rtl"] {
+      text-align: right;
+    }
+
     .service-content h1 {
       color: var(--gold);
       font-family: 'Cinzel', serif;
@@ -191,12 +235,20 @@
       margin-top: 30px;
     }
 
+    .service-details[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     .service-details div {
       flex: 1 1 300px;
       background: var(--gray);
       padding: 20px;
       border: 1px solid var(--gold);
       border-radius: 8px;
+    }
+
+    .service-details div[dir="rtl"] {
+      text-align: right;
     }
 
     .service-details h3 {
@@ -206,12 +258,20 @@
       margin-bottom: 10px;
     }
 
+    .service-details h3[dir="rtl"] {
+      text-align: right;
+    }
+
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
       background-color: var(--gray);
+    }
+
+    .gallery-section[dir="rtl"] {
+      text-align: right;
     }
 
     .gallery-section h2 {
@@ -230,6 +290,10 @@
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .tabs-buttons[dir="rtl"] {
+      flex-direction: row-reverse;
     }
 
     .tab-button {
@@ -264,6 +328,10 @@
       justify-content: center;
     }
 
+    .gallery[dir="rtl"] {
+      justify-content: flex-end;
+    }
+
     .gallery img {
       max-width: 300px;
       height: auto;
@@ -282,6 +350,10 @@
       text-align: center;
     }
 
+    .contact-section[dir="rtl"] {
+      text-align: right;
+    }
+
     .contact-section a {
       color: var(--gold);
       font-weight: 500;
@@ -295,6 +367,12 @@
       flex-direction: column;
       gap: 10px;
       z-index: 1000;
+    }
+
+    .floating-buttons[dir="rtl"] {
+      right: auto;
+      left: 20px;
+      flex-direction: column-reverse;
     }
 
     .floating-buttons a {
@@ -316,6 +394,10 @@
       font-size: 14px;
     }
 
+    footer[dir="rtl"] {
+      text-align: right;
+    }
+
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -323,6 +405,11 @@
         right: 30px;
         top: 20px;
         z-index: 1001;
+      }
+
+      .hamburger[dir="rtl"] {
+        right: auto;
+        left: 30px;
       }
 
       .nav-links {
@@ -342,6 +429,10 @@
         display: flex;
       }
 
+      .nav-links[dir="rtl"].show {
+        flex-direction: column-reverse;
+      }
+
       .nav-links a {
         margin: 15px 0;
         font-size: 18px;
@@ -355,23 +446,14 @@
         flex-direction: column;
       }
 
-      .tabs-buttons {
-        flex-direction: column;
-      }
-
-      .tab-button {
-        width: 100%;
-        margin-bottom: 5px;
-      }
-
-      .gallery img {
-        max-width: 100%;
+      .gallery-section {
+        padding: 40px 15px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation bar -->
+  <!-- Navigation bar with logo and links -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <div class="language-dropdown">
@@ -405,119 +487,87 @@
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
-    <a href="../index.html" data-key="homeNav">Home</a> > <a href="../index.html#services" data-key="servicesNav">Services</a> > <span data-key="academyTitle">Luxverra Academy</span>
+    <a href="../index.html" data-key="homeNav">Home</a> <span>&gt;</span> <span data-key="academy">Luxverra Academy</span>
   </div>
 
-  <!-- Service content -->
-  <section class="service-content" data-aos="fade-up">
-    <h1 data-key="academyTitle">Luxverra Academy</h1>
-    <p data-key="academyDesc">Luxverra Academy offers elite language learning and personal development programs designed for individuals and professionals seeking excellence. Our programs combine linguistic mastery with personal growth to empower our clients.</p>
+  <!-- Service Content -->
+  <div class="service-content">
+    <h1 data-key="academy">Luxverra Academy</h1>
+    <p data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
     <div class="service-details">
       <div>
-        <h3 data-key="languageLearning">Language Learning</h3>
-        <p data-key="languageDesc">Master multiple languages with tailored courses delivered by expert instructors, focusing on fluency and cultural nuance.</p>
+        <h3 data-key="academyFeature1">Customized Learning Paths</h3>
+        <p data-key="academyFeature1Desc">Tailored programs to meet individual goals and proficiency levels.</p>
       </div>
       <div>
-        <h3 data-key="personalDev">Personal Development</h3>
-        <p data-key="personalDesc">Develop leadership, communication, and strategic thinking skills through bespoke coaching programs.</p>
+        <h3 data-key="academyFeature2">Expert Instructors</h3>
+        <p data-key="academyFeature2Desc">Highly qualified educators with global experience.</p>
       </div>
       <div>
-        <h3 data-key="eliteEdu">Elite Education</h3>
-        <p data-key="eliteDesc">Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.</p>
+        <h3 data-key="academyFeature3">Personal Development</h3>
+        <p data-key="academyFeature3Desc">Skills training to enhance leadership and communication.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Tabs Gallery Section -->
-  <section class="gallery-section" data-aos="fade-up">
-    <h2 data-key="galleryTitle">Academy Gallery</h2>
-    <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
-    
+  <!-- Gallery Section -->
+  <div class="gallery-section">
+    <h2 data-key="galleryNav">Gallery</h2>
     <div class="tabs-container">
       <div class="tabs-buttons">
-        <button class="tab-button active" onclick="openTab(event, 'nursery')" data-key="nurseryTab">Nursery Photos</button>
-        <button class="tab-button" onclick="openTab(event, 'private')" data-key="privateTab">Private Lessons</button>
-        <button class="tab-button" onclick="openTab(event, 'university')" data-key="universityTab">University Work</button>
+        <button class="tab-button active" onclick="openTab('tab1')">Classrooms</button>
+        <button class="tab-button" onclick="openTab('tab2')">Events</button>
+        <button class="tab-button" onclick="openTab('tab3')">Workshops</button>
+      </div>
+      <div id="tab1" class="tab-content active">
+        <div class="gallery">
+          <img src="../images/academy-classroom1.jpg" alt="Classroom 1">
+          <img src="../images/academy-classroom2.jpg" alt="Classroom 2">
+          <img src="../images/academy-classroom3.jpg" alt="Classroom 3">
+        </div>
+      </div>
+      <div id="tab2" class="tab-content">
+        <div class="gallery">
+          <img src="../images/academy-event1.jpg" alt="Event 1">
+          <img src="../images/academy-event2.jpg" alt="Event 2">
+          <img src="../images/academy-event3.jpg" alt="Event 3">
+        </div>
+      </div>
+      <div id="tab3" class="tab-content">
+        <div class="gallery">
+          <img src="../images/academy-workshop1.jpg" alt="Workshop 1">
+          <img src="../images/academy-workshop2.jpg" alt="Workshop 2">
+          <img src="../images/academy-workshop3.jpg" alt="Workshop 3">
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Tab Contents -->
-    <div id="nursery" class="tab-content active">
-      <div class="gallery">
-        <figure><img src="../images/academy/preschool1.jpg" alt="Preschool Activity"></figure>
-        <figure><img src="../images/academy/preschool2.jpg" alt="Preschool Play"></figure>
-        <figure><img src="../images/academy/preschool3.jpg" alt="Preschool Group"></figure>
-        <figure><img src="../images/academy/preschool4.jpg" alt="Preschool Art"></figure>
-        <figure><img src="../images/academy/preschool5.jpg" alt="Preschool Story"></figure>
-        <figure><img src="../images/academy/preschool6.jpg" alt="Preschool Game"></figure>
-        <figure><img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor"></figure>
-        <figure><img src="../images/academy/preschool8.jpg" alt="Preschool Music"></figure>
-        <figure><img src="../images/academy/preschool9.jpg" alt="Preschool Craft"></figure>
-        <figure><img src="../images/academy/preschool10.jpg" alt="Preschool Celebration"></figure>
-        <figure><img src="../images/academy/preschool11.jpg" alt="Preschool Celebration"></figure>
-      </div>
-    </div>
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <p>For inquiries, contact us at <a href="mailto:academy@luxverra.com" data-key="email">Email: academy@luxverra.com</a></p>
+  </div>
 
-    <div id="private" class="tab-content">
-      <div class="gallery">
-        <figure><img src="../images/academy/lesson1.jpg" alt="Private Lesson"></figure>
-        <figure><img src="../images/academy/lesson2.jpg" alt="Private Tutoring"></figure>
-        <figure><img src="../images/academy/lesson3.jpg" alt="Private Coaching"></figure>
-        <figure><img src="../images/academy/lesson4.jpg" alt="Private Session"></figure>
-        <figure><img src="../images/academy/lesson5.jpg" alt="Private Practice"></figure>
-        <figure><img src="../images/academy/lesson6.jpg" alt="Private Review"></figure>
-        <figure><img src="../images/academy/lesson7.jpg" alt="Private Study"></figure>
-        <figure><img src="../images/academy/lesson8.jpg" alt="Private Feedback"></figure>
-        <figure><img src="../images/academy/lesson9.jpg" alt="Private Exam"></figure>
-        <figure><img src="../images/academy/lesson10.jpg" alt="Private Success"></figure>
-      </div>
-    </div>
-
-    <div id="university" class="tab-content">
-      <div class="gallery">
-        <figure><img src="../images/academy/uni1.jpg" alt="University Lecture"></figure>
-        <figure><img src="../images/academy/uni2.jpg" alt="University Workshop"></figure>
-        <figure><img src="../images/academy/uni3.jpg" alt="University Event"></figure>
-        <figure><img src="../images/academy/uni4.jpg" alt="University Seminar"></figure>
-        <figure><img src="../images/academy/uni5.jpg" alt="University Discussion"></figure>
-        <figure><img src="../images/academy/uni6.jpg" alt="University Project"></figure>
-        <figure><img src="../images/academy/uni7.jpg" alt="University Research"></figure>
-        <figure><img src="../images/academy/uni8.jpg" alt="University Class"></figure>
-        <figure><img src="../images/academy/uni9.jpg" alt="University Exam"></figure>
-        <figure><img src="../images/academy/uni10.jpg" alt="University Graduation"></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact section -->
-  <section class="contact-section">
-    <h2 data-key="contact">Contact Us</h2>
-    <p data-key="contactDesc">Interested in Luxverra Academy? Reach out to learn more about our programs.</p>
-    <p><a href="mailto:info@luxverra.com" data-key="email">Email: info@luxverra.com</a></p>
-    <p><a href="https://wa.me/1234567890" target="_blank" data-key="whatsapp">WhatsApp: +1234567890</a></p>
-    <p><a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">LinkedIn: Mahmoud Keweisy</a></p>
-  </section>
-
-  <!-- Floating contact buttons -->
+  <!-- Floating quick contact buttons -->
   <div class="floating-buttons">
-    <a href="mailto:info@luxverra.com" data-key="emailBtn">Email</a>
+    <a href="mailto:academy@luxverra.com" data-key="emailBtn">Email</a>
     <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
     <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p data-key="footer">© 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
+    <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle and language -->
+  <!-- Script for responsive menu toggle, language, and tabs -->
   <script>
     let translations = {};
-    let currentLang = 'en';
+    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
     async function loadTranslations(lang) {
       try {
-        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : '/lang/';
+        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
         const response = await fetch(`${basePath}${lang}.json`, {
           headers: {
             'Cache-Control': 'no-cache',
@@ -542,35 +592,68 @@
           "galleryNav": "Gallery",
           "faqsNav": "FAQs",
           "contactNav": "Contact",
-          "academyTitle": "Luxverra Academy",
-          "academyDesc": "Luxverra Academy offers elite language learning and personal development programs designed for individuals and professionals seeking excellence...",
-          "languageLearning": "Language Learning",
-          "languageDesc": "Master multiple languages with tailored courses delivered by expert instructors...",
-          "personalDev": "Personal Development",
-          "personalDesc": "Develop leadership, communication, and strategic thinking skills...",
-          "eliteEdu": "Elite Education",
-          "eliteDesc": "Exclusive programs for high-profile individuals and organizations...",
-          "galleryTitle": "Academy Gallery",
-          "galleryDesc": "Explore our educational programs through photos from various sessions.",
-          "nurseryTab": "Nursery Photos",
-          "privateTab": "Private Lessons",
-          "universityTab": "University Work",
-          "contact": "Contact Us",
-          "contactDesc": "Interested in Luxverra Academy? Reach out to learn more about our programs.",
+          "slogan": "Where Elegance Meets Purpose",
+          "partners": "Partners & Clients",
+          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
+          "mission": "Our Mission",
+          "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
+          "services": "Our Services",
+          "academy": "Luxverra Academy",
+          "academyDesc": "Elite language learning and personal development programs designed for excellence.",
+          "academyFeature1": "Customized Learning Paths",
+          "academyFeature1Desc": "Tailored programs to meet individual goals and proficiency levels.",
+          "academyFeature2": "Expert Instructors",
+          "academyFeature2Desc": "Highly qualified educators with global experience.",
+          "academyFeature3": "Personal Development",
+          "academyFeature3Desc": "Skills training to enhance leadership and communication.",
+          "diplomacy": "Luxverra Diplomacy",
+          "diplomacyDesc": "Strategic mediation and diplomatic consulting for global impact.",
+          "translation": "Luxverra Translations",
+          "translationDesc": "Professional translation and personal assistance services with precision.",
+          "trade": "Luxverra Trade",
+          "tradeDesc": "Facilitating international trade and commercial relations.",
+          "prive": "Luxverra Privé",
+          "priveDesc": "Confidential bespoke services tailored for VIP clients.",
+          "digital": "Luxverra Digital",
+          "digitalDesc": "Web presence, branding, and personal website solutions.",
+          "voice": "Luxverra Voice",
+          "voiceDesc": "Multilingual voice-over and audio production services.",
+          "connect": "Luxverra Connect",
+          "connectDesc": "B2B representation and strategic partnership development.",
+          "values": "Brand Values",
+          "elegance": "Elegance",
+          "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
+          "trust": "Trust",
+          "trustDesc": "Built through experience, discretion, and high-caliber partnerships.",
+          "purpose": "Purpose",
+          "purposeDesc": "We don't serve everyone — we serve with intent, precision, and meaningful impact.",
+          "founder": "About the Founder",
+          "founderDesc": "Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.",
+          "testimonials": "Testimonials",
+          "testimonial1": "“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client",
+          "testimonial2": "“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner",
+          "galleryNav": "Gallery",
+          "faqs": "FAQs",
+          "faq1Q": "What does Luxverra specialize in?",
+          "faq1A": "We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.",
+          "faq2Q": "Is Luxverra suitable for individuals or only institutions?",
+          "faq2A": "Luxverra works with both—offering customized support for individuals, institutions, and elite entities.",
+          "contact": "Contact",
           "email": "Email: info@luxverra.com",
-          "whatsapp": "WhatsApp: +1234567890",
           "linkedin": "LinkedIn: Mahmoud Keweisy",
           "emailBtn": "Email",
           "whatsappBtn": "WhatsApp",
           "linkedinBtn": "LinkedIn",
-          "footer": "© 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
-          "title": "Luxverra Academy | Elite Education"
+          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
+          "learnMore": "Learn More",
+          "title": "Luxverra | Where Elegance Meets Purpose"
         };
       } finally {
         updatePage();
+        updateLanguageToggle(lang);
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        document.getElementById('current-flag').src = getFlagUrl(lang);
-        document.getElementById('language-toggle').textContent = getLanguageName(lang);
+        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        localStorage.setItem('selectedLanguage', lang);
       }
     }
 
@@ -611,11 +694,18 @@
               el.href = el.href.split(':')[0] + ':' + value.trim();
             }
           } else {
-            el.textContent = translations[key];
+            el.innerHTML = translations[key];
           }
         }
       });
-      document.title = translations['title'] || 'Luxverra Academy';
+      document.title = translations['title'] || 'Luxverra | Where Elegance Meets Purpose';
+    }
+
+    function updateLanguageToggle(lang) {
+      const toggle = document.getElementById('language-toggle');
+      const flag = document.getElementById('current-flag');
+      toggle.innerHTML = `<img src="${getFlagUrl(lang)}" alt="${getLanguageName(lang)} Flag" id="current-flag"> ${getLanguageName(lang)}`;
+      toggle.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     }
 
     function changeLanguage(lang) {
@@ -633,22 +723,17 @@
       links.classList.toggle('show');
     }
 
-    // Tabs functionality
-    function openTab(evt, tabName) {
-      var tabcontents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabcontents.length; i++) {
-        tabcontents[i].classList.remove("active");
-      }
-      var tablinks = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-      }
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
+    function openTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-button');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      document.querySelector(`.tab-button[onclick="openTab('${tabName}')"]`).classList.add('active');
     }
 
     // Load default on page load
-    window.addEventListener('load', () => loadTranslations('en'));
+    window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
 
   <!-- AOS (scroll animations) initialization -->
