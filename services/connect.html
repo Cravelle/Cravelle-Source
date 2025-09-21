@@ -258,6 +258,7 @@
       text-align: right;
     }
 
+    /* Tabs Gallery Styles */
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -275,6 +276,46 @@
       font-family: 'Cinzel', serif;
       font-size: 32px;
       margin-bottom: 30px;
+    }
+
+    .tabs-container {
+      margin-bottom: 30px;
+    }
+
+    .tabs-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tabs-buttons[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
+    .tab-button {
+      background: var(--black);
+      color: var(--ivory);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .gallery {
@@ -298,13 +339,6 @@
 
     .gallery img:hover {
       transform: scale(1.05);
-    }
-
-    .image-caption {
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--ivory);
-      font-style: italic;
     }
 
     .contact-section {
@@ -370,6 +404,11 @@
         z-index: 1001;
       }
 
+      .hamburger[dir="rtl"] {
+        right: auto;
+        left: 30px;
+      }
+
       .nav-links {
         display: none;
         flex-direction: column;
@@ -387,6 +426,10 @@
         display: flex;
       }
 
+      .nav-links[dir="rtl"].show {
+        flex-direction: column-reverse;
+      }
+
       .nav-links a {
         margin: 15px 0;
         font-size: 18px;
@@ -400,6 +443,15 @@
         flex-direction: column;
       }
 
+      .tabs-buttons {
+        flex-direction: column;
+      }
+
+      .tab-button {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
       .gallery img {
         max-width: 100%;
       }
@@ -410,6 +462,20 @@
   <!-- Navigation bar -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
+    <div class="language-dropdown">
+      <button class="language-toggle" onclick="toggleLanguageMenu()" id="language-toggle">
+        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" id="current-flag"> English
+      </button>
+      <div class="language-menu" id="language-menu">
+        <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</button>
+        <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</button>
+        <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</button>
+        <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</button>
+        <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</button>
+        <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</button>
+        <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="../index.html#home" data-key="homeNav">Home</a>
@@ -422,20 +488,6 @@
       <a href="../index.html#gallery" data-key="galleryNav">Gallery</a>
       <a href="../index.html#faqs" data-key="faqsNav">FAQs</a>
       <a href="../index.html#contact" data-key="contactNav">Contact</a>
-      <div class="language-dropdown">
-        <button id="language-toggle" class="language-toggle" onclick="toggleLanguageMenu()">
-          <img src="https://flagcdn.com/w20/gb.png" alt="English Flag" id="current-flag"> English
-        </button>
-        <div id="language-menu" class="language-menu">
-          <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="English Flag"> English</button>
-          <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Arabic Flag"> العربية</button>
-          <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="German Flag"> Deutsch</button>
-          <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russian Flag"> Русский</button>
-          <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Polish Flag"> Polski</button>
-          <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkish Flag"> Türkçe</button>
-          <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spanish Flag"> Español</button>
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -464,23 +516,78 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Tabs Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
     <h2 data-key="galleryTitle">Recent Partnership Events</h2>
     <p data-key="galleryDesc">Highlights from our B2B networking and partnership initiatives.</p>
-    <div class="gallery">
-      <figure>
-        <img src="../images/connect/b2b1.jpg" alt="B2B Representation">
-        <figcaption class="image-caption" data-key="caption1">B2B Representation Meeting</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/connect/partnership1.jpg" alt="Strategic Partnership">
-        <figcaption class="image-caption" data-key="caption2">Strategic Partnership Event</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/connect/network.jpg" alt="Network Development">
-        <figcaption class="image-caption" data-key="caption3">Business Network Expansion</figcaption>
-      </figure>
+    
+    <div class="tabs-container">
+      <div class="tabs-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'b2b')" data-key="tabB2B">B2B Representation</button>
+        <button class="tab-button" onclick="openTab(event, 'partnership')" data-key="tabPartnership">Strategic Partnerships</button>
+        <button class="tab-button" onclick="openTab(event, 'network')" data-key="tabNetwork">Network Development</button>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="b2b" class="tab-content active">
+      <div class="gallery">
+        <figure>
+          <img src="../images/connect/b2b1.jpg" alt="B2B Representation">
+        </figure>
+        <figure>
+          <img src="../images/connect/b2b2.jpg" alt="B2B Meeting">
+        </figure>
+        <figure>
+          <img src="../images/connect/b2b3.jpg" alt="B2B Negotiation">
+        </figure>
+        <figure>
+          <img src="../images/connect/b2b4.jpg" alt="B2B Strategy">
+        </figure>
+        <figure>
+          <img src="../images/connect/b2b5.jpg" alt="B2B Success">
+        </figure>
+      </div>
+    </div>
+
+    <div id="partnership" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/connect/partnership1.jpg" alt="Strategic Partnership">
+        </figure>
+        <figure>
+          <img src="../images/connect/partnership2.jpg" alt="Partnership Event">
+        </figure>
+        <figure>
+          <img src="../images/connect/partnership3.jpg" alt="Partnership Agreement">
+        </figure>
+        <figure>
+          <img src="../images/connect/partnership4.jpg" alt="Partnership Collaboration">
+        </figure>
+        <figure>
+          <img src="../images/connect/partnership5.jpg" alt="Partnership Growth">
+        </figure>
+      </div>
+    </div>
+
+    <div id="network" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/connect/network.jpg" alt="Network Development">
+        </figure>
+        <figure>
+          <img src="../images/connect/network2.jpg" alt="Networking Event">
+        </figure>
+        <figure>
+          <img src="../images/connect/network3.jpg" alt="Business Networking">
+        </figure>
+        <figure>
+          <img src="../images/connect/network4.jpg" alt="Network Expansion">
+        </figure>
+        <figure>
+          <img src="../images/connect/network5.jpg" alt="Network Success">
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -505,8 +612,28 @@
     <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle and language -->
+  <!-- Script for responsive menu toggle and tabs -->
   <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('show');
+    }
+
+    function openTab(evt, tabName) {
+      var tabcontents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabcontents.length; i++) {
+        tabcontents[i].classList.remove("active");
+      }
+      
+      var tablinks = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
     let translations = {};
     let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
@@ -547,9 +674,9 @@
           "networkDevDesc": "Expanding business networks with curated connections.",
           "galleryTitle": "Recent Partnership Events",
           "galleryDesc": "Highlights from our B2B networking and partnership initiatives.",
-          "caption1": "B2B Representation Meeting",
-          "caption2": "Strategic Partnership Event",
-          "caption3": "Business Network Expansion",
+          "tabB2B": "B2B Representation",
+          "tabPartnership": "Strategic Partnerships",
+          "tabNetwork": "Network Development",
           "contact": "Contact Us",
           "contactDesc": "Interested in Luxverra Connect? Reach out to build your business partnerships.",
           "email": "Email: info@luxverra.com",
@@ -627,11 +754,6 @@
 
     function toggleLanguageMenu() {
       document.getElementById('language-menu').classList.toggle('active');
-    }
-
-    function toggleMenu() {
-      const links = document.getElementById('navLinks');
-      links.classList.toggle('show');
     }
 
     // Load default on page load
