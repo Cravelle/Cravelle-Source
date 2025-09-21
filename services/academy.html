@@ -93,11 +93,26 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: 500;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23D4AF37"><path d="M2 4l4 4 4-4H2z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
     }
 
     #language-select option {
       background: var(--black);
       color: var(--gold);
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    #language-select option img {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
     }
 
     .breadcrumb {
@@ -328,8 +343,13 @@
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
     <select id="language-select" onchange="changeLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
+      <option value="en"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</option>
+      <option value="ar"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</option>
+      <option value="de"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</option>
+      <option value="ru"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</option>
+      <option value="pl"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</option>
+      <option value="tr"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</option>
+      <option value="es"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</option>
     </select>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
@@ -474,7 +494,6 @@
         console.log(`Successfully loaded translations for ${lang}`);
       } catch (error) {
         console.error('Error loading translations:', error.message);
-        // Fallback to hardcoded English if JSON fails
         translations = {
           "homeNav": "Home",
           "partnersNav": "Partners",
