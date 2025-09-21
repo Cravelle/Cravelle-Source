@@ -726,10 +726,10 @@
         };
       } finally {
         updatePage();
+        updateLanguageToggle(lang); // Call separate function to update toggle
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.getElementById('current-flag').src = getFlagUrl(lang);
-        document.getElementById('language-toggle').textContent = getLanguageName(lang); // Update toggle text dynamically
         localStorage.setItem('selectedLanguage', lang);
       }
     }
@@ -776,6 +776,14 @@
         }
       });
       document.title = translations['title'] || 'Luxverra | Where Elegance Meets Purpose';
+    }
+
+    function updateLanguageToggle(lang) {
+      const toggle = document.getElementById('language-toggle');
+      const flag = document.getElementById('current-flag');
+      toggle.textContent = getLanguageName(lang); // Update text
+      flag.src = getFlagUrl(lang); // Ensure flag matches
+      toggle.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // Adjust direction
     }
 
     function changeLanguage(lang) {
