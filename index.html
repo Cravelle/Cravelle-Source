@@ -95,7 +95,6 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
     }
 
     .nav-links[dir="rtl"] {
@@ -558,7 +557,7 @@
         <p data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
         <a href="services/voice.html" data-key="learnMore">Learn More</a>
       </div>
-      <div class="card">
+      <div class="service-card">
         <h3 data-key="connect">Luxverra Connect</h3>
         <p data-key="connectDesc">B2B representation and strategic partnership development.</p>
         <a href="services/connect.html" data-key="learnMore">Learn More</a>
@@ -728,7 +727,7 @@
       } finally {
         updatePage();
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // Added to ensure body dir is set
+        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.getElementById('current-flag').src = getFlagUrl(lang);
         document.getElementById('language-toggle').textContent = getLanguageName(lang);
         localStorage.setItem('selectedLanguage', lang);
