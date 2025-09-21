@@ -561,7 +561,8 @@
 
     async function loadTranslations(lang) {
       try {
-        const response = await fetch(`${lang}.json`, {
+        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
+        const response = await fetch(`${basePath}${lang}.json`, {
           headers: {
             'Cache-Control': 'no-cache',
             'Accept': 'application/json'
