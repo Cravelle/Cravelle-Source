@@ -85,31 +85,63 @@
       display: flex;
     }
 
-    #language-select {
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-toggle {
       background: var(--black);
       color: var(--gold);
       border: 1px solid var(--gold);
-      padding: 5px 10px;
+      padding: 5px 30px 5px 10px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 500;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23D4AF37"><path d="M2 4l4 4 4-4H2z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-    }
-
-    #language-select option {
-      background: var(--black);
-      color: var(--gold);
-      padding: 5px 10px;
       display: flex;
       align-items: center;
     }
 
-    #language-select option img {
+    .language-toggle img {
+      width: 20px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .language-menu {
+      display: none;
+      position: absolute;
+      background: var(--black);
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      min-width: 150px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      margin-top: 2px;
+    }
+
+    .language-menu.active {
+      display: block;
+    }
+
+    .language-menu button {
+      background: none;
+      color: var(--gold);
+      border: none;
+      width: 100%;
+      padding: 8px 15px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-menu button:hover {
+      background: var(--gray);
+    }
+
+    .language-menu button img {
       width: 20px;
       height: 15px;
       margin-right: 8px;
@@ -342,15 +374,20 @@
   <!-- Navigation bar -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
-    <select id="language-select" onchange="changeLanguage(this.value)">
-      <option value="en"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</option>
-      <option value="ar"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</option>
-      <option value="de"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</option>
-      <option value="ru"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</option>
-      <option value="pl"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</option>
-      <option value="tr"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</option>
-      <option value="es"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</option>
-    </select>
+    <div class="language-dropdown">
+      <button class="language-toggle" onclick="toggleLanguageMenu()" id="language-toggle">
+        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" id="current-flag"> English
+      </button>
+      <div class="language-menu" id="language-menu">
+        <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</button>
+        <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</button>
+        <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</button>
+        <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</button>
+        <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</button>
+        <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</button>
+        <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="../index.html#home" data-key="homeNav">Home</a>
@@ -532,7 +569,35 @@
       } finally {
         updatePage();
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('current-flag').src = getFlagUrl(lang);
+        document.getElementById('language-toggle').textContent = getLanguageName(lang);
       }
+    }
+
+    function getFlagUrl(lang) {
+      const flags = {
+        'en': 'https://flagcdn.com/w20/gb.png',
+        'ar': 'https://flagcdn.com/w20/eg.png',
+        'de': 'https://flagcdn.com/w20/de.png',
+        'ru': 'https://flagcdn.com/w20/ru.png',
+        'pl': 'https://flagcdn.com/w20/pl.png',
+        'tr': 'https://flagcdn.com/w20/tr.png',
+        'es': 'https://flagcdn.com/w20/es.png'
+      };
+      return flags[lang] || 'https://flagcdn.com/w20/gb.png';
+    }
+
+    function getLanguageName(lang) {
+      const names = {
+        'en': 'English',
+        'ar': 'العربية',
+        'de': 'Deutsch',
+        'ru': 'Русский',
+        'pl': 'Polski',
+        'tr': 'Türkçe',
+        'es': 'Español'
+      };
+      return names[lang] || 'English';
     }
 
     function updatePage() {
@@ -556,6 +621,11 @@
     function changeLanguage(lang) {
       currentLang = lang;
       loadTranslations(lang);
+      document.getElementById('language-menu').classList.remove('active');
+    }
+
+    function toggleLanguageMenu() {
+      document.getElementById('language-menu').classList.toggle('active');
     }
 
     function toggleMenu() {
