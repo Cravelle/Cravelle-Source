@@ -729,7 +729,7 @@
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.getElementById('current-flag').src = getFlagUrl(lang);
-        document.getElementById('language-toggle').textContent = getLanguageName(lang);
+        document.getElementById('language-toggle').textContent = getLanguageName(lang); // Update toggle text dynamically
         localStorage.setItem('selectedLanguage', lang);
       }
     }
