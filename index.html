@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <style>
+     <style>
     /* Root variables for brand colors */
     :root {
       --gold: #D4AF37;
@@ -69,6 +69,7 @@
     nav[dir="rtl"] a {
       margin-left: 0;
       margin-right: 30px;
+      text-align: right;
     }
 
     nav a:hover {
@@ -120,6 +121,7 @@
 
     .language-toggle[dir="rtl"] {
       padding: 5px 10px 5px 30px;
+      text-align: right;
     }
 
     .language-toggle img {
@@ -212,6 +214,10 @@
       color: var(--gold);
     }
 
+    header p[dir="rtl"] {
+      text-align: right;
+    }
+
     /* General section style */
     section {
       padding: 60px 20px;
@@ -272,10 +278,18 @@
       margin-bottom: 10px;
     }
 
+    .service-card h3[dir="rtl"] {
+      text-align: right;
+    }
+
     .service-card p {
       font-size: 14px;
       color: var(--ivory);
       margin-bottom: 15px;
+    }
+
+    .service-card p[dir="rtl"] {
+      text-align: right;
     }
 
     .service-card a {
@@ -286,6 +300,10 @@
       border-radius: 5px;
       font-weight: 500;
       text-decoration: none;
+    }
+
+    .service-card a[dir="rtl"] {
+      text-align: right;
     }
 
     .service-card a:hover {
@@ -310,6 +328,10 @@
       padding: 20px;
       border: 1px solid var(--gold);
       border-radius: 8px;
+    }
+
+    .brand-values div[dir="rtl"] {
+      text-align: right;
     }
 
     .testimonials {
@@ -361,6 +383,19 @@
       margin-bottom: 5px;
     }
 
+    .faq-item h4[dir="rtl"] {
+      text-align: right;
+    }
+
+    .faq-item p {
+      font-size: 14px;
+      color: var(--ivory);
+    }
+
+    .faq-item p[dir="rtl"] {
+      text-align: right;
+    }
+
     footer {
       background-color: var(--black);
       color: var(--ivory);
@@ -376,6 +411,10 @@
     a {
       color: var(--gold);
       text-decoration: none;
+    }
+
+    a[dir="rtl"] {
+      text-align: right;
     }
 
     a:hover {
@@ -407,6 +446,10 @@
       font-weight: bold;
       font-size: 14px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .floating-buttons a[dir="rtl"] {
+      text-align: right;
     }
 
     /* Responsive styles for small screens */
@@ -467,6 +510,173 @@
       }
     }
   </style>
+
+  <!-- Script for responsive menu toggle and language -->
+  <script>
+    let translations = {};
+    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+    async function loadTranslations(lang) {
+      try {
+        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
+        const response = await fetch(`${basePath}${lang}.json`, {
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Accept': 'application/json'
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        translations = await response.json();
+        console.log(`Successfully loaded translations for ${lang}`);
+      } catch (error) {
+        console.error('Error loading translations:', error.message);
+        translations = {
+          "homeNav": "Home",
+          "partnersNav": "Partners",
+          "missionNav": "Mission",
+          "servicesNav": "Services",
+          "valuesNav": "Values",
+          "founderNav": "Founder",
+          "testimonialsNav": "Testimonials",
+          "galleryNav": "Gallery",
+          "faqsNav": "FAQs",
+          "contactNav": "Contact",
+          "slogan": "Where Elegance Meets Purpose",
+          "partners": "Partners & Clients",
+          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
+          "mission": "Our Mission",
+          "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
+          "services": "Our Services",
+          "academy": "Luxverra Academy",
+          "academyDesc": "Elite language learning and personal development programs designed for excellence.",
+          "diplomacy": "Luxverra Diplomacy",
+          "diplomacyDesc": "Strategic mediation and diplomatic consulting for global impact.",
+          "translation": "Luxverra Translations",
+          "translationDesc": "Professional translation and personal assistance services with precision.",
+          "trade": "Luxverra Trade",
+          "tradeDesc": "Facilitating international trade and commercial relations.",
+          "prive": "Luxverra Privé",
+          "priveDesc": "Confidential bespoke services tailored for VIP clients.",
+          "digital": "Luxverra Digital",
+          "digitalDesc": "Web presence, branding, and personal website solutions.",
+          "voice": "Luxverra Voice",
+          "voiceDesc": "Multilingual voice-over and audio production services.",
+          "connect": "Luxverra Connect",
+          "connectDesc": "B2B representation and strategic partnership development.",
+          "values": "Brand Values",
+          "elegance": "Elegance",
+          "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
+          "trust": "Trust",
+          "trustDesc": "Built through experience, discretion, and high-caliber partnerships.",
+          "purpose": "Purpose",
+          "purposeDesc": "We don't serve everyone — we serve with intent, precision, and meaningful impact.",
+          "founder": "About the Founder",
+          "founderDesc": "Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.",
+          "testimonials": "Testimonials",
+          "testimonial1": "“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client",
+          "testimonial2": "“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner",
+          "galleryNav": "Gallery",
+          "faqs": "FAQs",
+          "faq1Q": "What does Luxverra specialize in?",
+          "faq1A": "We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.",
+          "faq2Q": "Is Luxverra suitable for individuals or only institutions?",
+          "faq2A": "Luxverra works with both—offering customized support for individuals, institutions, and elite entities.",
+          "contact": "Contact",
+          "email": "Email: info@luxverra.com",
+          "linkedin": "LinkedIn: Mahmoud Keweisy",
+          "emailBtn": "Email",
+          "whatsappBtn": "WhatsApp",
+          "linkedinBtn": "LinkedIn",
+          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
+          "learnMore": "Learn More",
+          "title": "Luxverra | Where Elegance Meets Purpose"
+        };
+      } finally {
+        updatePage();
+        updateLanguageToggle(lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        // Apply dir to all sections and relevant elements
+        document.querySelectorAll('header, section, nav, .service-card, .testimonial, .faq-item, footer, .brand-values, .gallery').forEach(el => {
+          el.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        });
+        document.getElementById('current-flag').src = getFlagUrl(lang);
+        localStorage.setItem('selectedLanguage', lang);
+      }
+    }
+
+    function getFlagUrl(lang) {
+      const flags = {
+        'en': 'https://flagcdn.com/w20/gb.png',
+        'ar': 'https://flagcdn.com/w20/eg.png',
+        'de': 'https://flagcdn.com/w20/de.png',
+        'ru': 'https://flagcdn.com/w20/ru.png',
+        'pl': 'https://flagcdn.com/w20/pl.png',
+        'tr': 'https://flagcdn.com/w20/tr.png',
+        'es': 'https://flagcdn.com/w20/es.png'
+      };
+      return flags[lang] || 'https://flagcdn.com/w20/gb.png';
+    }
+
+    function getLanguageName(lang) {
+      const names = {
+        'en': 'English',
+        'ar': 'العربية',
+        'de': 'Deutsch',
+        'ru': 'Русский',
+        'pl': 'Polski',
+        'tr': 'Türkçe',
+        'es': 'Español'
+      };
+      return names[lang] || 'English';
+    }
+
+    function updatePage() {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[key]) {
+          if (el.tagName === 'A') {
+            el.textContent = translations[key].split(':')[0].trim();
+            if (translations[key].includes(':')) {
+              const [text, value] = translations[key].split(':');
+              el.href = el.href.split(':')[0] + ':' + value.trim();
+            }
+          } else {
+            el.innerHTML = translations[key];
+          }
+        }
+      });
+      document.title = translations['title'] || 'Luxverra | Where Elegance Meets Purpose';
+    }
+
+    function updateLanguageToggle(lang) {
+      const toggle = document.getElementById('language-toggle');
+      const flag = document.getElementById('current-flag');
+      toggle.textContent = getLanguageName(lang);
+      flag.src = getFlagUrl(lang);
+      toggle.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    }
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      loadTranslations(lang);
+      document.getElementById('language-menu').classList.remove('active');
+    }
+
+    function toggleLanguageMenu() {
+      document.getElementById('language-menu').classList.toggle('active');
+    }
+
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('show');
+    }
+
+    // Load default on page load
+    window.addEventListener('load', () => loadTranslations(currentLang));
+  </script></style>
 </head>
 <body>
   <!-- Navigation bar with logo and links -->
