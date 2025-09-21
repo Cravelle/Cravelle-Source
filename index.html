@@ -31,6 +31,13 @@
       color: var(--ivory);
       background-color: var(--black);
       line-height: 1.6;
+      direction: ltr;
+      transition: direction 0.3s ease;
+    }
+
+    body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
     }
 
     /* Navigation bar styles */
@@ -79,6 +86,68 @@
 
     .nav-links {
       display: flex;
+    }
+
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-toggle {
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 30px 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-toggle img {
+      width: 20px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .language-menu {
+      display: none;
+      position: absolute;
+      background: var(--black);
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      min-width: 150px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      margin-top: 2px;
+    }
+
+    .language-menu.active {
+      display: block;
+    }
+
+    .language-menu button {
+      background: none;
+      color: var(--gold);
+      border: none;
+      width: 100%;
+      padding: 8px 15px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-menu button:hover {
+      background: var(--gray);
+    }
+
+    .language-menu button img {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
     }
 
     /* Header section */
@@ -314,123 +383,137 @@
   <!-- Navigation bar with logo and links -->
   <nav>
     <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
+    <div class="language-dropdown">
+      <button class="language-toggle" onclick="toggleLanguageMenu()" id="language-toggle">
+        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" id="current-flag"> English
+      </button>
+      <div class="language-menu" id="language-menu">
+        <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</button>
+        <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</button>
+        <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</button>
+        <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</button>
+        <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</button>
+        <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</button>
+        <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#partners">Partners</a>
-      <a href="#mission">Mission</a>
-      <a href="#services">Services</a>
-      <a href="#values">Values</a>
-      <a href="#founder">Founder</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#faqs">FAQs</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-key="homeNav">Home</a>
+      <a href="#partners" data-key="partnersNav">Partners</a>
+      <a href="#mission" data-key="missionNav">Mission</a>
+      <a href="#services" data-key="servicesNav">Services</a>
+      <a href="#values" data-key="valuesNav">Values</a>
+      <a href="#founder" data-key="founderNav">Founder</a>
+      <a href="#testimonials" data-key="testimonialsNav">Testimonials</a>
+      <a href="#gallery" data-key="galleryNav">Gallery</a>
+      <a href="#faqs" data-key="faqsNav">FAQs</a>
+      <a href="#contact" data-key="contactNav">Contact</a>
     </div>
   </nav>
 
   <!-- Main logo and slogan -->
   <header id="home">
     <img src="images/logo.svg" alt="Luxverra Logo">
-    <p>Where Elegance Meets Purpose</p>
+    <p data-key="slogan">Where Elegance Meets Purpose</p>
   </header>
 
   <!-- Partners section -->
   <section id="partners">
-    <h2>Partners & Clients</h2>
-    <p>We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
+    <h2 data-key="partners">Partners & Clients</h2>
+    <p data-key="partnersDesc">We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
   </section>
 
   <!-- Mission statement -->
   <section id="mission" class="section-light">
-    <h2>Our Mission</h2>
-    <p>To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.</p>
+    <h2 data-key="mission">Our Mission</h2>
+    <p data-key="missionDesc">To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.</p>
   </section>
 
   <!-- Services offered by Luxverra -->
   <section id="services">
-    <h2>Our Services</h2>
+    <h2 data-key="services">Our Services</h2>
     <div class="services-grid" data-aos="fade-up">
       <div class="service-card">
-        <h3>Luxverra Academy</h3>
-        <p>Elite language learning and personal development programs designed for excellence.</p>
-        <a href="services/academy.html">Learn More</a>
+        <h3 data-key="academy">Luxverra Academy</h3>
+        <p data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
+        <a href="services/academy.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Diplomacy</h3>
-        <p>Strategic mediation and diplomatic consulting for global impact.</p>
-        <a href="services/diplomacy.html">Learn More</a>
+        <h3 data-key="diplomacy">Luxverra Diplomacy</h3>
+        <p data-key="diplomacyDesc">Strategic mediation and diplomatic consulting for global impact.</p>
+        <a href="services/diplomacy.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Translations</h3>
-        <p>Professional translation and personal assistance services with precision.</p>
-        <a href="services/translation.html">Learn More</a>
+        <h3 data-key="translation">Luxverra Translations</h3>
+        <p data-key="translationDesc">Professional translation and personal assistance services with precision.</p>
+        <a href="services/translation.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Trade</h3>
-        <p>Facilitating international trade and commercial relations.</p>
-        <a href="services/trade.html">Learn More</a>
+        <h3 data-key="trade">Luxverra Trade</h3>
+        <p data-key="tradeDesc">Facilitating international trade and commercial relations.</p>
+        <a href="services/trade.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Privé</h3>
-        <p>Confidential bespoke services tailored for VIP clients.</p>
-        <a href="services/prive.html">Learn More</a>
+        <h3 data-key="prive">Luxverra Privé</h3>
+        <p data-key="priveDesc">Confidential bespoke services tailored for VIP clients.</p>
+        <a href="services/prive.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Digital</h3>
-        <p>Web presence, branding, and personal website solutions.</p>
-        <a href="services/digital.html">Learn More</a>
+        <h3 data-key="digital">Luxverra Digital</h3>
+        <p data-key="digitalDesc">Web presence, branding, and personal website solutions.</p>
+        <a href="services/digital.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Voice</h3>
-        <p>Multilingual voice-over and audio production services.</p>
-        <a href="services/voice.html">Learn More</a>
+        <h3 data-key="voice">Luxverra Voice</h3>
+        <p data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
+        <a href="services/voice.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
-        <h3>Luxverra Connect</h3>
-        <p>B2B representation and strategic partnership development.</p>
-        <a href="services/connect.html">Learn More</a>
+        <h3 data-key="connect">Luxverra Connect</h3>
+        <p data-key="connectDesc">B2B representation and strategic partnership development.</p>
+        <a href="services/connect.html" data-key="learnMore">Learn More</a>
       </div>
     </div>
   </section>
 
   <!-- Brand values -->
   <section id="values" class="section-light">
-    <h2>Brand Values</h2>
+    <h2 data-key="values">Brand Values</h2>
     <div class="brand-values">
       <div>
-        <h3>Elegance</h3>
-        <p>A visual and verbal language rooted in timeless style and understated luxury.</p>
+        <h3 data-key="elegance">Elegance</h3>
+        <p data-key="eleganceDesc">A visual and verbal language rooted in timeless style and understated luxury.</p>
       </div>
       <div>
-        <h3>Trust</h3>
-        <p>Built through experience, discretion, and high-caliber partnerships.</p>
+        <h3 data-key="trust">Trust</h3>
+        <p data-key="trustDesc">Built through experience, discretion, and high-caliber partnerships.</p>
       </div>
       <div>
-        <h3>Purpose</h3>
-        <p>We don't serve everyone — we serve with intent, precision, and meaningful impact.</p>
+        <h3 data-key="purpose">Purpose</h3>
+        <p data-key="purposeDesc">We don't serve everyone — we serve with intent, precision, and meaningful impact.</p>
       </div>
     </div>
   </section>
 
   <!-- Founder bio -->
   <section id="founder">
-    <h2>About the Founder</h2>
-    <p>Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.</p>
+    <h2 data-key="founder">About the Founder</h2>
+    <p data-key="founderDesc">Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.</p>
   </section>
 
   <!-- Testimonials from clients -->
   <section id="testimonials" class="section-light">
-    <h2>Testimonials</h2>
+    <h2 data-key="testimonials">Testimonials</h2>
     <div class="testimonials">
-      <div class="testimonial">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
-      <div class="testimonial">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
+      <div class="testimonial" data-key="testimonial1">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
+      <div class="testimonial" data-key="testimonial2">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
     </div>
   </section>
 
   <!-- Image gallery -->
   <section id="gallery">
-    <h2>Gallery</h2>
+    <h2 data-key="galleryNav">Gallery</h2>
     <div class="gallery">
       <img src="images/sample1.jpg" alt="Sample 1">
       <img src="images/sample2.jpg" alt="Sample 2">
@@ -440,43 +523,188 @@
 
   <!-- Frequently Asked Questions -->
   <section id="faqs" class="section-light">
-    <h2>FAQs</h2>
+    <h2 data-key="faqs">FAQs</h2>
     <div class="faq-item">
-      <h4>What does Luxverra specialize in?</h4>
-      <p>We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
+      <h4 data-key="faq1Q">What does Luxverra specialize in?</h4>
+      <p data-key="faq1A">We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
     </div>
     <div class="faq-item">
-      <h4>Is Luxverra suitable for individuals or only institutions?</h4>
-      <p>Luxverra works with both—offering customized support for individuals, institutions, and elite entities.</p>
+      <h4 data-key="faq2Q">Is Luxverra suitable for individuals or only institutions?</h4>
+      <p data-key="faq2A">Luxverra works with both—offering customized support for individuals, institutions, and elite entities.</p>
     </div>
   </section>
 
   <!-- Contact section -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
+    <h2 data-key="contact">Contact</h2>
+    <p><a href="mailto:info@luxverra.com" data-key="email">Email: info@luxverra.com</a></p>
+    <p><a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">LinkedIn: Mahmoud Keweisy</a></p>
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
   </section>
 
   <!-- Floating quick contact buttons -->
   <div class="floating-buttons">
-    <a href="mailto:info@luxverra.com">Email</a>
-    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
-    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a>
+    <a href="mailto:info@luxverra.com" data-key="emailBtn">Email</a>
+    <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
+    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
   </div>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
+    <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle -->
+  <!-- Script for responsive menu toggle and language -->
   <script>
+    let translations = {};
+    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+    async function loadTranslations(lang) {
+      try {
+        const response = await fetch(`${lang}.json`, {
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Accept': 'application/json'
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        translations = await response.json();
+        console.log(`Successfully loaded translations for ${lang}`);
+      } catch (error) {
+        console.error('Error loading translations:', error.message);
+        translations = {
+          "homeNav": "Home",
+          "partnersNav": "Partners",
+          "missionNav": "Mission",
+          "servicesNav": "Services",
+          "valuesNav": "Values",
+          "founderNav": "Founder",
+          "testimonialsNav": "Testimonials",
+          "galleryNav": "Gallery",
+          "faqsNav": "FAQs",
+          "contactNav": "Contact",
+          "slogan": "Where Elegance Meets Purpose",
+          "partners": "Partners & Clients",
+          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
+          "mission": "Our Mission",
+          "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
+          "services": "Our Services",
+          "academy": "Luxverra Academy",
+          "academyDesc": "Elite language learning and personal development programs designed for excellence.",
+          "diplomacy": "Luxverra Diplomacy",
+          "diplomacyDesc": "Strategic mediation and diplomatic consulting for global impact.",
+          "translation": "Luxverra Translations",
+          "translationDesc": "Professional translation and personal assistance services with precision.",
+          "trade": "Luxverra Trade",
+          "tradeDesc": "Facilitating international trade and commercial relations.",
+          "prive": "Luxverra Privé",
+          "priveDesc": "Confidential bespoke services tailored for VIP clients.",
+          "digital": "Luxverra Digital",
+          "digitalDesc": "Web presence, branding, and personal website solutions.",
+          "voice": "Luxverra Voice",
+          "voiceDesc": "Multilingual voice-over and audio production services.",
+          "connect": "Luxverra Connect",
+          "connectDesc": "B2B representation and strategic partnership development.",
+          "values": "Brand Values",
+          "elegance": "Elegance",
+          "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
+          "trust": "Trust",
+          "trustDesc": "Built through experience, discretion, and high-caliber partnerships.",
+          "purpose": "Purpose",
+          "purposeDesc": "We don't serve everyone — we serve with intent, precision, and meaningful impact.",
+          "founder": "About the Founder",
+          "founderDesc": "Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.",
+          "testimonials": "Testimonials",
+          "testimonial1": "“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client",
+          "testimonial2": "“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner",
+          "galleryNav": "Gallery",
+          "faqs": "FAQs",
+          "faq1Q": "What does Luxverra specialize in?",
+          "faq1A": "We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.",
+          "faq2Q": "Is Luxverra suitable for individuals or only institutions?",
+          "faq2A": "Luxverra works with both—offering customized support for individuals, institutions, and elite entities.",
+          "contact": "Contact",
+          "email": "Email: info@luxverra.com",
+          "linkedin": "LinkedIn: Mahmoud Keweisy",
+          "emailBtn": "Email",
+          "whatsappBtn": "WhatsApp",
+          "linkedinBtn": "LinkedIn",
+          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
+          "learnMore": "Learn More",
+          "title": "Luxverra | Where Elegance Meets Purpose"
+        };
+      } finally {
+        updatePage();
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('current-flag').src = getFlagUrl(lang);
+        document.getElementById('language-toggle').textContent = getLanguageName(lang);
+        localStorage.setItem('selectedLanguage', lang);
+      }
+    }
+
+    function getFlagUrl(lang) {
+      const flags = {
+        'en': 'https://flagcdn.com/w20/gb.png',
+        'ar': 'https://flagcdn.com/w20/eg.png',
+        'de': 'https://flagcdn.com/w20/de.png',
+        'ru': 'https://flagcdn.com/w20/ru.png',
+        'pl': 'https://flagcdn.com/w20/pl.png',
+        'tr': 'https://flagcdn.com/w20/tr.png',
+        'es': 'https://flagcdn.com/w20/es.png'
+      };
+      return flags[lang] || 'https://flagcdn.com/w20/gb.png';
+    }
+
+    function getLanguageName(lang) {
+      const names = {
+        'en': 'English',
+        'ar': 'العربية',
+        'de': 'Deutsch',
+        'ru': 'Русский',
+        'pl': 'Polski',
+        'tr': 'Türkçe',
+        'es': 'Español'
+      };
+      return names[lang] || 'English';
+    }
+
+    function updatePage() {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[key]) {
+          if (el.tagName === 'A') {
+            el.textContent = translations[key].split(':')[0].trim();
+            if (translations[key].includes(':')) {
+              const [text, value] = translations[key].split(':');
+              el.href = el.href.split(':')[0] + ':' + value.trim();
+            }
+          } else {
+            el.innerHTML = translations[key];
+          }
+        }
+      });
+      document.title = translations['title'] || 'Luxverra | Where Elegance Meets Purpose';
+    }
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      loadTranslations(lang);
+      document.getElementById('language-menu').classList.remove('active');
+    }
+
+    function toggleLanguageMenu() {
+      document.getElementById('language-menu').classList.toggle('active');
+    }
+
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
     }
+
+    // Load default on page load
+    window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
 
   <!-- AOS (scroll animations) initialization -->
