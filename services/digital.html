@@ -29,6 +29,13 @@
       color: var(--ivory);
       background-color: var(--black);
       line-height: 1.6;
+      direction: ltr;
+      transition: direction 0.3s ease;
+    }
+
+    body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
     }
 
     nav {
@@ -44,12 +51,21 @@
       z-index: 999;
     }
 
+    nav[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     nav a {
       color: var(--gold);
       text-decoration: none;
       margin-left: 30px;
       font-weight: 500;
       font-size: 16px;
+    }
+
+    nav[dir="rtl"] a {
+      margin-left: 0;
+      margin-right: 30px;
     }
 
     nav a:hover {
@@ -78,9 +94,98 @@
       display: flex;
     }
 
+    .language-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-toggle {
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 30px 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-toggle[dir="rtl"] {
+      padding: 5px 10px 5px 30px;
+    }
+
+    .language-toggle img {
+      width: 20px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .language-toggle[dir="rtl"] img {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+
+    .language-menu {
+      display: none;
+      position: absolute;
+      background: var(--black);
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      min-width: 150px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      margin-top: 2px;
+    }
+
+    .language-menu[dir="rtl"] {
+      left: auto;
+      right: 0;
+    }
+
+    .language-menu.active {
+      display: block;
+    }
+
+    .language-menu button {
+      background: none;
+      color: var(--gold);
+      border: none;
+      width: 100%;
+      padding: 8px 15px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-menu button[dir="rtl"] {
+      text-align: right;
+    }
+
+    .language-menu button:hover {
+      background: var(--gray);
+    }
+
+    .language-menu button img {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
+    }
+
+    .language-menu button[dir="rtl"] img {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+
     .breadcrumb {
       padding: 20px;
       font-size: 14px;
+    }
+
+    .breadcrumb[dir="rtl"] {
+      text-align: right;
     }
 
     .breadcrumb a {
@@ -103,6 +208,10 @@
       text-align: center;
     }
 
+    .service-content[dir="rtl"] {
+      text-align: right;
+    }
+
     .service-content h1 {
       color: var(--gold);
       font-family: 'Cinzel', serif;
@@ -122,12 +231,20 @@
       margin-top: 30px;
     }
 
+    .service-details[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
     .service-details div {
       flex: 1 1 300px;
       background: var(--gray);
       padding: 20px;
       border: 1px solid var(--gold);
       border-radius: 8px;
+    }
+
+    .service-details div[dir="rtl"] {
+      text-align: right;
     }
 
     .service-details h3 {
@@ -137,12 +254,21 @@
       margin-bottom: 10px;
     }
 
+    .service-details h3[dir="rtl"] {
+      text-align: right;
+    }
+
+    /* Tabs Gallery Styles */
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
       background-color: var(--gray);
+    }
+
+    .gallery-section[dir="rtl"] {
+      text-align: right;
     }
 
     .gallery-section h2 {
@@ -152,11 +278,55 @@
       margin-bottom: 30px;
     }
 
+    .tabs-container {
+      margin-bottom: 30px;
+    }
+
+    .tabs-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tabs-buttons[dir="rtl"] {
+      flex-direction: row-reverse;
+    }
+
+    .tab-button {
+      background: var(--black);
+      color: var(--ivory);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     .gallery {
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
       justify-content: center;
+    }
+
+    .gallery[dir="rtl"] {
+      justify-content: flex-end;
     }
 
     .gallery img {
@@ -171,17 +341,14 @@
       transform: scale(1.05);
     }
 
-    .image-caption {
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--ivory);
-      font-style: italic;
-    }
-
     .contact-section {
       padding: 40px 20px;
       background: var(--gray);
       text-align: center;
+    }
+
+    .contact-section[dir="rtl"] {
+      text-align: right;
     }
 
     .contact-section a {
@@ -197,6 +364,12 @@
       flex-direction: column;
       gap: 10px;
       z-index: 1000;
+    }
+
+    .floating-buttons[dir="rtl"] {
+      right: auto;
+      left: 20px;
+      flex-direction: column-reverse;
     }
 
     .floating-buttons a {
@@ -218,6 +391,10 @@
       font-size: 14px;
     }
 
+    footer[dir="rtl"] {
+      text-align: right;
+    }
+
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -225,6 +402,11 @@
         right: 30px;
         top: 20px;
         z-index: 1001;
+      }
+
+      .hamburger[dir="rtl"] {
+        right: auto;
+        left: 30px;
       }
 
       .nav-links {
@@ -244,6 +426,10 @@
         display: flex;
       }
 
+      .nav-links[dir="rtl"].show {
+        flex-direction: column-reverse;
+      }
+
       .nav-links a {
         margin: 15px 0;
         font-size: 18px;
@@ -257,6 +443,15 @@
         flex-direction: column;
       }
 
+      .tabs-buttons {
+        flex-direction: column;
+      }
+
+      .tab-button {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
       .gallery img {
         max-width: 100%;
       }
@@ -267,93 +462,302 @@
   <!-- Navigation bar -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
+    <div class="language-dropdown">
+      <button class="language-toggle" onclick="toggleLanguageMenu()" id="language-toggle">
+        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" id="current-flag"> English
+      </button>
+      <div class="language-menu" id="language-menu">
+        <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</button>
+        <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</button>
+        <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</button>
+        <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</button>
+        <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</button>
+        <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</button>
+        <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
-      <a href="../index.html#home">Home</a>
-      <a href="../index.html#partners">Partners</a>
-      <a href="../index.html#mission">Mission</a>
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#values">Values</a>
-      <a href="../index.html#founder">Founder</a>
-      <a href="../index.html#testimonials">Testimonials</a>
-      <a href="../index.html#gallery">Gallery</a>
-      <a href="../index.html#faqs">FAQs</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../index.html#home" data-key="homeNav">Home</a>
+      <a href="../index.html#partners" data-key="partnersNav">Partners</a>
+      <a href="../index.html#mission" data-key="missionNav">Mission</a>
+      <a href="../index.html#services" data-key="servicesNav">Services</a>
+      <a href="../index.html#values" data-key="valuesNav">Values</a>
+      <a href="../index.html#founder" data-key="founderNav">Founder</a>
+      <a href="../index.html#testimonials" data-key="testimonialsNav">Testimonials</a>
+      <a href="../index.html#gallery" data-key="galleryNav">Gallery</a>
+      <a href="../index.html#faqs" data-key="faqsNav">FAQs</a>
+      <a href="../index.html#contact" data-key="contactNav">Contact</a>
     </div>
   </nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
-    <a href="../index.html">Home</a> > <a href="../index.html#services">Services</a> > <span>Luxverra Digital</span>
+    <a href="../index.html" data-key="homeNav">Home</a> > <a href="../index.html#services" data-key="servicesNav">Services</a> > <span data-key="digital">Luxverra Digital</span>
   </div>
 
   <!-- Service content -->
   <section class="service-content" data-aos="fade-up">
-    <h1>Luxverra Digital</h1>
-    <p>Luxverra Digital provides web presence, branding, and personal website solutions to elevate your online identity with elegance and innovation.</p>
+    <h1 data-key="digital">Luxverra Digital</h1>
+    <p data-key="digitalDesc">Luxverra Digital provides web presence, branding, and personal website solutions to elevate your online identity with elegance and innovation.</p>
     <div class="service-details">
       <div>
-        <h3>Web Presence</h3>
-        <p>Create a stunning online presence with custom websites.</p>
+        <h3 data-key="webPresence">Web Presence</h3>
+        <p data-key="webPresenceDesc">Create a stunning online presence with custom websites.</p>
       </div>
       <div>
-        <h3>Branding</h3>
-        <p>Develop a unique brand identity that stands out globally.</p>
+        <h3 data-key="branding">Branding</h3>
+        <p data-key="brandingDesc">Develop a unique brand identity that stands out globally.</p>
       </div>
       <div>
-        <h3>Personal Websites</h3>
-        <p>Tailored websites for individuals and professionals.</p>
+        <h3 data-key="personalSites">Personal Websites</h3>
+        <p data-key="personalSitesDesc">Tailored websites for individuals and professionals.</p>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Tabs Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
-    <h2>Recent Digital Projects</h2>
-    <p>Highlights from our web and branding initiatives.</p>
-    <div class="gallery">
-      <figure>
-        <img src="../images/digital/web1.jpg" alt="Web Design Project">
-        <figcaption class="image-caption">Custom Website Launch</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/digital/branding1.jpg" alt="Branding Project">
-        <figcaption class="image-caption">Brand Identity Development</figcaption>
-      </figure>
-      <figure>
-        <img src="../images/digital/personal.jpg" alt="Personal Website">
-        <figcaption class="image-caption">Personal Website Showcase</figcaption>
-      </figure>
+    <h2 data-key="galleryTitle">Recent Digital Projects</h2>
+    <p data-key="galleryDesc">Highlights from our web and branding initiatives.</p>
+    
+    <div class="tabs-container">
+      <div class="tabs-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'web')" data-key="tabWeb">Web Presence</button>
+        <button class="tab-button" onclick="openTab(event, 'brand')" data-key="tabBrand">Branding</button>
+        <button class="tab-button" onclick="openTab(event, 'personal')" data-key="tabPersonal">Personal Websites</button>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="web" class="tab-content active">
+      <div class="gallery">
+        <figure>
+          <img src="../images/digital/web1.jpg" alt="Web Design Project">
+        </figure>
+        <figure>
+          <img src="../images/digital/web2.jpg" alt="Website Development">
+        </figure>
+        <figure>
+          <img src="../images/digital/web3.jpg" alt="Web Optimization">
+        </figure>
+        <figure>
+          <img src="../images/digital/web4.jpg" alt="Web Launch">
+        </figure>
+        <figure>
+          <img src="../images/digital/web5.jpg" alt="Web Success">
+        </figure>
+      </div>
+    </div>
+
+    <div id="brand" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/digital/branding1.jpg" alt="Branding Project">
+        </figure>
+        <figure>
+          <img src="../images/digital/branding2.jpg" alt="Brand Identity">
+        </figure>
+        <figure>
+          <img src="../images/digital/branding3.jpg" alt="Brand Strategy">
+        </figure>
+        <figure>
+          <img src="../images/digital/branding4.jpg" alt="Brand Design">
+        </figure>
+        <figure>
+          <img src="../images/digital/branding5.jpg" alt="Brand Campaign">
+        </figure>
+      </div>
+    </div>
+
+    <div id="personal" class="tab-content">
+      <div class="gallery">
+        <figure>
+          <img src="../images/digital/personal.jpg" alt="Personal Website">
+        </figure>
+        <figure>
+          <img src="../images/digital/personal2.jpg" alt="Personal Portfolio">
+        </figure>
+        <figure>
+          <img src="../images/digital/personal3.jpg" alt="Personal Profile">
+        </figure>
+        <figure>
+          <img src="../images/digital/personal4.jpg" alt="Personal Blog">
+        </figure>
+        <figure>
+          <img src="../images/digital/personal5.jpg" alt="Personal Success">
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- Contact section -->
   <section class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Interested in Luxverra Digital? Reach out for web and branding solutions.</p>
-    <p>Email: <a href="mailto:info@luxverra.com">info@luxverra.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank">+1234567890</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank">Mahmoud Keweisy</a></p>
+    <h2 data-key="contact">Contact Us</h2>
+    <p data-key="contactDesc">Interested in Luxverra Digital? Reach out for web and branding solutions.</p>
+    <p>Email: <a href="mailto:info@luxverra.com" data-key="email">info@luxverra.com</a></p>
+    <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank" data-key="whatsapp">+1234567890</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
   </section>
 
   <!-- Floating contact buttons -->
   <div class="floating-buttons">
-    <a href="mailto:info@luxverra.com">Email</a>
-    <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
-    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank">LinkedIn</a>
+    <a href="mailto:info@luxverra.com" data-key="emailBtn">Email</a>
+    <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
+    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
   </div>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.
+    <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle -->
+  <!-- Script for responsive menu toggle and tabs -->
   <script>
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
     }
+
+    function openTab(evt, tabName) {
+      var tabcontents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabcontents.length; i++) {
+        tabcontents[i].classList.remove("active");
+      }
+      
+      var tablinks = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    let translations = {};
+    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+    async function loadTranslations(lang) {
+      try {
+        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
+        const response = await fetch(`${basePath}${lang}.json`, {
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Accept': 'application/json'
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        translations = await response.json();
+        console.log(`Successfully loaded translations for ${lang}`);
+      } catch (error) {
+        console.error('Error loading translations:', error.message);
+        translations = {
+          "homeNav": "Home",
+          "partnersNav": "Partners",
+          "missionNav": "Mission",
+          "servicesNav": "Services",
+          "valuesNav": "Values",
+          "founderNav": "Founder",
+          "testimonialsNav": "Testimonials",
+          "galleryNav": "Gallery",
+          "faqsNav": "FAQs",
+          "contactNav": "Contact",
+          "digital": "Luxverra Digital",
+          "digitalDesc": "Luxverra Digital provides web presence, branding, and personal website solutions to elevate your online identity with elegance and innovation.",
+          "webPresence": "Web Presence",
+          "webPresenceDesc": "Create a stunning online presence with custom websites.",
+          "branding": "Branding",
+          "brandingDesc": "Develop a unique brand identity that stands out globally.",
+          "personalSites": "Personal Websites",
+          "personalSitesDesc": "Tailored websites for individuals and professionals.",
+          "galleryTitle": "Recent Digital Projects",
+          "galleryDesc": "Highlights from our web and branding initiatives.",
+          "tabWeb": "Web Presence",
+          "tabBrand": "Branding",
+          "tabPersonal": "Personal Websites",
+          "contact": "Contact Us",
+          "contactDesc": "Interested in Luxverra Digital? Reach out for web and branding solutions.",
+          "email": "Email: info@luxverra.com",
+          "whatsapp": "WhatsApp: +1234567890",
+          "linkedin": "LinkedIn: Mahmoud Keweisy",
+          "emailBtn": "Email",
+          "whatsappBtn": "WhatsApp",
+          "linkedinBtn": "LinkedIn",
+          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose."
+        };
+      } finally {
+        updatePage();
+        updateLanguageToggle(lang);
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        localStorage.setItem('selectedLanguage', lang);
+      }
+    }
+
+    function getFlagUrl(lang) {
+      const flags = {
+        'en': 'https://flagcdn.com/w20/gb.png',
+        'ar': 'https://flagcdn.com/w20/eg.png',
+        'de': 'https://flagcdn.com/w20/de.png',
+        'ru': 'https://flagcdn.com/w20/ru.png',
+        'pl': 'https://flagcdn.com/w20/pl.png',
+        'tr': 'https://flagcdn.com/w20/tr.png',
+        'es': 'https://flagcdn.com/w20/es.png'
+      };
+      return flags[lang] || 'https://flagcdn.com/w20/gb.png';
+    }
+
+    function getLanguageName(lang) {
+      const names = {
+        'en': 'English',
+        'ar': 'العربية',
+        'de': 'Deutsch',
+        'ru': 'Русский',
+        'pl': 'Polski',
+        'tr': 'Türkçe',
+        'es': 'Español'
+      };
+      return names[lang] || 'English';
+    }
+
+    function updatePage() {
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[key]) {
+          if (el.tagName === 'A') {
+            el.textContent = translations[key].split(':')[0].trim();
+            if (translations[key].includes(':')) {
+              const [text, value] = translations[key].split(':');
+              el.href = el.href.split(':')[0] + ':' + value.trim();
+            }
+          } else {
+            el.innerHTML = translations[key];
+          }
+        }
+      });
+      document.title = translations['digital'] + " | Web Solutions" || 'Luxverra Digital | Web Solutions';
+    }
+
+    function updateLanguageToggle(lang) {
+      const toggle = document.getElementById('language-toggle');
+      toggle.innerHTML = `<img src="${getFlagUrl(lang)}" alt="${getLanguageName(lang)} Flag" id="current-flag"> ${getLanguageName(lang)}`;
+      toggle.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    }
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      loadTranslations(lang);
+      document.getElementById('language-menu').classList.remove('active');
+    }
+
+    function toggleLanguageMenu() {
+      document.getElementById('language-menu').classList.toggle('active');
+    }
+
+    // Load default on page load
+    window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
 
   <!-- AOS (scroll animations) initialization -->
