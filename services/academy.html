@@ -526,120 +526,97 @@
     <h2 data-key="galleryTitle">Academy Gallery</h2>
     <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
     
-    <div class="tabs-container">
-      <div class="tabs-buttons">
-        <button class="tab-button active" onclick="openTab(event, 'nursery')" data-key="tabNursery">Nursery Photos</button>
-        <button class="tab-button" onclick="openTab(event, 'private')" data-key="tabPrivate">Private Lessons</button>
-        <button class="tab-button" onclick="openTab(event, 'university')" data-key="tabUniversity">University Work</button>
-      </div>
-    </div>
+    <div class="gallery">
+      <figure>
+        <img src="../images/academy/preschool1.jpg" alt="Preschool Activity" class="gallery-image">
+      </figure>
+      <figure>
+        <img src="../images/academy/preschool2.jpg" alt="Preschool Play" class="gallery-image">
+      </figure>
+      <figure>
+        <img src="../images/academy/preschool3.jpg" alt="Preschool Group" class="gallery-image">
+      <figure>
+      <figure>
+        <img src="../images/academy/preschool4.jpg" alt="Preschool Art" class="gallery-image">
+      <figure>
+      <figure>
+        <img src="../images/academy/preschool5.jpg" alt="Preschool Story" class="gallery-image">
+      <figure>
+      <figure>
+        <img src="../images/academy/preschool6.jpg" alt="Preschool Game" class="gallery-image">
+      <figure>
 
-    <!-- Tab Contents -->
-    <div id="nursery" class="tab-content active">
-      <div class="gallery">
-        <figure>
-          <img src="../images/academy/preschool1.jpg" alt="Preschool Activity">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool2.jpg" alt="Preschool Play">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool3.jpg" alt="Preschool Group">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool4.jpg" alt="Preschool Art">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool5.jpg" alt="Preschool Story">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool6.jpg" alt="Preschool Game">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool8.jpg" alt="Preschool Music">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool9.jpg" alt="Preschool Craft">
-        </figure>
-        <figure>
-          <img src="../images/academy/preschool10.jpg" alt="Preschool Celebration">
-        </figure>
-      </div>
-    </div>
 
-    <div id="private" class="tab-content">
-      <div class="gallery">
-        <figure>
-          <img src="../images/academy/lesson1.jpg" alt="Private Lesson">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson2.jpg" alt="Private Tutoring">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson3.jpg" alt="Private Coaching">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson4.jpg" alt="Private Session">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson5.jpg" alt="Private Practice">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson6.jpg" alt="Private Review">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson7.jpg" alt="Private Study">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson8.jpg" alt="Private Feedback">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson9.jpg" alt="Private Exam">
-        </figure>
-        <figure>
-          <img src="../images/academy/lesson10.jpg" alt="Private Success">
-        </figure>
-      </div>
+      <!-- الصور الإضافية مخفية في الأساس -->
+      <figure class="hidden">
+        <img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor" class="gallery-image">
+      </figure>
+      <figure class="hidden">
+        <img src="../images/academy/preschool8.jpg" alt="Preschool Music" class="gallery-image">
+      </figure>
+      <figure class="hidden">
+        <img src="../images/academy/preschool9.jpg" alt="Preschool Craft" class="gallery-image">
+      </figure>
+      <figure class="hidden">
+        <img src="../images/academy/preschool10.jpg" alt="Preschool Celebration" class="gallery-image">
+      </figure>
     </div>
-
-    <div id="university" class="tab-content">
-      <div class="gallery">
-        <figure>
-          <img src="../images/academy/uni1.jpg" alt="University Lecture">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni2.jpg" alt="University Workshop">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni3.jpg" alt="University Event">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni4.jpg" alt="University Seminar">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni5.jpg" alt="University Discussion">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni6.jpg" alt="University Project">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni7.jpg" alt="University Research">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni8.jpg" alt="University Class">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni9.jpg" alt="University Exam">
-        </figure>
-        <figure>
-          <img src="../images/academy/uni10.jpg" alt="University Graduation">
-        </figure>
-      </div>
-    </div>
+    <button class="see-more-btn" onclick="showMoreImages()" data-key="seeMore">See More</button>
   </section>
+
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gallery-image {
+      max-width: 300px;
+      height: auto;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .see-more-btn {
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
+    }
+
+    .see-more-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+  </style>
+
+  <script>
+    function showMoreImages() {
+      const hiddenImages = document.querySelectorAll('.hidden');
+      const seeMoreBtn = document.querySelector('.see-more-btn');
+      hiddenImages.forEach(img => img.classList.remove('hidden'));
+      seeMoreBtn.style.display = 'none';
+    }
+  </script>
 
   <!-- Contact section -->
   <section class="contact-section">
