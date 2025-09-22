@@ -7,13 +7,13 @@
   "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
   "services": "Our Services",
   "academy": "Luxverra Academy",
-  "diplomacy": "Luxverra Diplomacy – Strategic mediation and diplomatic consulting",
-  "translation": "Luxverra Translations and Personal Assistance – Professional translation & support services",
-  "trade": "Luxverra Trade – International trade & commercial relations",
-  "prive": "Luxverra Privé – Confidential bespoke services for VIP clients",
-  "digital": "Luxverra Digital – Web presence, branding & personal websites",
-  "voice": "Luxverra Voice – Multilingual voice-over & audio production",
-  "connect": "Luxverra Connect – B2B representation & strategic partnerships",
+  "diplomacy": "Luxverra Diplomacy",
+  "translation": "Luxverra Translations and Personal Assistance",
+  "trade": "Luxverra Trade",
+  "prive": "Luxverra Privé",
+  "digital": "Luxverra Digital",
+  "voice": "Luxverra Voice",
+  "connect": "Luxverra Connect",
   "values": "Brand Values",
   "elegance": "Elegance",
   "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
@@ -65,3 +65,4 @@
   "universityTab": "University Work"
 
 }
+
