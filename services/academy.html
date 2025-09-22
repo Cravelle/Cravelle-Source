@@ -535,19 +535,17 @@
       </figure>
       <figure>
         <img src="../images/academy/preschool3.jpg" alt="Preschool Group" class="gallery-image">
-      <figure>
+      </figure>
       <figure>
         <img src="../images/academy/preschool4.jpg" alt="Preschool Art" class="gallery-image">
-      <figure>
+      </figure>
       <figure>
         <img src="../images/academy/preschool5.jpg" alt="Preschool Story" class="gallery-image">
-      <figure>
+      </figure>
       <figure>
         <img src="../images/academy/preschool6.jpg" alt="Preschool Game" class="gallery-image">
-      <figure>
-
-
-      <!-- الصور الإضافية مخفية في الأساس -->
+      </figure>
+      <!-- الصور الإضافية مخفية -->
       <figure class="hidden">
         <img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor" class="gallery-image">
       </figure>
@@ -569,7 +567,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
-      justify-content: center;
+      justify-content: flex-start; /* بدل center عشان المساحة الفاضية تقل */
+      padding: 0 20px; /* لإضافة مسافة من الحواف */
+      max-width: 1000px; /* نفس الـ max-width بتاع القسم */
+      margin: 0 auto; /* لتحديد المركز بشكل أفضل */
     }
 
     .gallery-image {
@@ -606,6 +607,17 @@
     .see-more-btn:hover {
       background: var(--gold);
       color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        padding: 0 10px; /* تقليل المسافة على الشاشات الصغيرة */
+        justify-content: center; /* مركز على الشاشات الصغيرة */
+      }
+
+      .gallery-image {
+        max-width: 100%; /* الصور تمتلئ الشاشة على الموبايل */
+      }
     }
   </style>
 
