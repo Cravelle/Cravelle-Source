@@ -6,7 +6,7 @@
   "mission": "Our Mission",
   "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
   "services": "Our Services",
-  "academy": "Luxverra Academy – Elite language & personal development education",
+  "academy": "Luxverra Academy",
   "diplomacy": "Luxverra Diplomacy – Strategic mediation and diplomatic consulting",
   "translation": "Luxverra Translations and Personal Assistance – Professional translation & support services",
   "trade": "Luxverra Trade – International trade & commercial relations",
@@ -63,4 +63,5 @@
   "nurseryTab": "Nursery Photos",
   "privateTab": "Private Lessons",
   "universityTab": "University Work"
+
 }
