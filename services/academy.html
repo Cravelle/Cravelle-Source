@@ -521,7 +521,7 @@
     </div>
   </section>
 
-  <!-- Tabs Gallery Section -->
+ <!-- Tabs Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
     <h2 data-key="galleryTitle">Academy Gallery</h2>
     <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
@@ -564,17 +564,16 @@
 
   <style>
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid; /* بدل flex، هاستخدم grid عشان ترتيب أفضل */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 صور في الصف كحد أقصى */
       gap: 15px;
-      justify-content: flex-start; /* بدل center عشان المساحة الفاضية تقل */
-      padding: 0 20px; /* لإضافة مسافة من الحواف */
-      max-width: 1000px; /* نفس الـ max-width بتاع القسم */
-      margin: 0 auto; /* لتحديد المركز بشكل أفضل */
+      padding: 0 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .gallery-image {
-      max-width: 300px;
+      max-width: 100%; /* الصور تمتلئ الحجم المخصص */
       height: auto;
       border: 2px solid var(--gold);
       border-radius: 10px;
@@ -611,12 +610,12 @@
 
     @media (max-width: 768px) {
       .gallery {
-        padding: 0 10px; /* تقليل المسافة على الشاشات الصغيرة */
-        justify-content: center; /* مركز على الشاشات الصغيرة */
+        grid-template-columns: 1fr; /* صورة واحدة في الصف على الموبايل */
+        padding: 0 10px;
       }
 
       .gallery-image {
-        max-width: 100%; /* الصور تمتلئ الشاشة على الموبايل */
+        max-width: 100%;
       }
     }
   </style>
