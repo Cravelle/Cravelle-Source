@@ -27,10 +27,20 @@
     body {
       font-family: 'Montserrat', sans-serif;
       color: var(--ivory);
-      background-color: var(--black);
-      line-height: 1.6;
-      direction: ltr;
-      transition: direction 0.3s ease;
+      background: url('../images/academy/backgrounds/library.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
     }
 
     body[dir="rtl"] {
@@ -186,7 +196,6 @@
     .breadcrumb {
       padding: 20px;
       font-size: 14px;
-      background: rgba(0, 0, 0, 0.7);
     }
 
     .breadcrumb[dir="rtl"] {
@@ -268,24 +277,10 @@
       max-width: 1000px;
       margin: auto;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
     .gallery-section[dir="rtl"] {
       text-align: right;
-    }
-
-    .gallery-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('../images/academy/backgrounds/library.jpg') no-repeat center center/cover;
-      z-index: -1;
-      opacity: 0.3;
     }
 
     .gallery-section h2 {
@@ -297,7 +292,7 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
       padding: 0 20px;
       max-width: 1000px;
@@ -539,8 +534,10 @@
     function showMoreImages() {
       const hiddenImages = document.querySelectorAll('.hidden');
       const seeMoreBtn = document.querySelector('.see-more-btn');
-      hiddenImages.forEach(img => img.classList.remove('hidden'));
-      seeMoreBtn.style.display = 'none';
+      if (hiddenImages.length > 0) {
+        hiddenImages.forEach(img => img.classList.remove('hidden'));
+        seeMoreBtn.style.display = 'none';
+      }
     }
 
     function toggleMenu() {
@@ -566,7 +563,7 @@
         translations = await response.json();
         console.log(`Successfully loaded translations for ${lang}`);
       } catch (error) {
-        console.error('Error loading translations:', error.message');
+        console.error('Error loading translations:', error.message);
         translations = {
           "homeNav": "Home",
           "partnersNav": "Partners",
