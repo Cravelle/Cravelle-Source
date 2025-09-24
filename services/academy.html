@@ -186,6 +186,7 @@
     .breadcrumb {
       padding: 20px;
       font-size: 14px;
+      background: rgba(0, 0, 0, 0.7);
     }
 
     .breadcrumb[dir="rtl"] {
@@ -262,17 +263,29 @@
       text-align: right;
     }
 
-    /* Tabs Gallery Styles */
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
-      background-color: var(--gray);
+      position: relative;
+      overflow: hidden;
     }
 
     .gallery-section[dir="rtl"] {
       text-align: right;
+    }
+
+    .gallery-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('../images/academy/backgrounds/library.jpg') no-repeat center center/cover;
+      z-index: -1;
+      opacity: 0.3;
     }
 
     .gallery-section h2 {
@@ -282,51 +295,13 @@
       margin-bottom: 30px;
     }
 
-    .tabs-container {
-      margin-bottom: 30px;
-    }
-
-    .tabs-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .tabs-buttons[dir="rtl"] {
-      flex-direction: row-reverse;
-    }
-
-    .tab-button {
-      background: var(--black);
-      color: var(--ivory);
-      border: 1px solid var(--gold);
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .tab-button:hover,
-    .tab-button.active {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 15px;
-      justify-content: center;
+      padding: 0 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .gallery[dir="rtl"] {
@@ -334,7 +309,7 @@
     }
 
     .gallery img {
-      max-width: 300px;
+      max-width: 100%;
       height: auto;
       border: 2px solid var(--gold);
       border-radius: 10px;
@@ -345,7 +320,30 @@
       transform: scale(1.05);
     }
 
-    /* Removed .image-caption styling since captions are gone */
+    .hidden {
+      display: none;
+    }
+
+    .see-more-btn {
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.3s ease;
+    }
+
+    .see-more-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
     .contact-section {
       padding: 40px 20px;
       background: var(--gray);
@@ -448,13 +446,9 @@
         flex-direction: column;
       }
 
-      .tabs-buttons {
-        flex-direction: column;
-      }
-
-      .tab-button {
-        width: 100%;
-        margin-bottom: 5px;
+      .gallery {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
       }
 
       .gallery img {
@@ -521,107 +515,25 @@
     </div>
   </section>
 
- <!-- Tabs Gallery Section -->
+  <!-- Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
     <h2 data-key="galleryTitle">Academy Gallery</h2>
     <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
-    
     <div class="gallery">
-      <figure>
-        <img src="../images/academy/preschool1.jpg" alt="Preschool Activity" class="gallery-image">
-      </figure>
-      <figure>
-        <img src="../images/academy/preschool2.jpg" alt="Preschool Play" class="gallery-image">
-      </figure>
-      <figure>
-        <img src="../images/academy/preschool3.jpg" alt="Preschool Group" class="gallery-image">
-      </figure>
-      <figure>
-        <img src="../images/academy/preschool4.jpg" alt="Preschool Art" class="gallery-image">
-      </figure>
-      <figure>
-        <img src="../images/academy/preschool5.jpg" alt="Preschool Story" class="gallery-image">
-      </figure>
-      <figure>
-        <img src="../images/academy/preschool6.jpg" alt="Preschool Game" class="gallery-image">
-      </figure>
-      <!-- الصور الإضافية مخفية -->
-      <figure class="hidden">
-        <img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor" class="gallery-image">
-      </figure>
-      <figure class="hidden">
-        <img src="../images/academy/preschool8.jpg" alt="Preschool Music" class="gallery-image">
-      </figure>
-      <figure class="hidden">
-        <img src="../images/academy/preschool9.jpg" alt="Preschool Craft" class="gallery-image">
-      </figure>
-      <figure class="hidden">
-        <img src="../images/academy/preschool10.jpg" alt="Preschool Celebration" class="gallery-image">
-      </figure>
-      <figure class="hidden">
-        <img src="../images/academy/preschool11.jpg" alt="Preschool Celebration" class="gallery-image">
-      </figure>
+      <figure><img src="../images/academy/preschool1.jpg" alt="Preschool Activity" class="gallery-image"></figure>
+      <figure><img src="../images/academy/preschool2.jpg" alt="Preschool Play" class="gallery-image"></figure>
+      <figure><img src="../images/academy/preschool3.jpg" alt="Preschool Group" class="gallery-image"></figure>
+      <figure><img src="../images/academy/preschool4.jpg" alt="Preschool Art" class="gallery-image"></figure>
+      <figure><img src="../images/academy/preschool5.jpg" alt="Preschool Story" class="gallery-image"></figure>
+      <figure><img src="../images/academy/preschool6.jpg" alt="Preschool Game" class="gallery-image"></figure>
+      <figure class="hidden"><img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor" class="gallery-image"></figure>
+      <figure class="hidden"><img src="../images/academy/preschool8.jpg" alt="Preschool Music" class="gallery-image"></figure>
+      <figure class="hidden"><img src="../images/academy/preschool9.jpg" alt="Preschool Craft" class="gallery-image"></figure>
+      <figure class="hidden"><img src="../images/academy/preschool10.jpg" alt="Preschool Celebration" class="gallery-image"></figure>
+      <figure class="hidden"><img src="../images/academy/preschool11.jpg" alt="Preschool Celebration" class="gallery-image"></figure>
     </div>
     <button class="see-more-btn" onclick="showMoreImages()" data-key="seeMore">See More</button>
   </section>
-
-  <style>
-    .gallery {
-      display: grid; /* بدل flex، هاستخدم grid عشان ترتيب أفضل */
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 صور في الصف كحد أقصى */
-      gap: 15px;
-      padding: 0 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .gallery-image {
-      max-width: 100%; /* الصور تمتلئ الحجم المخصص */
-      height: auto;
-      border: 2px solid var(--gold);
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-image:hover {
-      transform: scale(1.05);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .see-more-btn {
-      background: var(--black);
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 500;
-      margin-top: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      transition: all 0.3s ease;
-    }
-
-    .see-more-btn:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: 1fr; /* صورة واحدة في الصف على الموبايل */
-        padding: 0 10px;
-      }
-
-      .gallery-image {
-        max-width: 100%;
-      }
-    }
-  </style>
 
   <script>
     function showMoreImages() {
@@ -630,53 +542,10 @@
       hiddenImages.forEach(img => img.classList.remove('hidden'));
       seeMoreBtn.style.display = 'none';
     }
-  </script>
 
-  <!-- Contact section -->
-  <section class="contact-section">
-    <h2 data-key="contact">Contact Us</h2>
-    <p data-key="contactDesc">Interested in Luxverra Academy? Reach out to learn more about our programs.</p>
-    <p>Email: <a href="mailto:info@luxverra.com" data-key="email">info@luxverra.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank" data-key="whatsapp">+1234567890</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
-  </section>
-
-  <!-- Floating contact buttons -->
-  <div class="floating-buttons">
-    <a href="mailto:info@luxverra.com" data-key="emailBtn">Email</a>
-    <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
-    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
-  </footer>
-
-  <!-- Script for responsive menu toggle -->
-  <script>
     function toggleMenu() {
       const links = document.getElementById('navLinks');
       links.classList.toggle('show');
-    }
-
-    // Tabs functionality
-    function openTab(evt, tabName) {
-      // Hide all tab contents
-      var tabcontents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabcontents.length; i++) {
-        tabcontents[i].classList.remove("active");
-      }
-      
-      // Remove active class from all buttons
-      var tablinks = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-      }
-      
-      // Show selected tab content and add active class to button
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
     }
 
     let translations = {};
@@ -697,7 +566,7 @@
         translations = await response.json();
         console.log(`Successfully loaded translations for ${lang}`);
       } catch (error) {
-        console.error('Error loading translations:', error.message);
+        console.error('Error loading translations:', error.message');
         translations = {
           "homeNav": "Home",
           "partnersNav": "Partners",
@@ -725,9 +594,6 @@
           "academyFeature3Desc": "Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.",
           "galleryTitle": "Academy Gallery",
           "galleryDesc": "Explore our educational programs through photos from various sessions.",
-          "tabNursery": "Nursery Photos",
-          "tabPrivate": "Private Lessons",
-          "tabUniversity": "University Work",
           "contact": "Contact Us",
           "contactDesc": "Interested in Luxverra Academy? Reach out to learn more about our programs.",
           "email": "Email: info@luxverra.com",
@@ -736,7 +602,9 @@
           "emailBtn": "Email",
           "whatsappBtn": "WhatsApp",
           "linkedinBtn": "LinkedIn",
-          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose."
+          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
+          "seeMore": "See More",
+          "title": "Luxverra Academy | Elite Education"
         };
       } finally {
         updatePage();
@@ -811,6 +679,27 @@
     // Load default on page load
     window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
+
+  <!-- Contact section -->
+  <section class="contact-section">
+    <h2 data-key="contact">Contact Us</h2>
+    <p data-key="contactDesc">Interested in Luxverra Academy? Reach out to learn more about our programs.</p>
+    <p>Email: <a href="mailto:info@luxverra.com" data-key="email">info@luxverra.com</a></p>
+    <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank" data-key="whatsapp">+1234567890</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
+  </section>
+
+  <!-- Floating contact buttons -->
+  <div class="floating-buttons">
+    <a href="mailto:info@luxverra.com" data-key="emailBtn">Email</a>
+    <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
+    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
+  </footer>
 
   <!-- AOS (scroll animations) initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
