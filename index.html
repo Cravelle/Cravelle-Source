@@ -32,7 +32,7 @@
       background-color: var(--black);
       line-height: 1.6;
       direction: ltr;
-      overflow-x: hidden; /* لمنع التمرير الأفقي */
+      overflow-x: hidden;
     }
 
     body[dir="rtl"] {
@@ -48,7 +48,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      pointer-events: none; /* لمنع التداخل مع التفاعل */
+      pointer-events: none;
     }
 
     /* Navigation bar styles */
@@ -224,7 +224,7 @@
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
-      position: relative; /* لضبط التداخل مع الخلفية */
+      position: relative;
     }
 
     section[dir="rtl"] {
@@ -588,6 +588,11 @@
         <p data-key="connectDesc">B2B representation and strategic partnership development.</p>
         <a href="services/connect.html" data-key="learnMore">Learn More</a>
       </div>
+      <div class="service-card">
+        <h3 data-key="eduConnect">Luxverra Edu Connect</h3>
+        <p data-key="eduConnectDesc">Certified agency connecting students with prestigious universities through official partnerships.</p>
+        <a href="services/edu-connect.html" data-key="learnMore">Learn More</a>
+      </div>
     </div>
   </section>
 
@@ -679,7 +684,7 @@
     let translations = {};
     let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
-    // Background animation with Canvas
+    // Background animation with Canvas (خلفية ثلجية ذهبية)
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -691,29 +696,33 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const stars = [];
+    const flakes = [];
     for (let i = 0; i < 100; i++) {
-      stars.push({
+      flakes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2 + 1,
-        speed: Math.random() * 0.5 + 0.1
+        speed: Math.random() * 0.5 + 0.5,
+        opacity: Math.random() * 0.5 + 0.3
       });
     }
 
-    function animateStars() {
+    function animateFlakes() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(212, 175, 55, 0.7)'; // Gold with transparency
-      stars.forEach(star => {
+      flakes.forEach(flake => {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 175, 55, ${flake.opacity})`;
         ctx.fill();
-        star.y -= star.speed;
-        if (star.y < 0) star.y = canvas.height;
+        flake.y += flake.speed;
+        if (flake.y > canvas.height) {
+          flake.y = 0;
+          flake.x = Math.random() * canvas.width;
+        }
       });
-      requestAnimationFrame(animateStars);
+      requestAnimationFrame(animateFlakes);
     }
-    animateStars();
+    animateFlakes();
 
     async function loadTranslations(lang) {
       try {
@@ -762,6 +771,8 @@
           "voiceDesc": "Multilingual voice-over and audio production services.",
           "connect": "Luxverra Connect",
           "connectDesc": "B2B representation and strategic partnership development.",
+          "eduConnect": "Luxverra Edu Connect",
+          "eduConnectDesc": "Certified agency connecting students with prestigious universities through official partnerships.",
           "values": "Brand Values",
           "elegance": "Elegance",
           "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
