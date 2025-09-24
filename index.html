@@ -32,11 +32,23 @@
       background-color: var(--black);
       line-height: 1.6;
       direction: ltr;
+      overflow-x: hidden; /* لمنع التمرير الأفقي */
     }
 
     body[dir="rtl"] {
       direction: rtl;
       text-align: right;
+    }
+
+    /* Canvas for animated background */
+    #background-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none; /* لمنع التداخل مع التفاعل */
     }
 
     /* Navigation bar styles */
@@ -212,6 +224,7 @@
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+      position: relative; /* لضبط التداخل مع الخلفية */
     }
 
     section[dir="rtl"] {
@@ -484,6 +497,9 @@
   </style>
 </head>
 <body>
+  <!-- Animated background canvas -->
+  <canvas id="background-canvas"></canvas>
+
   <!-- Navigation bar with logo and links -->
   <nav>
     <a href="#"><img src="images/logo.svg" alt="Luxverra Logo" class="nav-logo"></a>
@@ -504,12 +520,12 @@
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#home" data-key="homeNav">Home</a>
-      <a href="#partners" data-key="partnersNav">Partners</a>
       <a href="#mission" data-key="missionNav">Mission</a>
       <a href="#services" data-key="servicesNav">Services</a>
+      <a href="#partners" data-key="partnersNav">Partners</a>
       <a href="#values" data-key="valuesNav">Values</a>
-      <a href="#founder" data-key="founderNav">Founder</a>
       <a href="#testimonials" data-key="testimonialsNav">Testimonials</a>
+      <a href="#founder" data-key="founderNav">Founder</a>
       <a href="#gallery" data-key="galleryNav">Gallery</a>
       <a href="#faqs" data-key="faqsNav">FAQs</a>
       <a href="#contact" data-key="contactNav">Contact</a>
@@ -521,12 +537,6 @@
     <img src="images/logo.svg" alt="Luxverra Logo">
     <p data-key="slogan">Where Elegance Meets Purpose</p>
   </header>
-
-  <!-- Partners section -->
-  <section id="partners">
-    <h2 data-key="partners">Partners & Clients</h2>
-    <p data-key="partnersDesc">We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
-  </section>
 
   <!-- Mission statement -->
   <section id="mission" class="section-light">
@@ -581,8 +591,14 @@
     </div>
   </section>
 
+  <!-- Partners section -->
+  <section id="partners" class="section-light">
+    <h2 data-key="partners">Partners & Clients</h2>
+    <p data-key="partnersDesc">We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
+  </section>
+
   <!-- Brand values -->
-  <section id="values" class="section-light">
+  <section id="values">
     <h2 data-key="values">Brand Values</h2>
     <div class="brand-values">
       <div>
@@ -600,12 +616,6 @@
     </div>
   </section>
 
-  <!-- Founder bio -->
-  <section id="founder">
-    <h2 data-key="founder">About the Founder</h2>
-    <p data-key="founderDesc">Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.</p>
-  </section>
-
   <!-- Testimonials from clients -->
   <section id="testimonials" class="section-light">
     <h2 data-key="testimonials">Testimonials</h2>
@@ -613,6 +623,12 @@
       <div class="testimonial" data-key="testimonial1">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
       <div class="testimonial" data-key="testimonial2">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
     </div>
+  </section>
+
+  <!-- Founder bio -->
+  <section id="founder">
+    <h2 data-key="founder">About the Founder</h2>
+    <p data-key="founderDesc">Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.</p>
   </section>
 
   <!-- Image gallery -->
@@ -658,10 +674,46 @@
     <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle and language -->
+  <!-- Script for responsive menu toggle, language, and background animation -->
   <script>
     let translations = {};
     let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
+    // Background animation with Canvas
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const stars = [];
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speed: Math.random() * 0.5 + 0.1
+      });
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.7)'; // Gold with transparency
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+        star.y -= star.speed;
+        if (star.y < 0) star.y = canvas.height;
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
 
     async function loadTranslations(lang) {
       try {
@@ -691,8 +743,6 @@
           "faqsNav": "FAQs",
           "contactNav": "Contact",
           "slogan": "Where Elegance Meets Purpose",
-          "partners": "Partners & Clients",
-          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
           "mission": "Our Mission",
           "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
           "services": "Our Services",
@@ -737,6 +787,8 @@
           "whatsappBtn": "WhatsApp",
           "linkedinBtn": "LinkedIn",
           "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
+          "partners": "Partners & Clients",
+          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
           "learnMore": "Learn More",
           "title": "Luxverra | Where Elegance Meets Purpose"
         };
