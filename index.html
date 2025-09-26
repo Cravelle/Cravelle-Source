@@ -492,7 +492,7 @@
       color: var(--gold);
     }
 
-    /* FAQs accordion */
+    /* FAQs section (answers visible directly) */
     .faq-item {
       margin-bottom: 20px;
       background: var(--gray);
@@ -503,25 +503,13 @@
     .faq-item h4 {
       color: var(--gold);
       padding: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .faq-item h4:hover {
-      background: rgba(212, 175, 55, 0.1);
     }
 
     .faq-item p {
       font-size: 16px;
       color: var(--ivory);
       padding: 0 15px 15px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .faq-item.active p {
-      max-height: 200px;
+      line-height: 1.8;
     }
 
     footer {
@@ -585,6 +573,47 @@
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
     }
 
+    /* Contact form styling */
+    #contact form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    #contact input[type="email"],
+    #contact textarea {
+      width: 70%;
+      padding: 12px;
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      background-color: var(--black);
+      color: var(--ivory);
+      font-family: 'Montserrat', sans-serif;
+      resize: vertical;
+    }
+
+    #contact textarea {
+      min-height: 100px;
+    }
+
+    #contact button[type="submit"] {
+      background: var(--gold);
+      color: var(--black);
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #contact button[type="submit"]:hover {
+      background: var(--ivory);
+      transform: scale(1.05);
+    }
+
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -642,6 +671,11 @@
 
       .gallery {
         grid-template-columns: 1fr;
+      }
+
+      #contact input[type="email"],
+      #contact textarea {
+        width: 90%;
       }
     }
   </style>
@@ -823,11 +857,11 @@
   <section id="faqs" class="section-light">
     <h2 data-key="faqs">FAQs</h2>
     <div class="faq-item">
-      <h4 data-key="faq1Q" onclick="toggleFAQ(this)">What does Luxverra specialize in?</h4>
+      <h4 data-key="faq1Q">What does Luxverra specialize in?</h4>
       <p data-key="faq1A">We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
     </div>
     <div class="faq-item">
-      <h4 data-key="faq2Q" onclick="toggleFAQ(this)">Is Luxverra suitable for individuals or only institutions?</h4>
+      <h4 data-key="faq2Q">Is Luxverra suitable for individuals or only institutions?</h4>
       <p data-key="faq2A">Luxverra works with both—offering customized support for individuals, institutions, and elite entities.</p>
     </div>
   </section>
@@ -838,11 +872,11 @@
     <p><a href="mailto:info@luxverra.com" data-key="email">Email: info@luxverra.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
-    <!-- Simple contact form placeholder -->
-    <form style="margin-top: 20px;">
-      <input type="email" placeholder="Your Email" style="padding: 10px; margin-right: 10px; border-radius: 5px; border: 1px solid var(--gold);">
-      <textarea placeholder="Your Message" rows="4" style="padding: 10px; border-radius: 5px; border: 1px solid var(--gold); width: 70%;"></textarea>
-      <button type="submit" style="background: var(--gold); color: var(--black); padding: 10px 20px; border: none; border-radius: 5px; margin-top: 10px;">Send</button>
+    <!-- Improved contact form -->
+    <form>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
 
@@ -1020,12 +1054,6 @@
     function closeLightbox() {
       const lightbox = document.getElementById('lightbox');
       lightbox.classList.remove('active');
-    }
-
-    // FAQ accordion functionality
-    function toggleFAQ(element) {
-      const item = element.parentElement;
-      item.classList.toggle('active');
     }
 
     // Load default on page load
