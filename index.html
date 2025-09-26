@@ -20,7 +20,6 @@
       --black: #000000;
       --ivory: #F5F5F5;
       --gray: #2B2B2B;
-      --gold-gradient: linear-gradient(135deg, var(--gold), rgba(212, 175, 55, 0.8));
     }
 
     /* Reset default margins and paddings */
@@ -210,36 +209,22 @@
       margin-left: 8px;
     }
 
-    /* Header section */
+    /* Header section (returned to original simple style) */
     header {
       text-align: center;
-      padding: 100px 20px 60px;
-      background: var(--gold-gradient);
+      padding: 80px 20px 60px;
+      background-color: var(--black);
       position: relative;
-      overflow: hidden;
     }
 
     header[dir="rtl"] {
       text-align: right;
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
-      z-index: 1;
-    }
-
     header img {
       height: 280px;
       margin-bottom: 20px;
       transition: transform 0.3s ease;
-      position: relative;
-      z-index: 2;
     }
 
     header img:hover {
@@ -247,40 +232,13 @@
     }
 
     header p {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--ivory);
-      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 1.5s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* CTA Button */
-    .cta-btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--black);
-      padding: 15px 35px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 18px;
-      text-decoration: none;
-      margin-top: 30px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-      position: relative;
-      z-index: 2;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    header p[dir="rtl"] {
+      text-align: right;
     }
 
     /* General section style */
@@ -385,7 +343,7 @@
 
     .service-card a {
       display: inline-block;
-      background: var(--gold-gradient);
+      background: var(--gold);
       color: var(--black);
       padding: 12px 25px;
       border-radius: 25px;
@@ -724,11 +682,10 @@
     </div>
   </nav>
 
-  <!-- Main logo and slogan with CTA -->
+  <!-- Main logo and slogan (returned to original style) -->
   <header id="home">
     <img src="images/logo.svg" alt="Luxverra Logo" loading="lazy">
     <p data-key="slogan">Where Elegance Meets Purpose</p>
-    <a href="#services" class="cta-btn" data-key="explore">Explore Services</a>
   </header>
 
   <!-- Mission statement -->
