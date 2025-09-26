@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Luxverra offers elite services in education, diplomacy, translation, trade, and more, blending elegance with purpose.">
+  <meta name="keywords" content="Luxverra, education, diplomacy, translation, trade, consulting, luxury services">
+  <meta name="author" content="Mahmoud Keweisy">
   <title>Luxverra | Where Elegance Meets Purpose</title>
 
-  <!-- Fonts and animation stylesheets -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -17,6 +20,7 @@
       --black: #000000;
       --ivory: #F5F5F5;
       --gray: #2B2B2B;
+      --gold-gradient: linear-gradient(135deg, var(--gold), rgba(212, 175, 55, 0.8));
     }
 
     /* Reset default margins and paddings */
@@ -30,9 +34,10 @@
       font-family: 'Montserrat', sans-serif;
       color: var(--ivory);
       background-color: var(--black);
-      line-height: 1.6;
+      line-height: 1.7;
       direction: ltr;
       overflow-x: hidden;
+      scroll-behavior: smooth; /* Smooth scrolling */
     }
 
     body[dir="rtl"] {
@@ -53,16 +58,17 @@
 
     /* Navigation bar styles */
     nav {
-      background-color: var(--black);
+      background-color: rgba(0, 0, 0, 0.9);
       color: var(--gold);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
       position: sticky;
       top: 0;
       z-index: 999;
+      backdrop-filter: blur(10px);
     }
 
     nav a {
@@ -71,6 +77,7 @@
       margin-left: 30px;
       font-weight: 500;
       font-size: 16px;
+      transition: color 0.3s ease;
     }
 
     nav[dir="rtl"] a {
@@ -79,6 +86,7 @@
     }
 
     nav a:hover {
+      color: var(--ivory);
       text-decoration: underline;
     }
 
@@ -98,6 +106,11 @@
       color: var(--gold);
       cursor: pointer;
       display: none;
+      transition: color 0.3s ease;
+    }
+
+    .hamburger:hover {
+      color: var(--ivory);
     }
 
     .nav-links {
@@ -119,6 +132,12 @@
       font-weight: 500;
       display: flex;
       align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .language-toggle:hover {
+      background: var(--gold);
+      color: var(--black);
     }
 
     .language-toggle[dir="rtl"] {
@@ -147,6 +166,7 @@
       top: 100%;
       left: 0;
       margin-top: 2px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .language-menu[dir="rtl"] {
@@ -168,6 +188,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+      transition: background 0.3s ease;
     }
 
     .language-menu button[dir="rtl"] {
@@ -192,17 +213,33 @@
     /* Header section */
     header {
       text-align: center;
-      padding: 40px 20px 20px;
+      padding: 100px 20px 60px;
+      background: var(--gold-gradient);
+      position: relative;
+      overflow: hidden;
     }
 
     header[dir="rtl"] {
       text-align: right;
     }
 
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+      z-index: 1;
+    }
+
     header img {
       height: 280px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       transition: transform 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
 
     header img:hover {
@@ -210,19 +247,46 @@
     }
 
     header p {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--gold);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ivory);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    header p[dir="rtl"] {
-      text-align: right;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 18px;
+      text-decoration: none;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
     /* General section style */
     section {
-      padding: 60px 20px;
-      max-width: 1000px;
+      padding: 80px 20px;
+      max-width: 1200px;
       margin: auto;
       position: relative;
     }
@@ -234,9 +298,10 @@
     h2 {
       color: var(--gold);
       font-family: 'Cinzel', serif;
-      font-size: 32px;
-      margin-bottom: 20px;
+      font-size: 36px;
+      margin-bottom: 30px;
       text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     h2[dir="rtl"] {
@@ -245,104 +310,156 @@
 
     .section-light {
       background-color: var(--gray);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      overflow: hidden;
     }
 
-    /* Updated Services section */
+    /* Services with icons */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .service-card {
-      background: var(--gray);
-      padding: 20px;
+      background: var(--black);
+      padding: 30px;
       border: 1px solid var(--gold);
-      border-radius: 8px;
+      border-radius: 12px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
-    .service-card[dir="rtl"] {
-      text-align: right;
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gold-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .service-card:hover::before {
+      opacity: 0.1;
     }
 
     .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .service-card i {
+      font-size: 40px;
+      color: var(--gold);
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .service-card h3 {
       color: var(--gold);
       font-family: 'Cinzel', serif;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .service-card h3[dir="rtl"] {
-      text-align: right;
+      font-size: 22px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
     }
 
     .service-card p {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--ivory);
-      margin-bottom: 15px;
-    }
-
-    .service-card p[dir="rtl"] {
-      text-align: right;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
     }
 
     .service-card a {
       display: inline-block;
-      background: var(--gold);
+      background: var(--gold-gradient);
       color: var(--black);
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: 500;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
       text-decoration: none;
-    }
-
-    .service-card a[dir="rtl"] {
-      text-align: right;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .service-card a:hover {
       background: var(--ivory);
-      color: var(--black);
+      transform: scale(1.05);
     }
 
-    /* Brand value boxes */
+    /* Brand values with icons */
     .brand-values {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .brand-values div {
-      flex: 1 1 250px;
       background: var(--black);
-      padding: 20px;
+      padding: 30px;
       border: 1px solid var(--gold);
-      border-radius: 8px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .brand-values div[dir="rtl"] {
-      text-align: right;
+    .brand-values div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
     }
 
+    .brand-values div i {
+      font-size: 50px;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .brand-values div h3 {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .brand-values div p {
+      font-size: 16px;
+      color: var(--ivory);
+      line-height: 1.8;
+    }
+
+    /* Testimonials with stars */
     .testimonials {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .testimonial {
       background: var(--gray);
-      padding: 20px;
+      padding: 30px;
       border-left: 4px solid var(--gold);
       font-style: italic;
+      font-size: 18px;
+      line-height: 1.8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .testimonial[dir="rtl"] {
@@ -351,55 +468,111 @@
       text-align: right;
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    .stars {
+      color: var(--gold);
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
-    .gallery[dir="rtl"] {
-      justify-content: flex-end;
+    /* Gallery with lightbox */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
     }
 
     .gallery img {
-      max-width: 300px;
+      width: 100%;
       border: 2px solid var(--gold);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Lightbox styling */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid var(--gold);
       border-radius: 10px;
     }
 
-    .faq-item {
-      margin-bottom: 20px;
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: var(--ivory);
+      cursor: pointer;
+      transition: color 0.3s ease;
     }
 
-    .faq-item[dir="rtl"] {
-      text-align: right;
+    .lightbox .close:hover {
+      color: var(--gold);
+    }
+
+    /* FAQs accordion */
+    .faq-item {
+      margin-bottom: 20px;
+      background: var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .faq-item h4 {
       color: var(--gold);
-      margin-bottom: 5px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    .faq-item h4[dir="rtl"] {
-      text-align: right;
+    .faq-item h4:hover {
+      background: rgba(212, 175, 55, 0.1);
     }
 
     .faq-item p {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--ivory);
+      padding: 0 15px 15px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
     }
 
-    .faq-item p[dir="rtl"] {
-      text-align: right;
+    .faq-item.active p {
+      max-height: 200px;
     }
 
     footer {
       background-color: var(--black);
       color: var(--ivory);
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
       font-size: 14px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     }
 
     footer[dir="rtl"] {
@@ -409,6 +582,7 @@
     a {
       color: var(--gold);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     a[dir="rtl"] {
@@ -416,6 +590,7 @@
     }
 
     a:hover {
+      color: var(--ivory);
       text-decoration: underline;
     }
 
@@ -439,14 +614,19 @@
     .floating-buttons a {
       background-color: var(--gold);
       color: var(--black);
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 50px;
       font-weight: bold;
       font-size: 14px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
     }
 
-    /* Responsive styles for small screens */
+    .floating-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -478,19 +658,31 @@
         font-size: 18px;
       }
 
+      header {
+        padding: 50px 15px;
+      }
+
       header img {
         height: 180px;
       }
 
       header p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 40px 15px;
+        font-size: 20px;
       }
 
       .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-values {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
         grid-template-columns: 1fr;
       }
     }
@@ -532,10 +724,11 @@
     </div>
   </nav>
 
-  <!-- Main logo and slogan -->
+  <!-- Main logo and slogan with CTA -->
   <header id="home">
-    <img src="images/logo.svg" alt="Luxverra Logo">
+    <img src="images/logo.svg" alt="Luxverra Logo" loading="lazy">
     <p data-key="slogan">Where Elegance Meets Purpose</p>
+    <a href="#services" class="cta-btn" data-key="explore">Explore Services</a>
   </header>
 
   <!-- Mission statement -->
@@ -549,48 +742,57 @@
     <h2 data-key="services">Our Services</h2>
     <div class="services-grid" data-aos="fade-up">
       <div class="service-card">
+        <i class="fas fa-graduation-cap"></i>
         <h3 data-key="academy">Luxverra Academy</h3>
         <p data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
         <a href="services/academy.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-balance-scale"></i>
         <h3 data-key="diplomacy">Luxverra Diplomacy</h3>
         <p data-key="diplomacyDesc">Strategic mediation and diplomatic consulting for global impact.</p>
         <a href="services/diplomacy.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-language"></i>
         <h3 data-key="translation">Luxverra Translations</h3>
         <p data-key="translationDesc">Professional translation and personal assistance services with precision.</p>
         <a href="services/translation.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-truck"></i>
         <h3 data-key="trade">Luxverra Trade</h3>
         <p data-key="tradeDesc">Facilitating international trade and commercial relations.</p>
         <a href="services/trade.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-lock"></i>
         <h3 data-key="prive">Luxverra Privé</h3>
         <p data-key="priveDesc">Confidential bespoke services tailored for VIP clients.</p>
         <a href="services/prive.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-laptop"></i>
         <h3 data-key="digital">Luxverra Digital</h3>
         <p data-key="digitalDesc">Web presence, branding, and personal website solutions.</p>
         <a href="services/digital.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-microphone"></i>
         <h3 data-key="voice">Luxverra Voice</h3>
         <p data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
         <a href="services/voice.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-handshake"></i>
         <h3 data-key="connect">Luxverra Connect</h3>
         <p data-key="connectDesc">B2B representation and strategic partnership development.</p>
         <a href="services/connect.html" data-key="learnMore">Learn More</a>
       </div>
       <div class="service-card">
+        <i class="fas fa-university"></i>
         <h3 data-key="eduConnect">Luxverra Edu Connect</h3>
-        <p data-key="eduConnectDesc">Certified agency connecting students with prestigious universities through official partnerships.</p>
+        <p data-key="eduConnectDesc">Certified agency connecting students with prestigious universities.</p>
         <a href="services/edu-connect.html" data-key="learnMore">Learn More</a>
       </div>
     </div>
@@ -600,6 +802,11 @@
   <section id="partners" class="section-light">
     <h2 data-key="partners">Partners & Clients</h2>
     <p data-key="partnersDesc">We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.</p>
+    <!-- Placeholder for partner logos -->
+    <div class="partners-logos" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+      <img src="images/partner1.jpg" alt="Partner 1" style="height: 50px;" loading="lazy">
+      <img src="images/partner2.jpg" alt="Partner 2" style="height: 50px;" loading="lazy">
+    </div>
   </section>
 
   <!-- Brand values -->
@@ -607,14 +814,17 @@
     <h2 data-key="values">Brand Values</h2>
     <div class="brand-values">
       <div>
+        <i class="fas fa-crown"></i>
         <h3 data-key="elegance">Elegance</h3>
         <p data-key="eleganceDesc">A visual and verbal language rooted in timeless style and understated luxury.</p>
       </div>
       <div>
+        <i class="fas fa-shield-alt"></i>
         <h3 data-key="trust">Trust</h3>
         <p data-key="trustDesc">Built through experience, discretion, and high-caliber partnerships.</p>
       </div>
       <div>
+        <i class="fas fa-bullseye"></i>
         <h3 data-key="purpose">Purpose</h3>
         <p data-key="purposeDesc">We don't serve everyone — we serve with intent, precision, and meaningful impact.</p>
       </div>
@@ -625,8 +835,14 @@
   <section id="testimonials" class="section-light">
     <h2 data-key="testimonials">Testimonials</h2>
     <div class="testimonials">
-      <div class="testimonial" data-key="testimonial1">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</div>
-      <div class="testimonial" data-key="testimonial2">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p data-key="testimonial1">“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★☆</div>
+        <p data-key="testimonial2">“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner</p>
+      </div>
     </div>
   </section>
 
@@ -640,9 +856,9 @@
   <section id="gallery">
     <h2 data-key="galleryNav">Gallery</h2>
     <div class="gallery">
-      <img src="images/sample1.jpg" alt="Sample 1">
-      <img src="images/sample2.jpg" alt="Sample 2">
-      <img src="images/sample3.jpg" alt="Sample 3">
+      <img src="images/sample1.jpg" alt="Luxverra Event 1" loading="lazy" onclick="showLightbox(this.src)">
+      <img src="images/sample2.jpg" alt="Luxverra Event 2" loading="lazy" onclick="showLightbox(this.src)">
+      <img src="images/sample3.jpg" alt="Luxverra Event 3" loading="lazy" onclick="showLightbox(this.src)">
     </div>
   </section>
 
@@ -650,11 +866,11 @@
   <section id="faqs" class="section-light">
     <h2 data-key="faqs">FAQs</h2>
     <div class="faq-item">
-      <h4 data-key="faq1Q">What does Luxverra specialize in?</h4>
+      <h4 data-key="faq1Q" onclick="toggleFAQ(this)">What does Luxverra specialize in?</h4>
       <p data-key="faq1A">We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
     </div>
     <div class="faq-item">
-      <h4 data-key="faq2Q">Is Luxverra suitable for individuals or only institutions?</h4>
+      <h4 data-key="faq2Q" onclick="toggleFAQ(this)">Is Luxverra suitable for individuals or only institutions?</h4>
       <p data-key="faq2A">Luxverra works with both—offering customized support for individuals, institutions, and elite entities.</p>
     </div>
   </section>
@@ -665,6 +881,12 @@
     <p><a href="mailto:info@luxverra.com" data-key="email">Email: info@luxverra.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
     <p>Website: Coming soon at <strong>luxverra.com</strong></p>
+    <!-- Simple contact form placeholder -->
+    <form style="margin-top: 20px;">
+      <input type="email" placeholder="Your Email" style="padding: 10px; margin-right: 10px; border-radius: 5px; border: 1px solid var(--gold);">
+      <textarea placeholder="Your Message" rows="4" style="padding: 10px; border-radius: 5px; border: 1px solid var(--gold); width: 70%;"></textarea>
+      <button type="submit" style="background: var(--gold); color: var(--black); padding: 10px 20px; border: none; border-radius: 5px; margin-top: 10px;">Send</button>
+    </form>
   </section>
 
   <!-- Floating quick contact buttons -->
@@ -679,12 +901,15 @@
     <p data-key="footer">&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle, language, and background animation -->
-  <script>
-    let translations = {};
-    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+  <!-- Lightbox element -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img src="" alt="Lightbox Image">
+  </div>
 
-    // Background animation with Canvas (خلفية ثلجية ذهبية)
+  <!-- Script for responsive menu toggle, language, background animation, lightbox, and FAQ -->
+  <script>
+    // Background animation with Canvas
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -697,12 +922,12 @@
     resizeCanvas();
 
     const flakes = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) { // Reduced to 50 for subtlety
       flakes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2 + 1,
-        speed: Math.random() * 0.5 + 0.5,
+        speed: Math.random() * 0.3 + 0.2,
         opacity: Math.random() * 0.5 + 0.3
       });
     }
@@ -724,84 +949,48 @@
     }
     animateFlakes();
 
+    // Language and translation logic
+    let translations = {};
+    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+
     async function loadTranslations(lang) {
       try {
         const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
         const response = await fetch(`${basePath}${lang}.json`, {
-          headers: {
-            'Cache-Control': 'no-cache',
-            'Accept': 'application/json'
-          }
+          headers: { 'Cache-Control': 'no-cache', 'Accept': 'application/json' }
         });
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         translations = await response.json();
-        console.log(`Successfully loaded translations for ${lang}`);
       } catch (error) {
         console.error('Error loading translations:', error.message);
         translations = {
-          "homeNav": "Home",
-          "partnersNav": "Partners",
-          "missionNav": "Mission",
-          "servicesNav": "Services",
-          "valuesNav": "Values",
-          "founderNav": "Founder",
-          "testimonialsNav": "Testimonials",
-          "galleryNav": "Gallery",
-          "faqsNav": "FAQs",
-          "contactNav": "Contact",
-          "slogan": "Where Elegance Meets Purpose",
-          "mission": "Our Mission",
-          "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
-          "services": "Our Services",
-          "academy": "Luxverra Academy",
-          "academyDesc": "Elite language learning and personal development programs designed for excellence.",
-          "diplomacy": "Luxverra Diplomacy",
-          "diplomacyDesc": "Strategic mediation and diplomatic consulting for global impact.",
-          "translation": "Luxverra Translations",
-          "translationDesc": "Professional translation and personal assistance services with precision.",
-          "trade": "Luxverra Trade",
-          "tradeDesc": "Facilitating international trade and commercial relations.",
-          "prive": "Luxverra Privé",
-          "priveDesc": "Confidential bespoke services tailored for VIP clients.",
-          "digital": "Luxverra Digital",
-          "digitalDesc": "Web presence, branding, and personal website solutions.",
-          "voice": "Luxverra Voice",
-          "voiceDesc": "Multilingual voice-over and audio production services.",
-          "connect": "Luxverra Connect",
-          "connectDesc": "B2B representation and strategic partnership development.",
-          "eduConnect": "Luxverra Edu Connect",
-          "eduConnectDesc": "Certified agency connecting students with prestigious universities through official partnerships.",
-          "values": "Brand Values",
-          "elegance": "Elegance",
-          "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
-          "trust": "Trust",
-          "trustDesc": "Built through experience, discretion, and high-caliber partnerships.",
-          "purpose": "Purpose",
-          "purposeDesc": "We don't serve everyone — we serve with intent, precision, and meaningful impact.",
-          "founder": "About the Founder",
-          "founderDesc": "Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.",
-          "testimonials": "Testimonials",
-          "testimonial1": "“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client",
+          "homeNav": "Home", "partnersNav": "Partners", "missionNav": "Mission", "servicesNav": "Services",
+          "valuesNav": "Values", "founderNav": "Founder", "testimonialsNav": "Testimonials", "galleryNav": "Gallery",
+          "faqsNav": "FAQs", "contactNav": "Contact", "slogan": "Where Elegance Meets Purpose",
+          "mission": "Our Mission", "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
+          "services": "Our Services", "academy": "Luxverra Academy", "academyDesc": "Elite language learning and personal development programs designed for excellence.",
+          "diplomacy": "Luxverra Diplomacy", "diplomacyDesc": "Strategic mediation and diplomatic consulting for global impact.",
+          "translation": "Luxverra Translations", "translationDesc": "Professional translation and personal assistance services with precision.",
+          "trade": "Luxverra Trade", "tradeDesc": "Facilitating international trade and commercial relations.",
+          "prive": "Luxverra Privé", "priveDesc": "Confidential bespoke services tailored for VIP clients.",
+          "digital": "Luxverra Digital", "digitalDesc": "Web presence, branding, and personal website solutions.",
+          "voice": "Luxverra Voice", "voiceDesc": "Multilingual voice-over and audio production services.",
+          "connect": "Luxverra Connect", "connectDesc": "B2B representation and strategic partnership development.",
+          "eduConnect": "Luxverra Edu Connect", "eduConnectDesc": "Certified agency connecting students with prestigious universities.",
+          "values": "Brand Values", "elegance": "Elegance", "eleganceDesc": "A visual and verbal language rooted in timeless style and understated luxury.",
+          "trust": "Trust", "trustDesc": "Built through experience, discretion, and high-caliber partnerships.",
+          "purpose": "Purpose", "purposeDesc": "We don't serve everyone — we serve with intent, precision, and meaningful impact.",
+          "founder": "About the Founder", "founderDesc": "Luxverra is founded by <strong>Mahmoud Keweisy</strong> — a multilingual educator, consultant, and creative with a passion for excellence...",
+          "testimonials": "Testimonials", "testimonial1": "“Luxverra helped us elevate our brand with elegance and vision. Highly recommended.” – A. Client",
           "testimonial2": "“Professional, discreet, and inspiring to work with. Every detail was handled with care.” – B. Partner",
-          "galleryNav": "Gallery",
-          "faqs": "FAQs",
-          "faq1Q": "What does Luxverra specialize in?",
+          "galleryNav": "Gallery", "faqs": "FAQs", "faq1Q": "What does Luxverra specialize in?",
           "faq1A": "We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.",
           "faq2Q": "Is Luxverra suitable for individuals or only institutions?",
           "faq2A": "Luxverra works with both—offering customized support for individuals, institutions, and elite entities.",
-          "contact": "Contact",
-          "email": "Email: info@luxverra.com",
-          "linkedin": "LinkedIn: Mahmoud Keweisy",
-          "emailBtn": "Email",
-          "whatsappBtn": "WhatsApp",
-          "linkedinBtn": "LinkedIn",
-          "footer": "&copy; 2025 Luxverra. All rights reserved. Designed with elegance and purpose.",
-          "partners": "Partners & Clients",
-          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
-          "learnMore": "Learn More",
-          "title": "Luxverra | Where Elegance Meets Purpose"
+          "contact": "Contact", "email": "Email: info@luxverra.com", "linkedin": "LinkedIn: Mahmoud Keweisy",
+          "emailBtn": "Email", "whatsappBtn": "WhatsApp", "linkedinBtn": "LinkedIn", "footer": "&copy; 2025 Luxverra. All rights reserved...",
+          "partners": "Partners & Clients", "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands...",
+          "explore": "Explore Services", "learnMore": "Learn More", "title": "Luxverra | Where Elegance Meets Purpose"
         };
       } finally {
         updatePage();
@@ -813,28 +1002,14 @@
     }
 
     function getFlagUrl(lang) {
-      const flags = {
-        'en': 'https://flagcdn.com/w20/gb.png',
-        'ar': 'https://flagcdn.com/w20/eg.png',
-        'de': 'https://flagcdn.com/w20/de.png',
-        'ru': 'https://flagcdn.com/w20/ru.png',
-        'pl': 'https://flagcdn.com/w20/pl.png',
-        'tr': 'https://flagcdn.com/w20/tr.png',
-        'es': 'https://flagcdn.com/w20/es.png'
-      };
+      const flags = {'en': 'https://flagcdn.com/w20/gb.png', 'ar': 'https://flagcdn.com/w20/eg.png', 'de': 'https://flagcdn.com/w20/de.png',
+                     'ru': 'https://flagcdn.com/w20/ru.png', 'pl': 'https://flagcdn.com/w20/pl.png', 'tr': 'https://flagcdn.com/w20/tr.png',
+                     'es': 'https://flagcdn.com/w20/es.png'};
       return flags[lang] || 'https://flagcdn.com/w20/gb.png';
     }
 
     function getLanguageName(lang) {
-      const names = {
-        'en': 'English',
-        'ar': 'العربية',
-        'de': 'Deutsch',
-        'ru': 'Русский',
-        'pl': 'Polski',
-        'tr': 'Türkçe',
-        'es': 'Español'
-      };
+      const names = {'en': 'English', 'ar': 'العربية', 'de': 'Deutsch', 'ru': 'Русский', 'pl': 'Polski', 'tr': 'Türkçe', 'es': 'Español'};
       return names[lang] || 'English';
     }
 
@@ -874,8 +1049,26 @@
     }
 
     function toggleMenu() {
-      const links = document.getElementById('navLinks');
-      links.classList.toggle('show');
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    // Lightbox functionality
+    function showLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = lightbox.querySelector('img');
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+    }
+
+    // FAQ accordion functionality
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
     }
 
     // Load default on page load
@@ -884,6 +1077,6 @@
 
   <!-- AOS (scroll animations) initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>AOS.init({ duration: 1000 });</script>
 </body>
 </html>
