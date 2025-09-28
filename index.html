@@ -50,7 +50,15 @@
       --btn-glow:rgba(78,131,127,0.12);
     }
     @media (prefers-color-scheme: dark){
-      :root:not([data-theme]){ --bg:#0e100f; --surface:#171917; --text:#ECDFCC; --muted-border:rgba(236,223,204,0.03); --nav-bg:#131413; --nav-text:#fff; --btn-glow:rgba(78,131,127,0.12); }
+      :root:not([data-theme="light"]){
+        --bg:#0e100f;
+        --surface:#171917;
+        --text:#ECDFCC;
+        --muted-border:rgba(236,223,204,0.03);
+        --nav-bg:#131413;
+        --nav-text:#fff;
+        --btn-glow:rgba(78,131,127,0.12);
+      }
     }
 
     *{ margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
@@ -185,7 +193,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       color: #fff;
       border: none;
       padding: 10px 15px;
@@ -601,7 +609,8 @@
         function frame(){
           if(!ctx) return;
           ctx.clearRect(0,0,canvas.width,canvas.height);
-          const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || (getStoredMode() === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          const storedMode = getStoredMode();
+          const isDark = storedMode === 'dark' || (storedMode === 'auto' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
           if(isDark){
             for(const p of particles){
               p.phase += p.twinkle || 0.01;
@@ -626,31 +635,37 @@
         frame();
       }
 
-      function applyCanvasMode(){
-        const stored = getStoredMode();
-        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = stored === 'dark' || (stored === 'auto' && systemDark);
-        if(isDark) createParticlesForDark(); else createParticlesForLight();
-        startCanvas();
-      }
-
       function getStoredMode(){ return localStorage.getItem('site-theme') || 'auto'; }
-      function setModeStored(value){ if(value === 'auto') localStorage.removeItem('site-theme'); else localStorage.setItem('site-theme', value); }
+      function setModeStored(value){
+        if(value === 'auto') localStorage.removeItem('site-theme');
+        else localStorage.setItem('site-theme', value);
+      }
 
       function applyTheme(mode){
         const html = document.documentElement;
-        if(mode === 'auto'){ html.removeAttribute('data-theme'); setModeStored('auto'); }
-        else if(mode === 'light'){ html.removeAttribute('data-theme'); setModeStored('light'); }
-        else if(mode === 'dark'){ html.setAttribute('data-theme','dark'); setModeStored('dark'); }
-        applyCanvasMode();
+        if(mode === 'auto'){
+          setModeStored('auto');
+          const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          html.setAttribute('data-theme', systemDark ? 'dark' : 'light');
+        } else {
+          html.setAttribute('data-theme', mode);
+          setModeStored(mode);
+        }
+        createParticlesForTheme(mode);
+        startCanvas();
         updateThemeIcon(mode);
+      }
+
+      function createParticlesForTheme(mode){
+        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const effectiveMode = mode === 'auto' ? (systemDark ? 'dark' : 'light') : mode;
+        if(effectiveMode === 'dark') createParticlesForDark();
+        else createParticlesForLight();
       }
 
       function getInitialMode(){
         const stored = getStoredMode();
-        if(stored === 'dark') return 'dark';
-        if(stored === 'light') return 'light';
-        return 'auto';
+        return stored || 'auto';
       }
 
       function updateThemeIcon(mode){
@@ -677,7 +692,9 @@
         applyTheme(initial);
         if(initial === 'auto' && window.matchMedia){
           const mq = window.matchMedia('(prefers-color-scheme: dark)');
-          mq.addEventListener && mq.addEventListener('change', () => applyTheme('auto'));
+          mq.addEventListener && mq.addEventListener('change', () => {
+            if(getStoredMode() === 'auto') applyTheme('auto');
+          });
         }
       })();
 
@@ -913,7 +930,7 @@
           s.style.zIndex = visible ? 30 : (20 - k);
           s.style.transform = visible ? 'translate3d(0,0,0) scale(1)' : 'translate3d(0,0,0) scale(0.98)';
           const overlay = s.querySelector('.gallery-overlay');
-          if(overlay){ overlay.style.filter = visible ? 'drop-shadow(0 6px 12px rgba(0,0,0,0.40))' : 'drop-shadow(0 4px 8px rgba(0,0,0,0.25))'; overlay.style.opacity = visible ? '0.98' : '0.9'; overlay.style.transition = 'opacity .35s ease, filter .35s ease'; overlay.style.textShadow = '0 6px 10px rgba(0,0,0,0.35)'; }
+          if(overlay){ overlay.style.filter = visible ? 'drop-shadow(0 6px 12px rgba(0,0,0,0.40))' : 'drop-shadow(0 4px 8px rgba(0,0,0,0.25))'; overlay.style.opacity = visible ? '0.98' : '0.9'; overlay.style.transition = 'opacity .35s ease, filter .35s ease; overlay.style.textShadow = '0 6px 10px rgba(0,0,0,0.35)'; }
         });
         dots.forEach(d => d.classList.remove('active'));
         if(dots[i]) dots[i].classList.add('active');
