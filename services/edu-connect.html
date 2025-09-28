@@ -176,6 +176,9 @@
       border: 1px solid var(--gold);
       border-radius: 5px;
       min-width: 150px;
+      max-width: 92vw;
+      max-height: calc(100vh - 80px);
+      overflow: auto;
       z-index: 1000;
       top: 100%;
       left: 0;
@@ -409,6 +412,26 @@
       background: var(--gold);
       color: var(--black);
     }
+
+    /* RTL layout safeguards: keep structural components LTR while text flows RTL */
+    [dir="rtl"] nav,
+    [dir="rtl"] .nav-links,
+    [dir="rtl"] .language-dropdown,
+    [dir="rtl"] .language-menu,
+    [dir="rtl"] .tabs-buttons,
+    [dir="rtl"] .gallery,
+    [dir="rtl"] .service-details,
+    [dir="rtl"] .breadcrumb,
+    [dir="rtl"] .floating-buttons {
+      direction: ltr;
+    }
+    [dir="rtl"] .language-menu { right: 0; left: auto; }
+  /* Prevent flex/grid reversal in RTL */
+  [dir="rtl"] nav{ flex-direction: row; }
+  [dir="rtl"] .nav-links.show{ flex-direction: column; }
+  [dir="rtl"] .tabs-buttons{ flex-direction: row; }
+  [dir="rtl"] .service-details{ flex-direction: row; }
+  [dir="rtl"] .gallery{ justify-content: center; }
 
     .contact-section {
       padding: 40px 20px;
