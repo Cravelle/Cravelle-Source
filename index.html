@@ -721,21 +721,33 @@
       let translations = {};
       let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
-      async function loadTranslations(lang){
-        try{
-          const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
-          const response = await fetch(`${basePath}${lang}.json`, { headers: { 'Cache-Control': 'no-cache', 'Accept': 'application/json' } });
-          if(!response.ok) throw new Error(`Failed to load translations for ${lang}`);
-          translations = await response.json();
-          console.log(`Translations loaded for ${lang}`, translations); // Debugging
-        }catch(e){
-          console.error('Error loading translations:', e); // Debugging
-          translations = fallbackTranslations;
-          showMessage(`Failed to load translations for ${lang}. Using default English.`, 'error');
-        } finally {
-          updatePage();
-        }
+      async function loadTranslations(lang) {
+  try {
+    // إذا كانت اللغة هي الإنجليزية، استخدم الترجمات الافتراضية مباشرة
+    if (lang === 'en') {
+      translations = fallbackTranslations;
+      console.log('Using default English translations');
+    } else {
+      const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
+      const response = await fetch(`${basePath}${lang}.json`, {
+        headers: { 'Cache-Control': 'no-cache', 'Accept': 'application/json' }
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      translations = await response.json();
+      console.log(`Translations loaded for ${lang}`, translations);
+    }
+  } catch (e) {
+    console.error('Error loading translations:', e.message);
+    translations = fallbackTranslations;
+    if (lang !== 'en') {
+      showMessage(`Failed to load translations for ${lang}. Using default English. Error: ${e.message}`, 'error');
+    }
+  } finally {
+    updatePage();
+  }
+}
 
       function updatePage(){
         console.log('Updating page with translations'); // Debugging
