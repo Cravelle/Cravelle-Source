@@ -6,7 +6,6 @@
   <meta name="description" content="Gravenor Academy offers elite language learning and personal development programs designed for excellence.">
   <title>Gravenor Academy | Elite Education</title>
 
-  <!-- Fonts and animation stylesheets -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -342,7 +341,6 @@
       color: var(--black);
     }
 
-    /* RTL layout safeguards: keep core layout LTR while text remains RTL */
     [dir="rtl"] nav,
     [dir="rtl"] .nav-links,
     [dir="rtl"] .language-dropdown,
@@ -355,7 +353,6 @@
       direction: ltr;
     }
     [dir="rtl"] .language-menu { right: 0; left: auto; }
-  /* Prevent flex/grid reversal in RTL */
   [dir="rtl"] nav{ flex-direction: row; }
   [dir="rtl"] .nav-links.show{ flex-direction: column; }
   [dir="rtl"] .tabs-buttons{ flex-direction: row; }
@@ -476,7 +473,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation bar -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Gravenor Logo" class="nav-logo"></a>
     <div class="language-dropdown">
@@ -508,12 +504,10 @@
     </div>
   </nav>
 
-  <!-- Breadcrumb -->
   <div class="breadcrumb">
     <a href="../index.html" data-key="homeNav">Home</a> > <a href="../index.html#services" data-key="servicesNav">Services</a> > <span data-key="academy">Gravenor Academy</span>
   </div>
 
-  <!-- Service content -->
   <section class="service-content" data-aos="fade-up">
     <h1 data-key="academy">Gravenor Academy</h1>
     <p data-key="academyDesc">Gravenor Academy offers elite language learning and personal development programs designed for individuals and professionals seeking excellence. Our programs combine linguistic mastery with personal growth to empower our clients.</p>
@@ -533,7 +527,6 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
     <h2 data-key="galleryTitle">Academy Gallery</h2>
     <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
@@ -700,7 +693,6 @@
     window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
 
-  <!-- Contact section -->
   <section class="contact-section">
     <h2 data-key="contact">Contact Us</h2>
     <p data-key="contactDesc">Interested in Gravenor Academy? Reach out to learn more about our programs.</p>
@@ -709,19 +701,16 @@
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
   </section>
 
-  <!-- Floating contact buttons -->
   <div class="floating-buttons">
     <a href="mailto:info@gravenor.com" data-key="emailBtn">Email</a>
     <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
     <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p data-key="footer">&copy; 2025 Gravenor. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- AOS (scroll animations) initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 </body>
