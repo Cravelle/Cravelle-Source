@@ -45,7 +45,6 @@
   <meta name="description" content="Gravenor Edu Connect - Certified agency connecting students with prestigious universities through official partnerships.">
   <title>Gravenor Edu Connect | Educational Partnerships</title>
 
-  <!-- Fonts and animation stylesheets -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -304,7 +303,6 @@
       text-align: right;
     }
 
-    /* Tabs Gallery Styles */
     .gallery-section {
       padding: 60px 20px;
       max-width: 1000px;
@@ -413,7 +411,6 @@
       color: var(--black);
     }
 
-    /* RTL layout safeguards: keep structural components LTR while text flows RTL */
     [dir="rtl"] nav,
     [dir="rtl"] .nav-links,
     [dir="rtl"] .language-dropdown,
@@ -426,7 +423,6 @@
       direction: ltr;
     }
     [dir="rtl"] .language-menu { right: 0; left: auto; }
-  /* Prevent flex/grid reversal in RTL */
   [dir="rtl"] nav{ flex-direction: row; }
   [dir="rtl"] .nav-links.show{ flex-direction: column; }
   [dir="rtl"] .tabs-buttons{ flex-direction: row; }
@@ -556,7 +552,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation bar -->
   <nav>
     <a href="../index.html"><img src="../images/logo.svg" alt="Gravenor Logo" class="nav-logo"></a>
     <div class="language-dropdown">
@@ -588,12 +583,10 @@
     </div>
   </nav>
 
-  <!-- Breadcrumb -->
   <div class="breadcrumb">
     <a href="../index.html" data-key="homeNav">Home</a> > <a href="../index.html#services" data-key="servicesNav">Services</a> > <span data-key="eduConnect">Gravenor Edu Connect</span>
   </div>
 
-  <!-- Service content -->
   <section class="service-content" data-aos="fade-up">
     <h1 data-key="eduConnect">Gravenor Edu Connect</h1>
     <p data-key="eduConnectDesc">Gravenor Edu Connect is a certified agency dedicated to connecting ambitious students with prestigious universities through official partnerships. We offer personalized guidance and seamless support for your educational journey.</p>
@@ -613,7 +606,6 @@
     </div>
   </section>
 
-  <!-- Tabs Gallery Section -->
   <section class="gallery-section" data-aos="fade-up">
     <h2 data-key="galleryTitle">Edu Connect Gallery</h2>
     <p data-key="galleryDesc">View images from our educational partnership events and student success stories.</p>
@@ -637,7 +629,6 @@
       <figure>
         <img src="../images/edu-connect/event6.jpg" alt="Partnership Ceremony" class="gallery-image">
       </figure>
-      <!-- الصور الإضافية مخفية -->
       <figure class="hidden">
         <img src="../images/edu-connect/event7.jpg" alt="International Fair" class="gallery-image">
       </figure>
@@ -666,7 +657,6 @@
     }
   </script>
 
-  <!-- Contact section -->
   <section class="contact-section">
     <h2 data-key="contact">Contact Us</h2>
     <p data-key="contactDesc">Interested in Gravenor Edu Connect? Reach out to explore our educational partnership opportunities.</p>
@@ -675,19 +665,16 @@
     <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
   </section>
 
-  <!-- Floating contact buttons -->
   <div class="floating-buttons">
     <a href="mailto:info@gravenor.com" data-key="emailBtn">Email</a>
     <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
     <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p data-key="footer">&copy; 2025 Gravenor. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
-  <!-- Script for responsive menu toggle -->
   <script>
     function toggleMenu() {
       const links = document.getElementById('navLinks');
@@ -842,7 +829,6 @@
     window.addEventListener('load', () => loadTranslations(currentLang));
   </script>
 
-  <!-- AOS (scroll animations) initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 </body>
