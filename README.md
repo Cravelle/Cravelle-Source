@@ -1,7 +1,7 @@
 ---
-Title: "Cravelle — Source (internal)"
+Title: "Cravelle — Source (Internal)"
 Repo: "Cravelle/Cravelle-Source"
-Visibility: "private"
+Visibility: "Confidential"
 Site: "https://cravelle.github.io"
 Last Updated: "2025-10-23"
 License: "All rights reserved"
