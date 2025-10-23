@@ -1,10 +1,10 @@
 ---
-title: "Cravelle — Source (internal)"
-repo: "Cravelle/Cravelle-Source"
-visibility: "private"
-site: "https://cravelle.github.io"
-last_updated: "2025-10-23"
-license: "All rights reserved"
+Title: "Cravelle — Source (internal)"
+Repo: "Cravelle/Cravelle-Source"
+Visibility: "private"
+Site: "https://cravelle.github.io"
+Last Updated: "2025-10-23"
+License: "All rights reserved"
 ---
 
 # Cravelle — Source (internal)
