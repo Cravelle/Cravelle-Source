@@ -98,9 +98,6 @@ class GlobeManager {
       // Interactions (hover tooltip; emphasize red pin)
       this.setupGlobeInteractions();
 
-      // Update legend text for globe and keep dark theme
-      const attr = document.querySelector('.map-legend .map-attr');
-      if (attr) attr.textContent = '3D globe © Three.js · Locations © Cravelle';
 
       // Inject UI (boarding pass + selector)
       this.injectSideUI();
