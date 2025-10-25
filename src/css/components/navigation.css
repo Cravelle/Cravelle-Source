@@ -177,31 +177,7 @@
   background: rgba(159, 163, 166, 0.08);
 }
 
-/* Theme Toggle */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow 180ms ease, color var(--transition-fast);
-  color: #ffffff;
-}
-
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
-  color: #9bd3cc;
-}
-
-.theme-toggle__icon {
-  width: 20px;
-  height: 20px;
-}
+/* Theme toggle removed */
 
 /* Hamburger Menu */
 .hamburger {
