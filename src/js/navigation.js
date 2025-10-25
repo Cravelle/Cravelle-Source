@@ -16,6 +16,7 @@ class NavigationManager {
     this.setupMobileMenu();
     this.setupLanguageMenu();
     this.setupHashHandler();
+    this.setupScrollSpy();
   }
 
   setupSmoothScrolling() {
@@ -133,6 +134,47 @@ class NavigationManager {
         window.scrollTo(0, 0);
       }
     });
+  }
+
+  setupScrollSpy() {
+    const linkMap = new Map();
+    const links = document.querySelectorAll('.nav__links a.nav__link[href^="#"]');
+    links.forEach(link => {
+      const id = link.getAttribute('href')?.slice(1);
+      if (id) linkMap.set(id, link);
+    });
+
+    const sections = Array.from(linkMap.keys())
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    const onIntersect = (entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = id ? linkMap.get(id) : null;
+        if (!link) return;
+
+        if (entry.isIntersecting) {
+          // Clear all
+          links.forEach(l => {
+            l.classList.remove('active');
+            l.removeAttribute('aria-current');
+          });
+          // Set active/current
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(onIntersect, {
+      root: null,
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0.01
+    });
+    sections.forEach(sec => observer.observe(sec));
   }
 }
 

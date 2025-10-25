@@ -117,6 +117,17 @@
   transform: translateX(-50%) scaleX(1);
 }
 
+/* Active section indication */
+.nav__link.active,
+.nav__link[aria-current="page"] {
+  color: var(--accent);
+}
+
+.nav__link.active::after,
+.nav__link[aria-current="page"]::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
 /* Language Dropdown */
 .language-dropdown {
   position: relative;

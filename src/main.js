@@ -12,10 +12,13 @@ import './js/navigation.js';
 import './js/background.js';
 import './js/gallery.js';
 import './js/services-carousel.js';
+import './js/services-slider.js';
 import './js/map.js';
 import './js/form-handler.js';
 import './js/animations.js';
 import './js/premium-interactions.js';
+import './js/faq.js';
+import './js/partners.js';
 
 // Initialize application
 class App {

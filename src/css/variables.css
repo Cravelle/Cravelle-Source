@@ -26,8 +26,9 @@
   --text: var(--charcoal);
   --text-secondary: var(--silver);
   --text-muted: var(--platinum);
-  --accent: var(--gold);
-  --accent-hover: var(--gold-muted);
+  /* Neutral brand accent replacing gold for minimalist aesthetic */
+  --accent: #283540;
+  --accent-hover: #3a4b5a;
   --border: rgba(10, 10, 10, 0.08);
   --border-subtle: rgba(10, 10, 10, 0.04);
   --shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.05);

@@ -194,7 +194,11 @@ class ServicesCarousel {
 
 // Helper function to equalize card heights
 function equalizeServiceCards() {
-  const cards = Array.from(document.querySelectorAll('.service-card'));
+  // Only equalize when the horizontal services strip is present
+  const hasStrip = !!document.querySelector('.services-strip');
+  if (!hasStrip) return;
+
+  const cards = Array.from(document.querySelectorAll('.services-strip .service-card'));
   if (!cards.length) return;
 
   let max = 0;

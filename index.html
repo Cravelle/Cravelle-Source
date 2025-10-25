@@ -3,10 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Cravelle offers elite services in education, diplomacy, translation, trade, and more, blending elegance with purpose.">
-    <meta name="keywords" content="Cravelle, education, diplomacy, translation, trade, consulting, luxury services">
+    <meta name="description" content="Cravelle — elite services in education, diplomacy, translation, trade, and bespoke consulting. Where elegance meets purpose.">
+    <meta name="keywords" content="Cravelle, elite education, diplomacy consulting, professional translation, international trade, luxury services, Mahmoud Keweisy">
     <meta name="author" content="Mahmoud Keweisy">
     <meta name="theme-color" content="#1E201E">
+    
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cravelle.com/">
+    <meta property="og:title" content="Cravelle | Where Elegance Meets Purpose">
+    <meta property="og:description" content="Elite services in education, diplomacy, translation, trade, and bespoke consulting — blending refinement with global reach.">
+    <meta property="og:image" content="https://cravelle.com/images/hero/hero-banner.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://cravelle.com/">
+    <meta name="twitter:title" content="Cravelle | Where Elegance Meets Purpose">
+    <meta name="twitter:description" content="Elite services in education, diplomacy, translation, trade, and bespoke consulting.">
+    <meta name="twitter:image" content="https://cravelle.com/images/hero/hero-banner.jpg">
+    
     <title>Cravelle | Where Elegance Meets Purpose</title>
 
     <!-- Preload critical fonts -->
@@ -82,162 +97,178 @@
 
 <section id="mission" class="section section--light">
     <h2 class="section__title" data-key="mission">Our Mission</h2>
-    <p data-key="missionDesc" style="color:var(--sage); font-weight:600;">To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach, blending timeless elegance with modern ambition.</p>
+    <p data-key="missionDesc" style="max-width:720px; margin:0 auto; text-align:center; font-size:var(--text-lg); line-height:var(--leading-relaxed); color:var(--text-secondary);">To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach, blending timeless elegance with modern ambition.</p>
 </section>
 
 <section id="services" class="section">
     <h2 class="section__title" data-key="services">Our Services</h2>
-    <div class="services-strip" aria-hidden="false">
-        <div class="strip-shade left" id="servicesShadeLeft"></div>
-        <div class="strip-shade right" id="servicesShadeRight"></div>
-        <div class="services-grid" data-aos="fade-up" id="servicesGrid" role="list">
-            <div class="service-card" data-bg="images/services/academy-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/academy-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-graduation-cap service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="academy">Cravelle Academy</h3>
-                        <p class="service-card__description" data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
+    <div class="services-slider" id="servicesSlider" aria-roledescription="carousel" aria-label="Our Services">
+        <div class="services-track" id="servicesTrack" role="group">
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="1 of 9">
+                <article class="service-card" data-bg="images/services/academy-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/academy-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-graduation-cap service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="academy">Cravelle Academy</h3>
+                            <p class="service-card__description" data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/academy.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/academy.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/diplomacy-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/diplomacy-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-balance-scale service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="diplomacy">Cravelle Diplomacy</h3>
-                        <p class="service-card__description" data-key="diplomacyDesc">Strategic mediation and diplomatic consulting for global impact.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="2 of 9">
+                <article class="service-card" data-bg="images/services/diplomacy-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/diplomacy-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-balance-scale service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="diplomacy">Cravelle Diplomacy</h3>
+                            <p class="service-card__description" data-key="diplomacyDesc">Strategic mediation and diplomatic consulting for global impact.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/diplomacy.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/diplomacy.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/translation-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/translation-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-language service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="translation">Cravelle Translations</h3>
-                        <p class="service-card__description" data-key="translationDesc">Professional translation and personal assistance services with precision.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="3 of 9">
+                <article class="service-card" data-bg="images/services/translation-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/translation-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-language service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="translation">Cravelle Translations</h3>
+                            <p class="service-card__description" data-key="translationDesc">Professional translation and personal assistance services with precision.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/translation.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/translation.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/trade-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/trade-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-truck service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="trade">Cravelle Trade</h3>
-                        <p class="service-card__description" data-key="tradeDesc">Facilitating international trade and commercial relations.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="4 of 9">
+                <article class="service-card" data-bg="images/services/trade-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/trade-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-truck service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="trade">Cravelle Trade</h3>
+                            <p class="service-card__description" data-key="tradeDesc">Facilitating international trade and commercial relations.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/trade.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/trade.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/prive-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/prive-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-lock service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="prive">Cravelle Privé</h3>
-                        <p class="service-card__description" data-key="priveDesc">Confidential bespoke services tailored for VIP clients.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="5 of 9">
+                <article class="service-card" data-bg="images/services/prive-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/prive-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-lock service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="prive">Cravelle Privé</h3>
+                            <p class="service-card__description" data-key="priveDesc">Confidential bespoke services tailored for VIP clients.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/prive.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/prive.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/digital-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/digital-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-laptop service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="digital">Cravelle Digital</h3>
-                        <p class="service-card__description" data-key="digitalDesc">Web presence, branding, and personal website solutions.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="6 of 9">
+                <article class="service-card" data-bg="images/services/digital-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/digital-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-laptop service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="digital">Cravelle Digital</h3>
+                            <p class="service-card__description" data-key="digitalDesc">Web presence, branding, and personal website solutions.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/digital.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/digital.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/voice-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/voice-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-microphone service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="voice">Cravelle Voice</h3>
-                        <p class="service-card__description" data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="7 of 9">
+                <article class="service-card" data-bg="images/services/voice-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/voice-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-microphone service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="voice">Cravelle Voice</h3>
+                            <p class="service-card__description" data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/voice.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/voice.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/connect-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/connect-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-handshake service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="connect">Cravelle Connect</h3>
-                        <p class="service-card__description" data-key="connectDesc">B2B representation and strategic partnership development.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="8 of 9">
+                <article class="service-card" data-bg="images/services/connect-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/connect-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-handshake service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="connect">Cravelle Connect</h3>
+                            <p class="service-card__description" data-key="connectDesc">B2B representation and strategic partnership development.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/connect.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/connect.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
 
-            <div class="service-card" data-bg="images/services/edu-connect-bg.jpg">
-                <div class="card-bg service-card__bg" style="background-image:url('images/services/edu-connect-bg.jpg')"></div>
-                <div class="card-overlay service-card__overlay"></div>
-                <div class="card-sheen service-card__sheen"></div>
-                <div class="card-content service-card__content">
-                    <div class="top">
-                        <i class="fas fa-university service-card__icon"></i>
-                        <h3 class="service-card__title" data-key="eduConnect">Cravelle Edu Connect</h3>
-                        <p class="service-card__description" data-key="eduConnectDesc">Certified agency connecting students with prestigious universities.</p>
+            <div class="service-slide" role="group" aria-roledescription="slide" aria-label="9 of 9">
+                <article class="service-card" data-bg="images/services/edu-connect-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/services/edu-connect-bg.jpg')"></div>
+                    <div class="card-overlay service-card__overlay"></div>
+                    <div class="card-sheen service-card__sheen"></div>
+                    <div class="card-content service-card__content">
+                        <div class="top">
+                            <i class="fas fa-university service-card__icon" aria-hidden="true"></i>
+                            <h3 class="service-card__title" data-key="eduConnect">Cravelle Edu Connect</h3>
+                            <p class="service-card__description" data-key="eduConnectDesc">Certified agency connecting students with prestigious universities.</p>
+                        </div>
+                        <div class="card-footer service-card__footer">
+                            <a class="btn" href="services/edu-connect.html" data-key="learnMore"><span>Learn More</span></a>
+                        </div>
                     </div>
-                    <div class="card-footer service-card__footer">
-                        <a class="btn" href="services/edu-connect.html" data-key="learnMore"><span>Learn More</span></a>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
-        <button class="svc-arrow left" id="svcPrev" aria-label="Previous" type="button">‹</button>
-        <button class="svc-arrow right" id="svcNext" aria-label="Next" type="button">›</button>
-        <div class="svc-dots" id="svcDots" aria-hidden="false"></div>
+        <button class="svc2-arrow left" id="svc2Prev" aria-label="Previous service" type="button"></button>
+        <button class="svc2-arrow right" id="svc2Next" aria-label="Next service" type="button"></button>
+        <div class="svc2-dots" id="svc2Dots" aria-hidden="false"></div>
     </div>
 </section>
 
@@ -302,6 +333,14 @@
     <h2 class="section__title" data-key="mapHeading">Global Presence</h2>
     <p data-key="mapDesc" style="text-align:center; margin-bottom:12px; opacity:0.9;">Selected locations and partners we collaborate with.</p>
     <div id="mapWrap" data-aos="fade-up">
+        <aside class="map-side" aria-label="City details and selector">
+            <div id="bpCard" class="bp-card" role="group" aria-live="polite" aria-atomic="true">
+                <!-- Boarding pass content injected by JS -->
+            </div>
+            <div id="citySelector" class="city-selector" role="radiogroup" aria-label="Select city">
+                <!-- City selector rendered by JS -->
+            </div>
+        </aside>
         <div id="map" role="region" aria-label="World map"></div>
         <div class="map-legend">
             <div data-key="mapLegend">Tap the indicator to learn more</div>
@@ -344,15 +383,15 @@
         <div class="edge-shade right" id="shadeRight" aria-hidden="true"></div>
         
         <div class="gallery-slide" data-index="0" style="opacity:1; z-index:30;">
-            <img src="images/event1.jpg" alt="PPCC" data-src="images/event1.jpg" draggable="false">
+            <img src="images/event1.jpg" alt="PPCC" data-src="images/event1.jpg" draggable="false" loading="lazy" decoding="async">
             <div class="gallery-overlay" aria-hidden="true">PPCC</div>
         </div>
         <div class="gallery-slide" data-index="1" style="opacity:0; z-index:20;">
-            <img src="images/event2.jpg" alt="Egyptian National Day" data-src="images/event2.jpg" draggable="false">
+            <img src="images/event2.jpg" alt="Egyptian National Day" data-src="images/event2.jpg" draggable="false" loading="lazy" decoding="async">
             <div class="gallery-overlay" aria-hidden="true">Egyptian National Day By The Egyptian Embassy in Poland</div>
         </div>
         <div class="gallery-slide" data-index="2" style="opacity:0; z-index:10;">
-            <img src="images/event3.jpg" alt="PTAK Warsaw Expo" data-src="images/event3.jpg" draggable="false">
+            <img src="images/event3.jpg" alt="PTAK Warsaw Expo" data-src="images/event3.jpg" draggable="false" loading="lazy" decoding="async">
             <div class="gallery-overlay" aria-hidden="true">PTAK Warsaw Expo</div>
         </div>
         

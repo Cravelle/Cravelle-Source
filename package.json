@@ -20,7 +20,9 @@
     "vite-plugin-html": "^3.2.2"
   },
   "dependencies": {
-    "leaflet": "^1.9.4"
+    "globe.gl": "^2.44.1",
+    "leaflet": "^1.9.4",
+    "three": "^0.180.0"
   },
   "browserslist": [
     "> 1%",

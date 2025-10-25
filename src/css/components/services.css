@@ -7,7 +7,7 @@
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
-  background: #000;
+  background: transparent;
   padding: 24px 0;
   margin-top: 16px;
   overflow: hidden;
@@ -26,12 +26,12 @@
 
 .services-strip .strip-shade.left {
   left: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0));
 }
 
 .services-strip .strip-shade.right {
   right: 0;
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0));
 }
 
 .services-grid {
@@ -65,7 +65,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.18);
   cursor: pointer;
   transition: all 0.18s ease;
 }
@@ -73,7 +73,7 @@
 .svc-dot.active {
   width: 22px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .svc-arrow {
@@ -83,9 +83,9 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.35);
-  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.75);
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +104,7 @@
 }
 
 .svc-arrow:hover {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Card Float Animation */
@@ -168,4 +168,185 @@
 [dir="rtl"] #servicesGrid,
 [dir="rtl"] .svc-dots {
   direction: ltr;
+}
+
+/* ===================================
+   STACKED SERVICES (EDITORIAL)
+   =================================== */
+.services-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* hairline dividers provide separation */
+}
+
+.services-stacked .service-card {
+  width: 100%;
+  min-height: min(72vh, 720px);
+  padding: var(--spacing-20) var(--spacing-6);
+  border-radius: 0;
+  border: none;
+  margin: 0; /* remove any external spacing */
+}
+
+.services-stacked .service-card + .service-card {
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 960px) {
+  .services-stacked .service-card {
+    min-height: min(60vh, 580px);
+    padding: var(--spacing-16) var(--spacing-6);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-stacked .service-card {
+    min-height: 56vh;
+    padding: var(--spacing-12) var(--spacing-6);
+  }
+}
+
+/* ===================================
+   CAR-GALLERY STYLE SLIDER
+   =================================== */
+.services-slider {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: var(--spacing-4) 0;
+}
+
+.services-slider::before,
+.services-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.services-slider::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15) 50%, transparent);
+}
+
+.services-slider::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15) 50%, transparent);
+}
+
+.services-slider .services-track {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+  transition: transform var(--transition-slow) var(--ease-out);
+  height: min(72vh, 720px);
+}
+
+.services-slider .service-slide {
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.services-slider .service-card {
+  width: 100%;
+  min-height: 100%;
+  padding: var(--spacing-20) var(--spacing-6);
+}
+
+/* Slider controls - Integrated gradient zones */
+.svc2-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9;
+  opacity: 0;
+  transition: opacity var(--transition-base) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.svc2-arrow.left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.15), transparent);
+  justify-content: flex-start;
+  padding-left: var(--spacing-8);
+}
+
+.svc2-arrow.right {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.15), transparent);
+  justify-content: flex-end;
+  padding-right: var(--spacing-8);
+}
+
+.services-slider:hover .svc2-arrow {
+  opacity: 1;
+}
+
+.svc2-arrow::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid rgba(255, 255, 255, 0.9);
+  border-right: 2px solid rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+.svc2-arrow.left::after {
+  transform: rotate(-135deg);
+}
+
+.svc2-arrow.right::after {
+  transform: rotate(45deg);
+}
+
+.svc2-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: var(--spacing-6);
+  display: flex;
+  gap: 8px;
+  z-index: 8;
+}
+
+.svc2-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-base) ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.svc2-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.svc2-dot.active {
+  width: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+  .services-slider .services-track { height: 60vh; }
+  .services-slider .service-card { padding: var(--spacing-12) var(--spacing-6); }
+  .svc2-arrow { display: none; }
+  .svc2-dots { bottom: var(--spacing-4); }
+}
+
+@media (max-width: 480px) {
+  .services-slider .services-track { height: 56vh; }
 }

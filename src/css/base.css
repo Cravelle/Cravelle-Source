@@ -70,8 +70,9 @@ h1 {
   line-height: var(--leading-none);
 }
 h2 { 
-  font-size: var(--text-5xl); 
+  font-size: var(--text-4xl); 
   font-weight: 600;
+  line-height: 1.2;
 }
 h3 { 
   font-size: var(--text-3xl); 
