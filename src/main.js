@@ -15,6 +15,7 @@ import './js/services-carousel.js';
 import './js/map.js';
 import './js/form-handler.js';
 import './js/animations.js';
+import './js/premium-interactions.js';
 
 // Initialize application
 class App {

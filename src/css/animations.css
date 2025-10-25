@@ -1,0 +1,38 @@
+/* ===================================
+   ANIMATIONS & KEYFRAMES
+   =================================== */
+
+/* Motto Color Shift Animation */
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(1.1) drop-shadow(0 0 20px rgba(155, 211, 204, 0.4));
+  }
+  25% {
+    background-position: 50% 50%;
+    filter: brightness(1.15) drop-shadow(0 0 25px rgba(120, 168, 163, 0.5));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(1.2) drop-shadow(0 0 30px rgba(155, 211, 204, 0.6));
+  }
+  75% {
+    background-position: 50% 50%;
+    filter: brightness(1.15) drop-shadow(0 0 25px rgba(120, 168, 163, 0.5));
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(1.1) drop-shadow(0 0 20px rgba(155, 211, 204, 0.4));
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .service-card .card-content {
+    animation: none !important;
+  }
+  
+  .motto {
+    animation: none !important;
+  }
+}
