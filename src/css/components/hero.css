@@ -76,7 +76,8 @@ header img {
   height: 200px;
   width: auto;
   transition: transform var(--transition-slow) var(--ease-spring);
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+  /* Invert logo to ensure high contrast on hero */
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
   animation: fadeInScale 1s var(--ease-out) 0.2s both;
 }
 

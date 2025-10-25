@@ -3,12 +3,12 @@
    =================================== */
 
 footer {
-  background: var(--charcoal);
-  color: var(--pearl);
+  background: transparent;
+  color: var(--text);
   text-align: center;
-  padding: var(--spacing-16) var(--spacing-6);
+  padding: var(--spacing-12) var(--spacing-6);
   border-top: 1px solid var(--border);
-  margin-top: var(--spacing-24);
+  margin-top: var(--spacing-16);
 }
 
 footer .legal {
@@ -20,11 +20,11 @@ footer .legal {
 /* Partners/Collaboration Section */
 .collab-band {
   position: relative;
-  background: var(--charcoal);
-  padding: var(--spacing-16) 0;
-  margin: var(--spacing-24) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgb(19, 22, 21);
+  padding: 28px 0 34px;
+  margin: 32px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   overflow: hidden;
   width: 100vw;
   max-width: 100vw;
@@ -33,71 +33,78 @@ footer .legal {
 }
 
 .collab-inner {
-  max-width: var(--max-width);
+  max-width: none;
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--spacing-6);
+  padding: 0 22px;
 }
 
 .collab-title {
   text-align: center;
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-widest);
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.6;
-  color: var(--pearl);
-  margin-bottom: var(--spacing-10);
-  font-weight: 600;
+  opacity: 0.75;
+  color: #eee;
+  margin-bottom: 18px;
+  font-weight: 800;
 }
 
 .collab-logos {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--spacing-20);
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 72px;
+  animation: scroll-logos 20s linear infinite;
+  will-change: transform;
+}
+
+.collab-logos:hover {
+  animation-play-state: paused;
 }
 
 .collab-logos img {
-  height: 100px;
-  max-width: 320px;
+  height: 110px;
+  max-width: 360px;
   object-fit: contain;
   display: block;
-  filter: grayscale(100%) brightness(1.2) contrast(1.1);
-  opacity: 0.75;
-  transition: 
-    opacity var(--transition-base) var(--ease-out),
-    transform var(--transition-base) var(--ease-out);
+  filter: grayscale(100%) brightness(0.95) contrast(1.08);
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .collab-logos img:hover {
   opacity: 1;
-  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1) contrast(1);
+  transform: scale(1.12);
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Brand Values */
 .brand-values {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-12);
-  margin-top: var(--spacing-12);
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-10);
+  border-top: 1px solid var(--border);
 }
 
 .brand-values > div {
   text-align: center;
-  padding: var(--spacing-8);
-  border-radius: var(--radius-xl);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  transition: 
-    transform var(--transition-base) var(--ease-out),
-    box-shadow var(--transition-base) var(--ease-out);
-}
-
-.brand-values > div:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  padding: var(--spacing-8) var(--spacing-4);
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
 }
 
 .brand-values i {
@@ -122,18 +129,23 @@ footer .legal {
 
 /* Testimonials */
 .testimonial {
-  background: var(--bg-elevated);
-  padding: var(--spacing-8);
-  border-radius: var(--radius-xl);
-  border-left: 4px solid var(--accent);
+  background: transparent;
+  padding: var(--spacing-8) 0;
+  border-radius: 0;
+  border-left: none;
   font-style: italic;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   color: var(--text);
-  transition: transform var(--transition-base) var(--ease-out);
+  transition: none;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial:last-child {
+  border-bottom: 1px solid var(--border);
 }
 
 .testimonial:hover {
-  transform: translateY(-4px);
+  transform: none;
 }
 
 .testimonial .stars {
@@ -144,8 +156,8 @@ footer .legal {
 
 .testimonials {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-8);
+  grid-template-columns: 1fr;
+  gap: 0;
   margin-top: var(--spacing-10);
 }
 
@@ -158,21 +170,21 @@ footer .legal {
 }
 
 .news-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
+  background: transparent;
+  border: none;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: 
-    transform var(--transition-base) var(--ease-out),
-    box-shadow var(--transition-base) var(--ease-out);
+  box-shadow: none;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  transition: none;
+  border-top: 1px solid var(--border);
+  padding-top: var(--spacing-6);
 }
 
 .news-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  transform: none;
+  box-shadow: none;
 }
 
 .news-card img {
@@ -183,7 +195,7 @@ footer .legal {
 }
 
 .news-card .news-body {
-  padding: var(--spacing-6);
+  padding: var(--spacing-4) 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
@@ -206,6 +218,17 @@ footer .legal {
   font-weight: 600;
 }
 
+.news-card h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.news-card:hover h3 a {
+  border-bottom-color: var(--accent);
+}
+
 .news-card p {
   font-size: var(--text-base);
   color: var(--text-secondary);
@@ -222,25 +245,25 @@ footer .legal {
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-8);
+  gap: 0;
   margin-top: var(--spacing-12);
+  border-top: 1px solid var(--border);
 }
 
 .stat-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-8);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: var(--spacing-10) var(--spacing-4);
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: 
-    transform var(--transition-base) var(--ease-out),
-    box-shadow var(--transition-base) var(--ease-out);
+  box-shadow: none;
+  transition: none;
+  border-bottom: 1px solid var(--border);
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
 }
 
 .stat-icon {
@@ -267,24 +290,22 @@ footer .legal {
 
 /* Contact Card */
 #contact .contact-card {
-  max-width: var(--max-width-narrow);
-  margin: var(--spacing-12) auto 0;
+  max-width: 640px;
+  margin: var(--spacing-10) auto 0;
   background: var(--bg-elevated);
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-12);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-10);
-  align-items: stretch;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
 }
 
 #contact .contact-card .card-header {
-  grid-column: 1/-1;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 0 0 var(--spacing-4) 0;
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -298,10 +319,11 @@ footer .legal {
 }
 
 #contact .contact-info {
-  padding: var(--spacing-4) 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: center;
 }
 
 #contact .contact-info p {
@@ -320,11 +342,10 @@ form.contact-form {
 }
 
 .contact-actions {
-  grid-column: 2/3;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: var(--spacing-4);
+  margin-top: var(--spacing-2);
 }
 
 .contact-actions .cta {
@@ -357,11 +378,12 @@ form.contact-form {
 
 /* FAQ Items */
 .faq-item {
-  background: var(--bg-elevated);
-  padding: var(--spacing-6);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  margin-bottom: var(--spacing-4);
+  background: transparent;
+  padding: var(--spacing-6) 0;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+  border-top: 1px solid var(--border);
 }
 
 .faq-item h4 {
@@ -369,6 +391,9 @@ form.contact-form {
   font-size: var(--text-lg);
   margin-bottom: var(--spacing-3);
   color: var(--text);
+  cursor: pointer;
+  position: relative;
+  padding-right: 24px;
 }
 
 .faq-item p {
@@ -376,6 +401,19 @@ form.contact-form {
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
   margin: 0;
+}
+
+.faq-item h4::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--text-secondary);
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.faq-item h4[aria-expanded="true"]::after {
+  content: '−';
 }
 
 /* Mobile Responsive */
@@ -391,18 +429,7 @@ form.contact-form {
 
 @media (max-width: 980px) {
   #contact .contact-card {
-    grid-template-columns: 1fr;
-    padding: 18px;
-  }
-  
-  #contact .contact-card .card-header {
-    justify-content: center;
-    margin-bottom: 6px;
-  }
-  
-  .contact-actions {
-    grid-column: auto;
-    justify-content: center;
+    padding: var(--spacing-8);
   }
   
   .collab-logos {
