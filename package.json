@@ -16,7 +16,7 @@
     "cssnano": "^7.0.6",
     "postcss": "^8.4.47",
     "sharp": "^0.34.4",
-    "vite": "^5.4.11",
+    "vite": "^7.1.12",
     "vite-plugin-html": "^3.2.2"
   },
   "dependencies": {
