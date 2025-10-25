@@ -12,15 +12,15 @@
   --accent-deep-rgb: 40, 53, 64;
   --accent-teal-rgb: 159, 163, 166;
   
-  /* Semantic Colors (single dark palette) */
-  --bg: var(--charcoal);
-  --surface: var(--graphite);
+  /* Semantic Colors (single light palette) */
+  --bg: var(--ivory);
+  --surface: var(--ivory);
   --nav-bg: var(--graphite);
   --nav-text: var(--ivory);
-  --text: var(--ivory);
-  --muted-border: rgba(159, 163, 166, 0.22);
-  --muted-shadow: 0 8px 30px rgba(0, 1, 13, 0.45);
-  --btn-glow: rgba(99, 107, 115, 0.22);
+  --text: var(--charcoal);
+  --muted-border: rgba(0, 1, 13, 0.12);
+  --muted-shadow: 0 6px 18px rgba(0, 1, 13, 0.10);
+  --btn-glow: rgba(40, 53, 64, 0.18);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
