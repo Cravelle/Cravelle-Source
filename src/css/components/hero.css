@@ -1,0 +1,192 @@
+/* ===================================
+   PREMIUM HERO SECTION
+   Full-viewport cinematic experience
+   =================================== */
+
+header.hero-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: var(--spacing-6);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Hero Background Image */
+header.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/images/hero/hero-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  transition: transform 0.3s var(--ease-out);
+  will-change: transform;
+  filter: brightness(0.75) contrast(1.1) saturate(0.95);
+}
+
+/* Subtle parallax on scroll */
+@media (hover: hover) {
+  header.hero-banner::before {
+    transform: scale(1.1) translateY(calc(var(--scroll-y, 0) * 0.3px));
+  }
+}
+
+/* Hero Overlay - Gradient */
+header.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg, 
+    rgba(10, 10, 10, 0.4) 0%, 
+    rgba(10, 10, 10, 0.2) 40%,
+    rgba(10, 10, 10, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+/* Hero Content Container */
+header .top-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-12);
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* Logo */
+header img {
+  height: 200px;
+  width: auto;
+  transition: transform var(--transition-slow) var(--ease-spring);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+  animation: fadeInScale 1s var(--ease-out) 0.2s both;
+}
+
+header img:hover {
+  transform: scale(1.05);
+}
+
+/* Premium Motto */
+.motto {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ivory);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.04)
+  );
+  backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 1s var(--ease-out) 0.5s both;
+  max-width: 800px;
+}
+
+/* Scroll Indicator */
+header.hero-banner::after {
+  content: "";
+  position: absolute;
+  bottom: var(--spacing-12);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+  opacity: 0.6;
+  animation: fadeIn 1s var(--ease-out) 1.5s both, scrollIndicator 2s ease-in-out infinite 2s;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.6; }
+}
+
+@keyframes scrollIndicator {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header.hero-banner {
+    height: 90vh;
+    min-height: 500px;
+  }
+  
+  header img {
+    height: 140px;
+  }
+  
+  .motto {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    padding: var(--spacing-3) var(--spacing-5);
+  }
+}
+
+@media (max-width: 480px) {
+  header.hero-banner {
+    height: 85vh;
+    min-height: 450px;
+  }
+  
+  header img {
+    height: 110px;
+  }
+}

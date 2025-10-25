@@ -1,5 +1,6 @@
 /* ===================================
-   NAVIGATION COMPONENT
+   PREMIUM NAVIGATION
+   Transparent-to-solid on scroll, refined minimal design
    =================================== */
 .nav {
   position: fixed;
@@ -10,20 +11,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-lg);
-  padding: 10px var(--spacing-lg);
+  gap: var(--spacing-6);
+  padding: 0 var(--spacing-8);
   background: var(--nav-bg);
   color: var(--nav-text);
   z-index: var(--z-fixed);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid var(--muted-border);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--border-subtle);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: 
+    background var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Scrolled state */
+.nav.scrolled {
+  background: var(--nav-bg-scrolled);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav__left {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-4);
   flex: 0 0 auto;
   min-width: 0;
 }
@@ -32,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-2);
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
@@ -41,19 +51,24 @@
 .nav__right {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-3);
   flex: 0 0 auto;
 }
 
 .nav__logo {
-  height: 56px;
+  height: 48px;
   display: block;
   object-fit: contain;
+  transition: transform var(--transition-base) var(--ease-spring);
+}
+
+.nav__logo:hover {
+  transform: scale(1.05);
 }
 
 .nav__links {
   display: flex;
-  gap: 18px;
+  gap: var(--spacing-1);
   align-items: center;
   justify-content: center;
   white-space: nowrap;
@@ -69,16 +84,37 @@
 .nav__link {
   color: var(--nav-text);
   font-weight: 500;
-  font-size: 15px;
-  padding: 10px 8px;
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-base), transform var(--transition-base), background var(--transition-base);
+  font-size: var(--text-sm);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  transition: 
+    color var(--transition-base) var(--ease-out),
+    background var(--transition-base) var(--ease-out);
   display: inline-block;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base) var(--ease-spring);
 }
 
 .nav__link:hover {
-  color: var(--accent-teal);
-  transform: translateY(-2px);
+  color: var(--accent);
+  background: rgba(10, 10, 10, 0.04);
+}
+
+.nav__link:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 /* Language Dropdown */
@@ -86,17 +122,17 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-2);
 }
 
 .language-toggle {
   display: inline-flex;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-2);
   align-items: center;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(159, 163, 166, 0.25);
-  background: transparent;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   color: var(--nav-text);
   cursor: pointer;
   font-weight: 600;

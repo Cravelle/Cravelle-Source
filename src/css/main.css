@@ -1,0 +1,34 @@
+/**
+ * Main CSS Entry Point
+ * Imports all CSS modules in the correct order
+ */
+
+/* Core Styles */
+@import './variables.css';
+@import './base.css';
+
+/* Component Styles */
+@import './components/common.css';
+@import './components/navigation.css';
+@import './components/hero.css';
+@import './components/services.css';
+@import './components/gallery.css';
+@import './components/map.css';
+@import './components/footer.css';
+
+/* Service Pages */
+@import './service-page.css';
+
+/* Animations */
+@import './animations.css';
+
+/* Background canvas */
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}

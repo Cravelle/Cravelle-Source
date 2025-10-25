@@ -1,0 +1,30 @@
+{
+  "name": "cravelle-website",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cravelle - Elite services in education, diplomacy, and consulting",
+  "author": "Mahmoud Keweisy",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.4.47",
+    "sharp": "^0.34.4",
+    "vite": "^5.4.11",
+    "vite-plugin-html": "^3.2.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
