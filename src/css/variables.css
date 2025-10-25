@@ -1,0 +1,77 @@
+/* ===================================
+   CSS VARIABLES & DESIGN TOKENS
+   =================================== */
+:root {
+  /* Color System (Cravelle palette) */
+  --charcoal: #00010D;   /* deep background */
+  --graphite: #283540;   /* surfaces/nav */
+  --sage: #636B73;       /* accents/subtext */
+  --ivory: #F2F2F2;      /* primary text on dark */
+  --accent-teal: #9FA3A6;/* focus/hover accent */
+  --accent-deep: #283540;/* CTA/background accent */
+  --accent-deep-rgb: 40, 53, 64;
+  --accent-teal-rgb: 159, 163, 166;
+  
+  /* Semantic Colors (single dark palette) */
+  --bg: var(--charcoal);
+  --surface: var(--graphite);
+  --nav-bg: var(--graphite);
+  --nav-text: var(--ivory);
+  --text: var(--ivory);
+  --muted-border: rgba(159, 163, 166, 0.22);
+  --muted-shadow: 0 8px 30px rgba(0, 1, 13, 0.45);
+  --btn-glow: rgba(99, 107, 115, 0.22);
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Typography */
+  --font-primary: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'Cinzel', serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  
+  /* Layout */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --nav-height: 86px;
+  --nav-offset: calc(var(--nav-height) + 30px);
+  --max-width: 1200px;
+  --card-min-height: 360px;
+  
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-base: 220ms;
+  --transition-slow: 350ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  
+  /* Z-index scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  --text-align: right;
+  --flex-direction: row-reverse;
+}

@@ -22,20 +22,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="/src/css/main.css">
 
-    <!-- Theme initialization (prevents flash) -->
-    <script>
-        (function(){
-            try {
-                var stored = localStorage.getItem('site-theme');
-                if (stored === 'light' || stored === 'dark') {
-                    document.documentElement.setAttribute('data-theme', stored);
-                } else {
-                    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-                    document.documentElement.setAttribute('data-theme', (mq && mq.matches) ? 'dark' : 'light');
-                }
-            } catch(e) {}
-        })();
-    </script>
+    
 </head>
 <body>
 
@@ -80,19 +67,7 @@
             </div>
         </div>
 
-        <button id="themeBtn" class="theme-toggle" title="Toggle theme (auto → light → dark)" aria-pressed="false" aria-label="Theme mode" onclick="cycleTheme()">
-            <svg id="themeIcon" class="theme-toggle__icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 19v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.22 4.22l1.42 1.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18.36 18.36l1.42 1.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M1 12h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M21 12h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.22 19.78l1.42-1.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 7a5 5 0 100 10 5 5 0 000-10z" fill="currentColor" />
-            </svg>
-        </button>
+        
 
         <button class="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
     </div>
