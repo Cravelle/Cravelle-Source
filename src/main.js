@@ -7,7 +7,6 @@
 import './css/main.css';
 
 // Import JavaScript modules
-import { themeManager } from './js/theme.js';
 import { i18nManager } from './js/i18n.js';
 import './js/navigation.js';
 import './js/background.js';
@@ -32,10 +31,7 @@ class App {
   }
 
   setupEventListeners() {
-    // Listen for theme changes
-    window.addEventListener('themechange', (e) => {
-      console.log('Theme changed to:', e.detail.theme);
-    });
+    // (Theme removed)
 
     // Listen for language changes
     window.addEventListener('languagechange', (e) => {
@@ -53,5 +49,5 @@ if (document.readyState === 'loading') {
 
 // Expose globally for debugging (dev only)
 if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-  window.__app = { themeManager, i18nManager };
+  window.__app = { i18nManager };
 }
