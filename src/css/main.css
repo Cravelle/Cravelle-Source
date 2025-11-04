@@ -1,13 +1,7 @@
-/**
- * Main CSS Entry Point
- * Imports all CSS modules in the correct order
- */
-
-/* Core Styles */
 @import './variables.css';
 @import './base.css';
+@import './security.css';
 
-/* Component Styles */
 @import './components/common.css';
 @import './components/navigation.css';
 @import './components/hero.css';

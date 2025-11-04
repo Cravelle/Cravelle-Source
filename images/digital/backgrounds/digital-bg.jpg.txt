@@ -1,4 +1,0 @@
-Placeholder for digital-bg.jpg
-
-Upload the Digital service background with this exact filename.
-Recommended: JPG, 1920x1080, tech/abstract theme.

@@ -1,4 +1,0 @@
-Placeholder for voice-bg.jpg
-
-Upload the Voice service background with this exact filename.
-Recommended: JPG, 1920x1080, studio/microphone theme.

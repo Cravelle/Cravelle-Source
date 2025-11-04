@@ -97,7 +97,7 @@ class I18nManager {
       
       // Store base text on first run
       if (!(key in this.baseTexts)) {
-        this.baseTexts[key] = el.tagName === 'A' ? el.textContent : el.innerHTML;
+        this.baseTexts[key] = el.textContent;
       }
 
       const translated = this.translations[key];
@@ -108,7 +108,7 @@ class I18nManager {
         if (el.tagName === 'A') {
           el.textContent = String(value).split(':')[0].trim();
         } else {
-          el.innerHTML = value;
+          el.textContent = value;
         }
       }
     });
@@ -203,7 +203,13 @@ class I18nManager {
     const flagUrl = this.getFlagUrl(lang);
     const langName = this.getLanguageName(lang);
     
-    toggle.innerHTML = `<img src="${flagUrl}" alt="${lang}" class="language-toggle__flag"> ${langName}`;
+    toggle.textContent = '';
+    const img = document.createElement('img');
+    img.src = flagUrl;
+    img.alt = lang;
+    img.className = 'language-toggle__flag';
+    toggle.appendChild(img);
+    toggle.appendChild(document.createTextNode(' ' + langName));
   }
 
   getFlagUrl(lang) {

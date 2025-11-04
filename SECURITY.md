@@ -2,20 +2,36 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 2.0.x   | :white_check_mark: |
+| < 2.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in the Cravelle website, please report it responsibly:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+**Contact:** Mahmoudkeweisy@gmail.com
+
+**Response Time:** We aim to respond to security reports within 48 hours.
+
+**What to Include:**
+- Description of the vulnerability
+- Steps to reproduce
+- Potential impact
+- Suggested fix (if available)
+
+**What to Expect:**
+- Acknowledgment of your report within 48 hours
+- Regular updates on the status of the vulnerability
+- Credit for responsible disclosure (if desired)
+
+**Security Measures:**
+- Content Security Policy (CSP) headers
+- X-Frame-Options protection
+- HTTPS enforcement
+- Input sanitization
+- Copy protection
+- Regular security audits
+
+Thank you for helping keep Cravelle secure.

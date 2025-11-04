@@ -1,0 +1,37 @@
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+input, textarea, [contenteditable] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+img::selection {
+    background: transparent;
+}
+
+*::selection {
+    background: rgba(30, 32, 30, 0.2);
+    color: inherit;
+}
+
+*::-moz-selection {
+    background: rgba(30, 32, 30, 0.2);
+    color: inherit;
+}

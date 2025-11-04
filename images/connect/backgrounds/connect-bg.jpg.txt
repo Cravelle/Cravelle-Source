@@ -1,4 +1,0 @@
-Placeholder for connect-bg.jpg
-
-Upload the Connect service background with this exact filename.
-Recommended: JPG, 1920x1080, handshake/partnership theme.

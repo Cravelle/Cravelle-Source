@@ -1,4 +1,0 @@
-Placeholder for edu-connect-bg.jpg
-
-Upload the Edu Connect service background with this exact filename.
-Recommended: JPG, 1920x1080, campus/students theme.
