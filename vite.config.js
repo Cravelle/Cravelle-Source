@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: '.',
-  base: '/Cravelle-Source/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
