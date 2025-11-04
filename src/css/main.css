@@ -12,6 +12,7 @@
 
 /* Service Pages */
 @import './service-page.css';
+@import './premium-service-page.css';
 
 /* Animations */
 @import './animations.css';
