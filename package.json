@@ -25,6 +25,9 @@
     "leaflet": "^1.9.4",
     "three": "^0.180.0"
   },
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
