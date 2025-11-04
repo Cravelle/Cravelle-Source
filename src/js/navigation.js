@@ -1,8 +1,3 @@
-/**
- * Navigation Module
- * Handles mobile menu, smooth scrolling, and navigation interactions
- */
-
 class NavigationManager {
   constructor() {
     this.nav = document.querySelector('.nav');
@@ -32,7 +27,6 @@ class NavigationManager {
           e.preventDefault();
           this.scrollToElement(element);
           
-          // Close mobile menu if open
           if (window.innerWidth <= 980 && this.navLinks) {
             this.navLinks.classList.remove('show');
             if (this.hamburger) {
@@ -40,7 +34,6 @@ class NavigationManager {
             }
           }
 
-          // Clean up hash from URL
           history.replaceState(null, '', window.location.pathname + window.location.search);
         }
       });
@@ -75,7 +68,6 @@ class NavigationManager {
       this.hamburger.setAttribute('aria-expanded', String(isExpanded));
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!this.nav?.contains(e.target) && this.navLinks?.classList.contains('show')) {
         this.navLinks.classList.remove('show');
@@ -85,7 +77,6 @@ class NavigationManager {
       }
     });
 
-    // Close mobile menu on window resize to desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth > 980 && this.navLinks?.classList.contains('show')) {
         this.navLinks.classList.remove('show');
@@ -100,7 +91,6 @@ class NavigationManager {
     const languageGroup = document.getElementById('languageGroup');
     if (!languageGroup) return;
 
-    // Close language menu when clicking outside
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('language-menu');
       const toggle = document.getElementById('language-toggle');
@@ -111,7 +101,6 @@ class NavigationManager {
       }
     });
 
-    // Handle Escape key to close language menu
     languageGroup.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const menu = document.getElementById('language-menu');
@@ -127,7 +116,6 @@ class NavigationManager {
   }
 
   setupHashHandler() {
-    // Remove hash on page load to prevent auto-scroll
     window.addEventListener('load', () => {
       if (location.hash) {
         history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -157,12 +145,10 @@ class NavigationManager {
         if (!link) return;
 
         if (entry.isIntersecting) {
-          // Clear all
           links.forEach(l => {
             l.classList.remove('active');
             l.removeAttribute('aria-current');
           });
-          // Set active/current
           link.classList.add('active');
           link.setAttribute('aria-current', 'page');
         }
@@ -178,7 +164,6 @@ class NavigationManager {
   }
 }
 
-// Initialize navigation when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new NavigationManager());
 } else {

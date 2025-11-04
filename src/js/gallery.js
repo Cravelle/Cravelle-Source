@@ -1,8 +1,3 @@
-/**
- * Gallery Module
- * Handles interactive image gallery with parallax effects
- */
-
 class Gallery {
   constructor() {
     this.container = document.getElementById('galleryFull');
@@ -99,7 +94,6 @@ class Gallery {
   }
 
   setupEventListeners() {
-    // Dot navigation
     this.dots.forEach(d => {
       d.addEventListener('click', () => {
         const i = parseInt(d.getAttribute('data-i'));
@@ -107,14 +101,11 @@ class Gallery {
       });
     });
 
-    // Pointer move for parallax effect
     this.container.addEventListener('pointermove', (e) => this.handlePointerMove(e));
     this.container.addEventListener('pointerleave', () => this.handlePointerLeave());
 
-    // Click navigation
     this.container.addEventListener('click', (e) => this.handleClick(e));
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft' && this.currentIndex > 0) {
         this.setActive(this.currentIndex - 1);
@@ -139,7 +130,6 @@ class Gallery {
       this.rafPM = requestAnimationFrame(() => this.applyPointerMotion());
     }
 
-    // Edge shade effect
     const center = rect.left + rect.width / 2;
     const halfRange = rect.width * 0.5;
     const leftStrength = this.clamp((center - e.clientX) / halfRange, 0, 1);
@@ -156,7 +146,6 @@ class Gallery {
       if (this.shadeRight) this.shadeRight.style.opacity = 0;
     }
 
-    // Cursor style
     const leftZone = rect.left + rect.width * 0.12;
     const rightZone = rect.right - rect.width * 0.12;
     
@@ -230,7 +219,6 @@ class Gallery {
   }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new Gallery());
 } else {

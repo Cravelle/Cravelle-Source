@@ -1,8 +1,3 @@
-/**
- * Service Page Module
- * Handles shared functionality for all service pages
- */
-
 class ServicePage {
   constructor() {
     this.init();
@@ -40,7 +35,6 @@ class ServicePage {
   }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new ServicePage());
 } else {

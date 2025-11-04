@@ -1,8 +1,3 @@
-/**
- * Animations Module
- * Handles counter animations and other dynamic effects
- */
-
 class AnimationsManager {
   constructor() {
     this.initCounters();
@@ -46,7 +41,6 @@ class AnimationsManager {
   }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new AnimationsManager());
 } else {

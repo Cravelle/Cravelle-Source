@@ -1,8 +1,3 @@
-/**
- * Services Slider (Car-gallery style)
- * Full-bleed carousel with swipe/drag, arrows, dots, and wrap-around
- */
-
 class ServicesSlider {
   constructor() {
     this.slider = document.getElementById('servicesSlider');
@@ -58,7 +53,6 @@ class ServicesSlider {
   }
 
   bindEvents() {
-    // Arrows - click anywhere in the gradient zone
     if (this.prev) {
       this.prev.addEventListener('click', () => this.goTo(this.index - 1));
       this.prev.style.cursor = 'pointer';
@@ -68,13 +62,11 @@ class ServicesSlider {
       this.next.style.cursor = 'pointer';
     }
 
-    // Resize
     window.addEventListener('resize', () => {
       this.updateSize();
       this.goTo(this.index, false);
     });
 
-    // Drag/Swipe (pointer events and touch events for better mobile support)
     this.track.addEventListener('pointerdown', this.onPointerDown, { passive: false });
     this.track.addEventListener('touchstart', this.onPointerDown, { passive: false });
     window.addEventListener('pointermove', this.onPointerMove, { passive: false });
@@ -84,7 +76,6 @@ class ServicesSlider {
     window.addEventListener('pointercancel', this.onPointerUp, { passive: true });
     window.addEventListener('touchcancel', this.onPointerUp, { passive: true });
 
-    // Keyboard (when slider is focused)
     this.slider.setAttribute('tabindex', '0');
     this.slider.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') this.goTo(this.index - 1);
@@ -93,10 +84,8 @@ class ServicesSlider {
   }
 
   onPointerDown = (e) => {
-    // Don't interfere with link clicks
     if (e.target.closest('a, button')) return;
     
-    // Get coordinates from either pointer or touch event
     const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
     
     if (clientX === 0) return;
@@ -112,7 +101,6 @@ class ServicesSlider {
   onPointerMove = (e) => {
     if (!this.isDragging) return;
     
-    // Get coordinates from either pointer or touch event
     const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
     
     if (clientX === 0) return;
@@ -120,10 +108,8 @@ class ServicesSlider {
     this.currentX = clientX;
     this.deltaX = this.currentX - this.startX;
     
-    // Only prevent default and mark as moved if actual dragging occurs
     if (Math.abs(this.deltaX) > 5) {
       this.hasMoved = true;
-      // Only prevent default if the event is cancelable
       if (e.cancelable) {
         e.preventDefault();
       }
@@ -137,13 +123,11 @@ class ServicesSlider {
     if (!this.isDragging) return;
     this.isDragging = false;
 
-    // If user didn't move, don't change slides (allow clicks to work)
     if (!this.hasMoved) {
       this.hasMoved = false;
       return;
     }
 
-    // Adjust threshold for mobile - easier to trigger slide change
     const isMobile = window.innerWidth <= 768;
     const baseThreshold = isMobile ? this.width * 0.15 : this.width * 0.2;
     const threshold = Math.min(200, baseThreshold);
@@ -166,13 +150,11 @@ class ServicesSlider {
   }
 
   setupTouchEffects() {
-    // Add touch active state for service cards on mobile
     const cards = this.track.querySelectorAll('.service-card');
     cards.forEach(card => {
       let touchTimer;
       
       card.addEventListener('touchstart', (e) => {
-        // Don't activate if touching a link/button
         if (e.target.closest('a, button')) return;
         
         touchTimer = setTimeout(() => {
@@ -197,7 +179,6 @@ class ServicesSlider {
   goTo(i, animate = true) {
     this.index = this.normalizeIndex(i);
     if (animate) {
-      // Use slower transition on mobile for smoother experience
       const isMobile = window.innerWidth <= 768;
       const duration = isMobile ? '600ms' : '400ms';
       this.track.style.transition = `transform ${duration} cubic-bezier(0.4, 0, 0.2, 1)`;
@@ -210,7 +191,6 @@ class ServicesSlider {
   }
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new ServicesSlider());
 } else {

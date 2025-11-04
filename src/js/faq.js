@@ -1,8 +1,3 @@
-/**
- * Minimal FAQ Accordion (progressive enhancement)
- * Uses existing .faq-item structure: h4 + p
- */
-
 class FAQ {
   constructor() {
     this.items = Array.from(document.querySelectorAll('.faq-item'));
@@ -15,7 +10,6 @@ class FAQ {
       const body = item.querySelector('p');
       if (!header || !body) return;
 
-      // Accessibility
       const id = header.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
       const panelId = `faq-panel-${id}`;
       body.id = panelId;

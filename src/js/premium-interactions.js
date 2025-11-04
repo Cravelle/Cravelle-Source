@@ -1,16 +1,9 @@
-/**
- * Premium Interactions
- * Sophisticated scroll effects, parallax, and micro-interactions
- */
-
-// Navigation scroll effect
 const nav = document.querySelector('.nav');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   
-  // Add 'scrolled' class when scrolling down
   if (currentScroll > 50) {
     nav.classList.add('scrolled');
   } else {
@@ -20,7 +13,6 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 }, { passive: true });
 
-// Hero parallax effect
 const hero = document.querySelector('.hero-banner');
 if (hero) {
   window.addEventListener('scroll', () => {
@@ -29,7 +21,6 @@ if (hero) {
   }, { passive: true });
 }
 
-// Service card mouse tracking for sheen effect
 const serviceCards = document.querySelectorAll('.service-card');
 
 serviceCards.forEach(card => {
@@ -51,7 +42,6 @@ serviceCards.forEach(card => {
   });
 });
 
-// Smooth reveal on scroll for elements
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -66,7 +56,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe sections for fade-in effect
 document.querySelectorAll('.section').forEach(section => {
   section.style.opacity = '0';
   section.style.transform = 'translateY(30px)';
@@ -74,7 +63,6 @@ document.querySelectorAll('.section').forEach(section => {
   observer.observe(section);
 });
 
-// Add elegant hover effect to brand values
 const brandValues = document.querySelectorAll('.brand-values > div');
 brandValues.forEach((value, index) => {
   value.style.opacity = '0';
@@ -93,7 +81,6 @@ brandValues.forEach((value, index) => {
   valueObserver.observe(value);
 });
 
-// Elegant number counter animation
 const animateCounter = (element, target, suffix = '') => {
   const duration = 2000;
   const start = 0;

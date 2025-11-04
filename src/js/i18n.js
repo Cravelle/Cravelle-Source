@@ -1,8 +1,3 @@
-/**
- * Internationalization (i18n) Module
- * Handles multi-language support with dynamic content loading
- */
-
 const I18N_KEY = 'selectedLanguage';
 const SUPPORTED_LANGS = new Set(['en', 'ar', 'pl', 'tr']);
 const DEFAULT_LANG = 'en';
@@ -14,7 +9,7 @@ class I18nManager {
     this.currentLang = this.getStoredLanguage();
     this.defaultTitle = document.title;
     this.defaultSlogan = this.getDefaultSlogan();
-    this.isLoading = false; // Prevent concurrent language changes
+    this.isLoading = false;
   }
 
   getStoredLanguage() {
@@ -47,7 +42,7 @@ class I18nManager {
             'Expires': '0',
             'Accept': 'application/json'
           },
-          signal: AbortSignal.timeout(5000) // 5 second timeout
+          signal: AbortSignal.timeout(5000)
         });
 
         if (response.ok) {
@@ -77,12 +72,10 @@ class I18nManager {
       `/lang/${lang}.json?v=${timestamp}`
     ];
 
-    // Add relative path for service pages
     if (window.location.pathname.includes('/services/')) {
       paths.unshift(`../lang/${lang}.json?v=${timestamp}`);
     }
 
-    // Add absolute URL
     paths.push(new URL(`lang/${lang}.json`, location.href).href + `?v=${timestamp}`);
 
     return paths;
@@ -91,11 +84,9 @@ class I18nManager {
   updatePage() {
     const isEnglish = this.currentLang === DEFAULT_LANG;
 
-    // Update all elements with data-key attribute
     document.querySelectorAll('[data-key]').forEach(el => {
       const key = el.getAttribute('data-key');
       
-      // Store base text on first run
       if (!(key in this.baseTexts)) {
         this.baseTexts[key] = el.textContent;
       }
@@ -113,23 +104,19 @@ class I18nManager {
       }
     });
 
-    // Update document title
     if (isEnglish) {
       document.title = this.defaultTitle;
     } else if (this.translations.title) {
       document.title = this.translations.title;
     }
 
-    // Update motto/slogan
     const mottoEl = document.getElementById('motto');
     if (mottoEl) {
       mottoEl.textContent = isEnglish ? this.defaultSlogan : (this.translations.slogan || this.defaultSlogan);
     }
 
-    // Update document direction for RTL languages
     this.updateDirection();
     
-    // Update language tag
     document.documentElement.setAttribute('lang', this.currentLang);
   }
 
@@ -148,13 +135,11 @@ class I18nManager {
       return;
     }
 
-    // Prevent concurrent language changes
     if (this.isLoading) {
       console.log('Language change already in progress, skipping...');
       return;
     }
 
-    // Don't reload if already on this language
     if (this.currentLang === lang) {
       console.log('Already on language:', lang);
       this.closeLanguageMenu();
@@ -168,13 +153,10 @@ class I18nManager {
     try {
       await this.loadTranslations(lang);
       
-      // Update language toggle button
       this.updateLanguageToggle(lang);
       
-      // Close language menu
       this.closeLanguageMenu();
 
-      // Dispatch language change event
       window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
     } catch (error) {
       console.error('Error changing language:', error);
@@ -238,12 +220,9 @@ class I18nManager {
   }
 }
 
-// Export singleton instance
 export const i18nManager = new I18nManager();
 
-// Expose global functions for inline handlers (if needed)
 window.changeLanguage = (lang) => {
-  // Debounce rapid clicks
   if (window._langChangeTimeout) {
     clearTimeout(window._langChangeTimeout);
   }
@@ -263,7 +242,6 @@ window.toggleLanguageMenu = () => {
   menu.setAttribute('aria-hidden', String(isOpen));
 };
 
-// Close language menu when clicking outside
 document.addEventListener('click', (e) => {
   const menu = document.getElementById('language-menu');
   const languageGroup = document.getElementById('languageGroup');

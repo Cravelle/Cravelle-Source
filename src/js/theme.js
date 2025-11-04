@@ -1,8 +1,3 @@
-/**
- * Theme Management Module
- * Handles dark/light theme switching with system preference detection
- */
-
 const THEME_KEY = 'site-theme';
 const THEME_ATTR = 'data-theme';
 
@@ -78,7 +73,6 @@ class ThemeManager {
   }
 
   setupListeners() {
-    // Watch for system theme changes if on auto mode
     this.mediaQuery.addEventListener('change', () => {
       if (this.currentTheme === 'auto') {
         this.applyTheme('auto');
@@ -91,8 +85,6 @@ class ThemeManager {
   }
 }
 
-// Export singleton instance
 export const themeManager = new ThemeManager();
 
-// Expose global function for inline handlers (if needed)
 window.cycleTheme = () => themeManager.cycleTheme();

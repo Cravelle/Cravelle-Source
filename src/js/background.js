@@ -1,8 +1,3 @@
-/**
- * Background Canvas Animation Module
- * Handles animated background particles for both light and dark themes
- */
-
 class BackgroundAnimation {
   constructor() {
     this.canvas = document.getElementById('background-canvas');
@@ -76,7 +71,6 @@ class BackgroundAnimation {
       const isDark = this.isDarkMode();
 
       if (isDark) {
-        // Dark mode: twinkling stars
         for (const p of this.particles) {
           p.phase += p.twinkle || 0.01;
           const a = Math.max(0.04, Math.min(1, p.a + Math.sin(p.phase) * 0.4));
@@ -87,7 +81,6 @@ class BackgroundAnimation {
           this.ctx.fill();
         }
       } else {
-        // Light mode: falling particles
         for (const p of this.particles) {
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -111,7 +104,6 @@ class BackgroundAnimation {
   isDarkMode() { return true; }
 
   applyCanvasMode() {
-    // Fixed dark animation matching site palette
     this.createParticlesForDark();
     this.startCanvas();
   }
@@ -123,11 +115,5 @@ class BackgroundAnimation {
   }
 }
 
-// Disabled - animation removed
-// if (document.readyState === 'loading') {
-//   document.addEventListener('DOMContentLoaded', () => new BackgroundAnimation());
-// } else {
-//   new BackgroundAnimation();
-// }
 
 export { BackgroundAnimation };

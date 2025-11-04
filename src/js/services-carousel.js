@@ -1,8 +1,3 @@
-/**
- * Services Carousel Module
- * Handles the horizontal scrolling services section with arrows and dots
- */
-
 class ServicesCarousel {
   constructor() {
     this.grid = document.getElementById('servicesGrid');
@@ -192,9 +187,7 @@ class ServicesCarousel {
   }
 }
 
-// Helper function to equalize card heights
 function equalizeServiceCards() {
-  // Only equalize when the horizontal services strip is present
   const hasStrip = !!document.querySelector('.services-strip');
   if (!hasStrip) return;
 
@@ -214,7 +207,6 @@ function equalizeServiceCards() {
   });
 }
 
-// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new ServicesCarousel();

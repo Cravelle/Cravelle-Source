@@ -66,18 +66,6 @@ class FormHandler {
   }
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new FormHandler());
-} else {
-  new FormHandler();
-}
-
-// Expose global function for inline handlers (if needed)
-window.handleContactSubmit = (e) => {
-  e.preventDefault();
-}
-
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new FormHandler());
 } else {
@@ -86,8 +74,17 @@ if (document.readyState === 'loading') {
 
 window.handleContactSubmit = (e) => {
   e.preventDefault();
-  const handler = new FormHandler();
-  handler.handleSubmit(e);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => new FormHandler());
+} else {
+  new FormHandler();
+}
+
+window.handleContactSubmit = (e) => {
+  e.preventDefault();
+  new FormHandler().handleSubmit(e);
 };
 
 export { FormHandler };
