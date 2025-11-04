@@ -7,9 +7,5 @@
   to = "/index.html"
   status = 200
 
-# Copy images directory to dist for proper paths
-[[plugins]]
-  package = "@netlify/plugin-build-directory"
-
 [build.environment]
   NODE_VERSION = "18"
