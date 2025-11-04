@@ -41,6 +41,14 @@ class GlobeManager {
       const Globe = (await import('globe.gl')).default;
       this.globe = Globe({ animateIn: true })(this.el);
 
+      // Ensure initial sizing in case CSS/layout settles after load (mobile)
+      this.requestResize();
+      window.addEventListener('resize', () => this.requestResize(), { passive: true });
+      window.addEventListener('orientationchange', () => {
+        // give layout a tick to settle on rotation
+        setTimeout(() => this.requestResize(), 120);
+      });
+
       const textureUrl = await this.resolveGlobeTexture([
         'https://unpkg.com/three-globe/example/img/earth-dark.jpg'
       ]);
@@ -603,6 +611,15 @@ class GlobeManager {
       );
     } catch (e) {
       return false;
+    }
+  }
+
+  requestResize() {
+    if (!this.el || !this.globe) return;
+    const w = this.el.clientWidth || this.el.offsetWidth || 0;
+    const h = this.el.clientHeight || this.el.offsetHeight || 0;
+    if (w > 0 && h > 0 && typeof this.globe.width === 'function' && typeof this.globe.height === 'function') {
+      this.globe.width(w).height(h);
     }
   }
 }

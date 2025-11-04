@@ -19,6 +19,15 @@
   inset: 0;
 }
 
+/* Ensure the WebGL canvas always fills the container */
+#map canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
 /* Left overlay: boarding pass + selector */
 .map-side {
   position: absolute;
@@ -229,6 +238,8 @@
     height: 400px;
     order: 2;
   }
+  /* Re-assert canvas sizing when #map becomes relative on mobile */
+  #map canvas { position: absolute; inset: 0; width:100% !important; height:100% !important; }
   
   .map-side {
     order: 1;
@@ -243,6 +254,7 @@
   #map {
     height: 350px;
   }
+  #map canvas { width:100% !important; height:100% !important; }
   
   .bp-card {
     border-radius: 12px;
@@ -310,6 +322,7 @@
   #map {
     height: 320px;
   }
+  #map canvas { width:100% !important; height:100% !important; }
   
   .bp-route-wrap {
     flex-direction: column;
@@ -345,6 +358,7 @@
   #map {
     height: 280px;
   }
+  #map canvas { width:100% !important; height:100% !important; }
   
   .bp-card {
     border-radius: 10px;
@@ -411,6 +425,7 @@
   #map {
     height: 250px;
   }
+  #map canvas { width:100% !important; height:100% !important; }
   
   .city-selector {
     grid-template-columns: 1fr;
