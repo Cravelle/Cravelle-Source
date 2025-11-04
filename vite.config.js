@@ -1,14 +1,17 @@
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { resolve } from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   root: '.',
   base: '/',
+  publicDir: 'public',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
+    copyPublicDir: true,
     sourcemap: false,
     minify: 'terser',
     terserOptions: {
@@ -52,6 +55,18 @@ export default defineConfig({
   plugins: [
     createHtmlPlugin({
       minify: true
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'images/**/*',
+          dest: 'images'
+        },
+        {
+          src: 'lang/**/*',
+          dest: 'lang'
+        }
+      ]
     })
   ]
 });
