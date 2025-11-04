@@ -103,7 +103,46 @@
     "digitalDesc": "حضور على الويب وعلامات تجارية وحلول مواقع شخصية.",
     "voiceDesc": "خدمات التعليق الصوتي متعدد اللغات وإنتاج الصوت.",
     "connectDesc": "تمثيل B2B وتطوير الشراكات الاستراتيجية.",
-    "partnersTrusted": "موثوق من قبل المنظمات الرائدة"
-}
+    "partnersTrusted": "موثوق من قبل المنظمات الرائدة",
+    "whatWeOffer": "ماذا نقدم",
+    "offerSubtitle": "برامج شاملة مصممة لاحتياجاتك",
+    "getStarted": "ابدأ الآن",
+    "ctaTitle": "هل أنت مستعد للبدء؟",
+    "ctaText": "تواصل معنا اليوم لمعرفة المزيد عن خدماتنا",
 
+    "documentTranslation": "ترجمة الوثائق",
+    "interpretation": "الترجمة الفورية",
+    "personalAssistant": "مساعد شخصي",
+
+    "importExport": "استيراد/تصدير",
+    "tradePartnerships": "شراكات تجارية",
+    "tradeConsulting": "استشارات تجارية",
+
+    "webDevelopment": "تطوير مواقع الويب",
+    "branding": "العلامة التجارية",
+    "personalWebsites": "مواقع شخصية",
+
+    "b2bRepresentation": "تمثيل بين الشركات (B2B)",
+    "strategicPartnerships": "شراكات استراتيجية",
+    "networkDevelopment": "تطوير الشبكات",
+
+    "confidentialServices": "خدمات سرية",
+    "personalizedCare": "رعاية مخصصة",
+    "vipSupport": "دعم كبار الشخصيات",
+
+    "voiceOver": "تعليق صوتي",
+    "audioProduction": "إنتاج صوتي",
+    "podcastProduction": "إنتاج البودكاست",
+
+    "universityPlacement": "القبول الجامعي",
+    "applicationSupport": "دعم الطلبات",
+    "visaAssistance": "مساعدة التأشيرات",
+
+    "diplomacyServicesTitle": "خدماتنا الدبلوماسية",
+    "mediation": "الوساطة",
+    "mediationDesc": "وساطة احترافية لحل النزاعات مع التركيز على الدبلوماسية والمنفعة المتبادلة.",
+    "consulting": "الاستشارات الدبلوماسية",
+    "consultingDesc": "نصائح استراتيجية للحكومات والمنظمات حول العلاقات الدولية.",
+    "globalStrategy": "الاستراتيجية العالمية",
+    "globalStrategyDesc": "استراتيجيات مخصصة لتعزيز الحضور والتأثير الدبلوماسي حول العالم."
 }

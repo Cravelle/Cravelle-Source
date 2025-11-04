@@ -104,4 +104,46 @@
   "voiceDesc": "Çok dilli seslendirme ve ses prodüksiyonu hizmetleri.",
   "connectDesc": "B2B temsil ve stratejik ortaklık geliştirme.",
   "partnersTrusted": "Önde gelen kuruluşlar tarafından güveniliyor"
+,
+  "whatWeOffer": "Neler Sunuyoruz",
+  "offerSubtitle": "İhtiyaçlarınıza göre özelleştirilmiş kapsamlı hizmetler",
+  "getStarted": "Hemen Başla",
+  "ctaTitle": "Hazır mısınız?",
+  "ctaText": "Hizmetlerimiz hakkında daha fazla bilgi için bizimle iletişime geçin",
+
+  "documentTranslation": "Belge Çevirisi",
+  "interpretation": "Sözlü Çeviri",
+  "personalAssistant": "Kişisel Asistan",
+
+  "importExport": "İthalat/İhracat",
+  "tradePartnerships": "Ticari Ortaklıklar",
+  "tradeConsulting": "Ticaret Danışmanlığı",
+
+  "webDevelopment": "Web Geliştirme",
+  "branding": "Markalaşma",
+  "personalWebsites": "Kişisel Web Siteleri",
+
+  "b2bRepresentation": "B2B Temsil",
+  "strategicPartnerships": "Stratejik Ortaklıklar",
+  "networkDevelopment": "Ağ Geliştirme",
+
+  "confidentialServices": "Gizli Hizmetler",
+  "personalizedCare": "Kişiselleştirilmiş İlgi",
+  "vipSupport": "VIP Destek",
+
+  "voiceOver": "Seslendirme",
+  "audioProduction": "Ses Prodüksiyonu",
+  "podcastProduction": "Podcast Prodüksiyonu",
+
+  "universityPlacement": "Üniversite Yerleştirme",
+  "applicationSupport": "Başvuru Desteği",
+  "visaAssistance": "Vize Desteği",
+
+  "diplomacyServicesTitle": "Diplomatik Hizmetlerimiz",
+  "mediation": "Arabuluculuk",
+  "mediationDesc": "Diplomasi ve karşılıklı faydayı önceleyen profesyonel arabuluculuk.",
+  "consulting": "Diplomatik Danışmanlık",
+  "consultingDesc": "Hükümetler ve kuruluşlar için uluslararası ilişkilerde stratejik danışmanlık.",
+  "globalStrategy": "Küresel Strateji",
+  "globalStrategyDesc": "Dünya genelinde diplomatik varlığı ve etkiyi güçlendiren, özel olarak uyarlanmış stratejiler."
 }

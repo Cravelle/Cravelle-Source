@@ -1,0 +1,2 @@
+Placeholder for news2.jpg
+Upload the image used in the homepage News section with this exact filename.

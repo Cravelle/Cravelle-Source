@@ -55,11 +55,29 @@ footer .legal {
   align-items: center;
   justify-content: flex-start;
   gap: 72px;
-  animation: scroll-logos 20s linear infinite;
+  animation: scroll-logos 360s linear infinite;
   will-change: transform;
 }
 
+/* Slow down scroll further on mobile for readability */
+@media (max-width: 768px) {
+  .collab-logos {
+    animation-duration: 1200s;
+  }
+}
+
+@media (max-width: 480px) {
+  .collab-logos {
+    animation-duration: 1800s;
+  }
+}
+
 .collab-logos:hover {
+  animation-play-state: paused;
+}
+
+/* Touch pause on mobile while finger is down */
+.collab-logos:active {
   animation-play-state: paused;
 }
 
@@ -81,12 +99,8 @@ footer .legal {
 }
 
 @keyframes scroll-logos {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 /* Brand Values */
@@ -125,6 +139,47 @@ footer .legal {
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .brand-values {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .brand-values > div {
+    padding: var(--spacing-6) var(--spacing-3);
+  }
+  
+  .brand-values i {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-3);
+  }
+  
+  .brand-values h3 {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+  
+  .brand-values p {
+    font-size: 14px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-values > div {
+    padding: var(--spacing-5) var(--spacing-2);
+  }
+  
+  .brand-values i {
+    font-size: var(--text-2xl);
+  }
+  
+  .brand-values p {
+    font-size: 13px;
+    max-width: 95%;
+  }
 }
 
 /* Testimonials */
@@ -167,6 +222,27 @@ footer .legal {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-10);
   margin-top: var(--spacing-12);
+}
+
+@media (max-width: 980px) {
+  .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-8);
+  }
+}
+
+@media (max-width: 480px) {
+  .news-grid {
+    gap: var(--spacing-5);
+  }
 }
 
 .news-card {
@@ -288,6 +364,49 @@ footer .legal {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  
+  .stat-card {
+    padding: var(--spacing-8) var(--spacing-3);
+  }
+  
+  .stat-icon {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .stat-value {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .stat-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: var(--spacing-6) var(--spacing-2);
+  }
+  
+  .stat-value {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+  
+  .stat-label {
+    font-size: 12px;
+    margin-top: var(--spacing-2);
+  }
+}
+
 /* Contact Card */
 #contact .contact-card {
   max-width: 640px;
@@ -369,11 +488,83 @@ form.contact-form {
   transition: 
     transform var(--transition-base) var(--ease-spring),
     box-shadow var(--transition-base) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .cta--send:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-xl);
+}
+
+@media (max-width: 768px) {
+  #contact .contact-card {
+    padding: var(--spacing-8);
+    gap: var(--spacing-5);
+    border-radius: var(--radius-lg);
+  }
+  
+  #contact .contact-card .card-header h3 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  #contact .contact-info p {
+    font-size: 15px;
+  }
+  
+  .contact-actions .cta {
+    min-width: 160px;
+    height: 52px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  #contact .contact-card {
+    padding: var(--spacing-6);
+    gap: var(--spacing-4);
+    margin: var(--spacing-8) auto 0;
+  }
+  
+  #contact .contact-card .card-header {
+    padding-bottom: var(--spacing-3);
+  }
+  
+  #contact .contact-card .card-header h3 {
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+  }
+  
+  #contact .contact-info p {
+    font-size: 14px;
+  }
+  
+  .contact-actions .cta {
+    width: 100%;
+    min-width: auto;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact .contact-card {
+    padding: var(--spacing-5);
+    gap: var(--spacing-3);
+    border-radius: var(--radius-md);
+  }
+  
+  #contact .contact-card .card-header h3 {
+    font-size: clamp(1.25rem, 8vw, 1.6rem);
+  }
+  
+  #contact .contact-info p {
+    font-size: 13px;
+  }
+  
+  .contact-actions .cta {
+    height: 48px;
+    font-size: 14px;
+    padding: var(--spacing-3) var(--spacing-6);
+  }
 }
 
 /* FAQ Items */

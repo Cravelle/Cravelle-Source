@@ -1,5 +1,6 @@
 {
   "title": "Cravelle | Gdzie elegancja spotyka się z celem",
+  "slogan": "Gdzie elegancja spotyka się z celem",
   "mission": "Nasza misja",
   "missionDesc": "Umożliwianie znaczącego wpływu poprzez indywidualne usługi oparte na wyrafinowaniu, zaufaniu i globalnym zasięgu – łącząc ponadczasową elegancję z nowoczesną ambicją.",
   "services": "Nasze usługi",
@@ -101,4 +102,46 @@
   "voiceDesc": "Wielojęzyczne usługi dubbingu i produkcji audio.",
   "connectDesc": "Reprezentacja B2B i rozwij strategicznych partnerstw.",
   "partnersTrusted": "Zaufane przez wiodące organizacje"
+,
+  "whatWeOffer": "Co oferujemy",
+  "offerSubtitle": "Kompleksowe usługi dopasowane do Twoich potrzeb",
+  "getStarted": "Zacznij teraz",
+  "ctaTitle": "Gotowy, aby zacząć?",
+  "ctaText": "Skontaktuj się z nami, aby dowiedzieć się więcej o naszych usługach",
+
+  "documentTranslation": "Tłumaczenie dokumentów",
+  "interpretation": "Tłumaczenie ustne",
+  "personalAssistant": "Asystent osobisty",
+
+  "importExport": "Import/Eksport",
+  "tradePartnerships": "Partnerstwa handlowe",
+  "tradeConsulting": "Doradztwo handlowe",
+
+  "webDevelopment": "Tworzenie stron WWW",
+  "branding": "Branding",
+  "personalWebsites": "Strony osobiste",
+
+  "b2bRepresentation": "Reprezentacja B2B",
+  "strategicPartnerships": "Partnerstwa strategiczne",
+  "networkDevelopment": "Rozwój sieci kontaktów",
+
+  "confidentialServices": "Usługi poufne",
+  "personalizedCare": "Indywidualna opieka",
+  "vipSupport": "Obsługa VIP",
+
+  "voiceOver": "Lektoring / Voice-over",
+  "audioProduction": "Produkcja audio",
+  "podcastProduction": "Produkcja podcastów",
+
+  "universityPlacement": "Rekrutacja na uczelnie",
+  "applicationSupport": "Wsparcie aplikacyjne",
+  "visaAssistance": "Pomoc wizowa",
+
+  "diplomacyServicesTitle": "Nasze usługi dyplomatyczne",
+  "mediation": "Mediacje",
+  "mediationDesc": "Profesjonalne mediacje w celu rozwiązywania sporów z naciskiem na dyplomację i obopólne korzyści.",
+  "consulting": "Doradztwo dyplomatyczne",
+  "consultingDesc": "Strategiczne doradztwo w zakresie stosunków międzynarodowych dla rządów i organizacji.",
+  "globalStrategy": "Strategia globalna",
+  "globalStrategyDesc": "Dopasowane strategie wzmacniające obecność i wpływ dyplomatyczny na świecie."
 }

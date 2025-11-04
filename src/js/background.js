@@ -123,11 +123,11 @@ class BackgroundAnimation {
   }
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new BackgroundAnimation());
-} else {
-  new BackgroundAnimation();
-}
+// Disabled - animation removed
+// if (document.readyState === 'loading') {
+//   document.addEventListener('DOMContentLoaded', () => new BackgroundAnimation());
+// } else {
+//   new BackgroundAnimation();
+// }
 
 export { BackgroundAnimation };

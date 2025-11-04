@@ -28,11 +28,10 @@
 
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-  .service-card .card-content {
+  .service-card .card-content,
+  .motto,
+  [data-aos] {
     animation: none !important;
-  }
-  
-  .motto {
-    animation: none !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -141,6 +141,7 @@
 @media (max-width: 640px) {
   .services-strip {
     overflow: hidden;
+    padding: 20px 0;
   }
   
   .services-grid {
@@ -148,18 +149,40 @@
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-    scroll-padding: 0 28px;
-    gap: 18px;
+    scroll-padding: 0 20px;
+    gap: 16px;
+    padding: 0 20px;
   }
   
   .services-grid .service-card {
-    flex: 0 0 calc(100vw - 56px);
+    flex: 0 0 min(340px, calc(100vw - 40px));
     scroll-snap-align: center;
   }
   
   .svc-arrow,
   .svc-dots {
     display: none !important;
+  }
+
+  /* Reduce motion on small screens for performance/battery */
+  .service-card .card-content {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-strip {
+    padding: 16px 0;
+  }
+  
+  .services-grid {
+    gap: 12px;
+    padding: 0 16px;
+    scroll-padding: 0 16px;
+  }
+  
+  .services-grid .service-card {
+    flex: 0 0 calc(100vw - 32px);
   }
 }
 
@@ -222,11 +245,17 @@
 .services-slider::after {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
+  top: var(--spacing-4);
+  bottom: var(--spacing-4);
+  width: 80px;
   pointer-events: none;
   z-index: 10;
+  transition: all 0.4s var(--ease-out);
+}
+
+.services-slider:hover::before,
+.services-slider:hover::after {
+  width: 80px;
 }
 
 .services-slider::before {
@@ -245,6 +274,7 @@
   will-change: transform;
   transition: transform var(--transition-slow) var(--ease-out);
   height: min(72vh, 720px);
+  touch-action: pan-y; /* allow vertical scroll while enabling horizontal swipe */
 }
 
 .services-slider .service-slide {
@@ -261,10 +291,10 @@
 /* Slider controls - Integrated gradient zones */
 .svc2-arrow {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 15%;
-  max-width: 200px;
+  top: var(--spacing-4);
+  bottom: var(--spacing-4);
+  width: 10%;
+  max-width: 120px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -340,13 +370,71 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* Mobile slide counter (removed) */
+
 @media (max-width: 768px) {
-  .services-slider .services-track { height: 60vh; }
-  .services-slider .service-card { padding: var(--spacing-12) var(--spacing-6); }
-  .svc2-arrow { display: none; }
-  .svc2-dots { bottom: var(--spacing-4); }
+  .services-slider .services-track { 
+    height: min(70vh, 600px); 
+  }
+  
+  .services-slider .service-card { 
+    padding: var(--spacing-10) var(--spacing-4); 
+  }
+  
+  .svc2-arrow { 
+    display: none; 
+  }
+  
+  /* Hide dot indicators on mobile to avoid UI clutter/bugs */
+  .svc2-dots { 
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-slider .services-track { 
+    height: min(65vh, 550px); 
+  }
+  
+  .services-slider .service-card { 
+    padding: var(--spacing-8) var(--spacing-3); 
+  }
+  
+  .svc2-dots { 
+    bottom: var(--spacing-3);
+    gap: 5px;
+  }
+  
+  .svc2-dot {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .svc2-dot.active {
+    width: 22px;
+  }
 }
 
 @media (max-width: 480px) {
-  .services-slider .services-track { height: 56vh; }
+  .services-slider .services-track { 
+    height: min(60vh, 500px); 
+  }
+  
+  .services-slider .service-card { 
+    padding: var(--spacing-6) var(--spacing-2); 
+  }
+  
+  .svc2-dots { 
+    bottom: var(--spacing-2); 
+    gap: 5px;
+  }
+  
+  .svc2-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .svc2-dot.active {
+    width: 20px;
+  }
 }

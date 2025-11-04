@@ -14,6 +14,7 @@ class I18nManager {
     this.currentLang = this.getStoredLanguage();
     this.defaultTitle = document.title;
     this.defaultSlogan = this.getDefaultSlogan();
+    this.isLoading = false; // Prevent concurrent language changes
   }
 
   getStoredLanguage() {
@@ -45,7 +46,8 @@ class I18nManager {
             'Pragma': 'no-cache',
             'Expires': '0',
             'Accept': 'application/json'
-          }
+          },
+          signal: AbortSignal.timeout(5000) // 5 second timeout
         });
 
         if (response.ok) {
@@ -55,7 +57,12 @@ class I18nManager {
           return;
         }
       } catch (err) {
-        console.warn('Failed to load from', path, err);
+        if (err.name === 'TimeoutError') {
+          console.warn('Timeout loading from', path);
+        } else {
+          console.warn('Failed to load from', path, err);
+        }
+        continue;
       }
     }
 
@@ -141,19 +148,52 @@ class I18nManager {
       return;
     }
 
+    // Prevent concurrent language changes
+    if (this.isLoading) {
+      console.log('Language change already in progress, skipping...');
+      return;
+    }
+
+    // Don't reload if already on this language
+    if (this.currentLang === lang) {
+      console.log('Already on language:', lang);
+      this.closeLanguageMenu();
+      return;
+    }
+
+    this.isLoading = true;
     this.currentLang = lang;
     localStorage.setItem(I18N_KEY, lang);
-    await this.loadTranslations(lang);
     
-    // Update language toggle button
-    this.updateLanguageToggle(lang);
-    
-    // Close language menu
-    const menu = document.getElementById('language-menu');
-    if (menu) menu.style.display = 'none';
+    try {
+      await this.loadTranslations(lang);
+      
+      // Update language toggle button
+      this.updateLanguageToggle(lang);
+      
+      // Close language menu
+      this.closeLanguageMenu();
 
-    // Dispatch language change event
-    window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
+      // Dispatch language change event
+      window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
+    } catch (error) {
+      console.error('Error changing language:', error);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  closeLanguageMenu() {
+    const menu = document.getElementById('language-menu');
+    if (menu) {
+      menu.classList.remove('is-open');
+      menu.setAttribute('aria-hidden', 'true');
+    }
+    
+    const toggle = document.getElementById('language-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
   }
 
   updateLanguageToggle(lang) {
@@ -196,13 +236,38 @@ class I18nManager {
 export const i18nManager = new I18nManager();
 
 // Expose global functions for inline handlers (if needed)
-window.changeLanguage = (lang) => i18nManager.changeLanguage(lang);
+window.changeLanguage = (lang) => {
+  // Debounce rapid clicks
+  if (window._langChangeTimeout) {
+    clearTimeout(window._langChangeTimeout);
+  }
+  window._langChangeTimeout = setTimeout(() => {
+    i18nManager.changeLanguage(lang);
+  }, 100);
+};
+
 window.toggleLanguageMenu = () => {
   const menu = document.getElementById('language-menu');
   const toggle = document.getElementById('language-toggle');
   if (!menu || !toggle) return;
 
-  const isOpen = menu.style.display === 'block';
-  menu.style.display = isOpen ? 'none' : 'block';
+  const isOpen = menu.classList.contains('is-open');
+  menu.classList.toggle('is-open');
   toggle.setAttribute('aria-expanded', String(!isOpen));
+  menu.setAttribute('aria-hidden', String(isOpen));
 };
+
+// Close language menu when clicking outside
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('language-menu');
+  const languageGroup = document.getElementById('languageGroup');
+  
+  if (menu && languageGroup && !languageGroup.contains(e.target)) {
+    menu.classList.remove('is-open');
+    const toggle = document.getElementById('language-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+    }
+  }
+}, { passive: true });

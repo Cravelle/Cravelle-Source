@@ -6,15 +6,31 @@
   <meta name="description" content="Cravelle Academy offers elite language learning and personal development programs designed for excellence.">
   <title>Cravelle Academy | Elite Education</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="/images/assets/logos/logo.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/images/assets/logos/logo.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
-      --gold: #D4AF37;
-      --black: #000000;
-      --ivory: #F5F5F5;
-      --gray: #2B2B2B;
+      --charcoal: #0A0A0A;
+      --graphite: #1A1A1A;
+      --slate: #2A2A2A;
+      --stone: #4A4A4A;
+      --silver: #8A8A8A;
+      --platinum: #CFCFCF;
+      --pearl: #F5F5F7;
+      --ivory: #FAFAFA;
+      --accent: #283540;
+      --accent-hover: #3a4b5a;
+      --border: rgba(10, 10, 10, 0.08);
+      --nav-bg: rgba(250, 250, 250, 0.95);
+      --nav-text: var(--charcoal);
+      --text: var(--charcoal);
+      --text-secondary: var(--silver);
     }
 
     * {
@@ -24,694 +40,725 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--ivory);
-      background: url('../images/academy/backgrounds/library.jpg') no-repeat center center/cover;
-      position: relative;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--ivory);
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-
-    body[dir="rtl"] {
-      direction: rtl;
-      text-align: right;
-    }
-
+    /* Navigation */
     nav {
-      background-color: var(--black);
-      color: var(--gold);
+      background-color: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      color: var(--nav-text);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      padding: 20px 5%;
+      box-shadow: 0 1px 3px rgba(10, 10, 10, 0.05);
       position: sticky;
       top: 0;
       z-index: 999;
     }
 
-    nav[dir="rtl"] {
-      flex-direction: row-reverse;
-    }
-
-    nav a {
-      color: var(--gold);
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 500;
-      font-size: 16px;
-    }
-
-    nav[dir="rtl"] a {
-      margin-left: 0;
-      margin-right: 30px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .navbar-logo, .nav-logo {
-      height: 60px;
+    .nav-logo {
+      height: 50px;
       transition: transform 0.3s ease;
     }
 
-    .navbar-logo:hover, .nav-logo:hover {
+    .nav-logo:hover {
       transform: scale(1.05);
-    }
-
-    .hamburger {
-      background: none;
-      border: none;
-      font-size: 28px;
-      color: var(--gold);
-      cursor: pointer;
-      display: none;
     }
 
     .nav-links {
       display: flex;
-    }
-
-    .nav-links[dir="rtl"] {
-      flex-direction: row-reverse;
-    }
-
-    .language-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .language-toggle {
-      background: var(--black);
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 5px 30px 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 500;
-      display: flex;
+      gap: 32px;
       align-items: center;
     }
 
-    .language-toggle[dir="rtl"] {
-      padding: 5px 10px 5px 30px;
-    }
-
-    .language-toggle img {
-      width: 20px;
-      height: 15px;
-      margin-right: 5px;
-    }
-
-    .language-toggle[dir="rtl"] img {
-      margin-right: 0;
-      margin-left: 5px;
-    }
-
-    .language-menu {
-      display: none;
-      position: absolute;
-      background: var(--black);
-      border: 1px solid var(--gold);
-      border-radius: 5px;
-      min-width: 150px;
-      max-width: 92vw;
-      max-height: calc(100vh - 80px);
-      overflow: auto;
-      z-index: 1000;
-      top: 100%;
-      left: 0;
-      margin-top: 2px;
-    }
-
-    .language-menu[dir="rtl"] {
-      left: auto;
-      right: 0;
-    }
-
-    .language-menu.active {
-      display: block;
-    }
-
-    .language-menu button {
-      background: none;
-      color: var(--gold);
-      border: none;
-      width: 100%;
-      padding: 8px 15px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-
-    .language-menu button[dir="rtl"] {
-      text-align: right;
-    }
-
-    .language-menu button:hover {
-      background: var(--gray);
-    }
-
-    .language-menu button img {
-      width: 20px;
-      height: 15px;
-      margin-right: 8px;
-    }
-
-    .language-menu button[dir="rtl"] img {
-      margin-right: 0;
-      margin-left: 8px;
-    }
-
-    .breadcrumb {
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    .breadcrumb[dir="rtl"] {
-      text-align: right;
-    }
-
-    .breadcrumb a {
-      color: var(--gold);
+    .nav-links a {
+      color: var(--nav-text);
       text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.25s ease;
     }
 
-    .breadcrumb a:hover {
-      text-decoration: underline;
+    .nav-links a:hover {
+      color: var(--accent);
     }
 
-    .breadcrumb span {
-      color: var(--ivory);
+    /* Language Dropdown (minimal styles) */
+    .language-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .language-toggle { display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.7); color: var(--nav-text); cursor: pointer; font-weight: 600; }
+    .language-toggle__flag { width: 20px; height: 14px; display: block; }
+    .language-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px; z-index: 1000; }
+    .lang-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; opacity: 0.9; }
+    .lang-list { display: flex; flex-direction: column; gap: 6px; }
+    .lang-list__button { display: flex; gap: 8px; align-items: center; background: transparent; border: none; padding: 6px 8px; cursor: pointer; color: var(--nav-text); border-radius: 8px; font-weight: 600; }
+    .lang-list__button:hover { background: rgba(159,163,166,0.12); }
+    [dir="rtl"] .language-menu { right: 0; left: auto; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--nav-text);
+      cursor: pointer;
     }
 
-    .service-content {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .service-content[dir="rtl"] {
-      text-align: right;
-    }
-
-    .service-content h1 {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .service-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
-    .service-details {
+    /* Hero Section */
+    .hero {
+      min-height: 65vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .service-details[dir="rtl"] {
-      flex-direction: row-reverse;
-    }
-
-    .service-details div {
-      flex: 1 1 300px;
-      background: var(--gray);
-      padding: 20px;
-      border: 1px solid var(--gold);
-      border-radius: 8px;
-    }
-
-    .service-details div[dir="rtl"] {
-      text-align: right;
-    }
-
-    .service-details h3 {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .service-details h3[dir="rtl"] {
-      text-align: right;
-    }
-
-    .gallery-section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 100%), url('../images/academy/backgrounds/academy-bg.jpg') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 5%;
       text-align: center;
     }
 
-    .gallery-section[dir="rtl"] {
-      text-align: right;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(40, 53, 64, 0.03) 0%, transparent 50%);
+      pointer-events: none;
     }
 
-    .gallery-section h2 {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 32px;
-      margin-bottom: 30px;
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
     }
 
-    .gallery {
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(40, 53, 64, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(40, 53, 64, 0.25);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--accent);
+      padding: 16px 40px;
+      border: 2px solid white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 100px 5%;
+      background: white;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 0 20px;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .gallery[dir="rtl"] {
-      justify-content: flex-end;
+    .feature-card {
+      background: var(--pearl);
+      padding: 40px 32px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
     }
 
-    .gallery img {
-      max-width: 100%;
-      height: auto;
-      border: 2px solid var(--gold);
-      border-radius: 10px;
-      transition: transform 0.3s ease;
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(10, 10, 10, 0.12);
+      border-color: var(--accent);
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
     }
 
-    .hidden {
-      display: none;
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
 
-    .see-more-btn {
-      background: var(--black);
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 500;
-      margin-top: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 100px 5%;
+      background: var(--pearl);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      aspect-ratio: 4/3;
+      box-shadow: 0 4px 12px rgba(10, 10, 10, 0.08);
       transition: all 0.3s ease;
     }
 
-    .see-more-btn:hover {
-      background: var(--gold);
-      color: var(--black);
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(10, 10, 10, 0.15);
     }
 
-    [dir="rtl"] nav,
-    [dir="rtl"] .nav-links,
-    [dir="rtl"] .language-dropdown,
-    [dir="rtl"] .language-menu,
-    [dir="rtl"] .tabs-buttons,
-    [dir="rtl"] .gallery,
-    [dir="rtl"] .service-details,
-    [dir="rtl"] .breadcrumb,
-    [dir="rtl"] .floating-buttons {
-      direction: ltr;
-    }
-    [dir="rtl"] .language-menu { right: 0; left: auto; }
-  [dir="rtl"] nav{ flex-direction: row; }
-  [dir="rtl"] .nav-links.show{ flex-direction: column; }
-  [dir="rtl"] .tabs-buttons{ flex-direction: row; }
-  [dir="rtl"] .service-details{ flex-direction: row; }
-  [dir="rtl"] .gallery{ justify-content: center; }
-
-    .contact-section {
-      padding: 40px 20px;
-      background: var(--gray);
-      text-align: center;
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
     }
 
-    .contact-section[dir="rtl"] {
-      text-align: right;
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
 
-    .contact-section a {
-      color: var(--gold);
-      font-weight: 500;
+    .gallery-item-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 70%, transparent 100%);
+      color: white;
+      padding: 24px 20px 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      opacity: 0;
     }
 
-    .floating-buttons {
+    .gallery-item:hover .gallery-item-caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .gallery-item-caption p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .gallery-item-caption a {
+      color: rgba(255,255,255,0.95);
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .gallery-item-caption a:hover {
+      color: #ffffff;
+    }
+
+    /* Lightbox styles (copied from Trade) */
+    .lightbox {
+      display: none;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      cursor: zoom-out;
+    }
+    .lightbox.active {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    .lightbox-close:hover {
+      background: rgba(0, 0, 0, 0.8);
     }
 
-    .floating-buttons[dir="rtl"] {
-      right: auto;
-      left: 20px;
-      flex-direction: column-reverse;
-    }
-
-    .floating-buttons a {
-      background-color: var(--gold);
-      color: var(--black);
-      padding: 10px 14px;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      text-decoration: none;
-    }
-
-    footer {
-      background-color: var(--black);
-      color: var(--ivory);
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 5%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
       text-align: center;
-      padding: 40px 20px;
+      color: white;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-item:hover {
+      opacity: 0.8;
+    }
+
+    .contact-item i {
+      font-size: 24px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--charcoal);
+      color: var(--platinum);
+      text-align: center;
+      padding: 40px 5%;
       font-size: 14px;
     }
 
-    footer[dir="rtl"] {
-      text-align: right;
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
-        position: absolute;
-        right: 30px;
-        top: 20px;
-        z-index: 1001;
-      }
-
-      .hamburger[dir="rtl"] {
-        right: auto;
-        left: 30px;
       }
 
       .nav-links {
         display: none;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--black);
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
-        width: 100%;
-        padding: 20px 0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(10, 10, 10, 0.1);
       }
 
       .nav-links.show {
         display: flex;
       }
 
-      .nav-links[dir="rtl"].show {
-        flex-direction: column-reverse;
-      }
-
-      .nav-links a {
-        margin: 15px 0;
-        font-size: 18px;
-      }
-
-      .service-content {
-        padding: 40px 15px;
-      }
-
-      .service-details {
-        flex-direction: column;
-      }
-
-      .gallery {
+      .features-grid {
         grid-template-columns: 1fr;
-        padding: 0 10px;
       }
 
-      .gallery img {
-        max-width: 100%;
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 20px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
   <nav>
-    <a href="../index.html"><img src="../images/logo.svg" alt="Cravelle Logo" class="nav-logo"></a>
-    <div class="language-dropdown">
-      <button class="language-toggle" onclick="toggleLanguageMenu()" id="language-toggle">
-        <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" id="current-flag"> English
-      </button>
-      <div class="language-menu" id="language-menu">
-        <button onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt="UK Flag"> English</button>
-        <button onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag"> العربية</button>
-        <button onclick="changeLanguage('de')"><img src="https://flagcdn.com/w20/de.png" alt="Germany Flag"> Deutsch</button>
-        <button onclick="changeLanguage('ru')"><img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag"> Русский</button>
-        <button onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt="Poland Flag"> Polski</button>
-        <button onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag"> Türkçe</button>
-        <button onclick="changeLanguage('es')"><img src="https://flagcdn.com/w20/es.png" alt="Spain Flag"> Español</button>
+    <a href="../index.html">
+      <img src="../images/assets/logos/logo.svg" alt="Cravelle Logo" class="nav-logo">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#home" data-key="homeNav">Home</a>
+      <a href="../index.html#services" data-key="servicesNav">Services</a>
+      <a href="../index.html#values" data-key="valuesNav">Values</a>
+      <a href="../index.html#contact" data-key="contactNav">Contact</a>
+      <div class="language-dropdown" id="languageGroup" style="margin-left:12px;">
+        <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu()">
+          <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" class="language-toggle__flag" id="current-flag"> English
+        </button>
+        <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
+          <div class="lang-block">
+            <div class="lang-title">Languages</div>
+            <div class="lang-list">
+              <button class="lang-list__button" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
+              <button class="lang-list__button" onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
+              <button class="lang-list__button" onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
+              <button class="lang-list__button" onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="../index.html#home" data-key="homeNav">Home</a>
-      <a href="../index.html#partners" data-key="partnersNav">Partners</a>
-      <a href="../index.html#mission" data-key="missionNav">Mission</a>
-      <a href="../index.html#services" data-key="servicesNav">Services</a>
-      <a href="../index.html#values" data-key="valuesNav">Values</a>
-      <a href="../index.html#founder" data-key="founderNav">Founder</a>
-      <a href="../index.html#testimonials" data-key="testimonialsNav">Testimonials</a>
-      <a href="../index.html#gallery" data-key="galleryNav">Gallery</a>
-      <a href="../index.html#faqs" data-key="faqsNav">FAQs</a>
-      <a href="../index.html#contact" data-key="contactNav">Contact</a>
-    </div>
   </nav>
 
-  <div class="breadcrumb">
-    <a href="../index.html" data-key="homeNav">Home</a> > <a href="../index.html#services" data-key="servicesNav">Services</a> > <span data-key="academy">Cravelle Academy</span>
-  </div>
-
-  <section class="service-content" data-aos="fade-up">
-    <h1 data-key="academy">Cravelle Academy</h1>
-    <p data-key="academyDesc">Cravelle Academy offers elite language learning and personal development programs designed for individuals and professionals seeking excellence. Our programs combine linguistic mastery with personal growth to empower our clients.</p>
-    <div class="service-details">
-      <div>
-        <h3 data-key="academyFeature1">Language Learning</h3>
-        <p data-key="academyFeature1Desc">Master multiple languages with tailored courses delivered by expert instructors, focusing on fluency and cultural nuance.</p>
-      </div>
-      <div>
-        <h3 data-key="academyFeature2">Personal Development</h3>
-        <p data-key="academyFeature2Desc">Develop leadership, communication, and strategic thinking skills through bespoke coaching programs.</p>
-      </div>
-      <div>
-        <h3 data-key="academyFeature3">Elite Education</h3>
-        <p data-key="academyFeature3Desc">Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.</p>
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1 data-key="academy">Cravelle Academy</h1>
+      <p data-key="academyDesc">Elite language learning and personal development programs designed for excellence. Our programs combine linguistic mastery with personal growth to empower our clients.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary" data-key="getStarted">Get Started</a>
+        <a href="#features" class="btn-secondary" data-key="learnMore">Learn More</a>
       </div>
     </div>
   </section>
 
-  <section class="gallery-section" data-aos="fade-up">
-    <h2 data-key="galleryTitle">Academy Gallery</h2>
-    <p data-key="galleryDesc">Explore our educational programs through photos from various sessions.</p>
-    <div class="gallery">
-      <figure><img src="../images/academy/preschool1.jpg" alt="Preschool Activity" class="gallery-image"></figure>
-      <figure><img src="../images/academy/preschool2.jpg" alt="Preschool Play" class="gallery-image"></figure>
-      <figure><img src="../images/academy/preschool3.jpg" alt="Preschool Group" class="gallery-image"></figure>
-      <figure><img src="../images/academy/preschool4.jpg" alt="Preschool Art" class="gallery-image"></figure>
-      <figure><img src="../images/academy/preschool5.jpg" alt="Preschool Story" class="gallery-image"></figure>
-      <figure><img src="../images/academy/preschool6.jpg" alt="Preschool Game" class="gallery-image"></figure>
-      <figure class="hidden"><img src="../images/academy/preschool7.jpg" alt="Preschool Outdoor" class="gallery-image"></figure>
-      <figure class="hidden"><img src="../images/academy/preschool8.jpg" alt="Preschool Music" class="gallery-image"></figure>
-      <figure class="hidden"><img src="../images/academy/preschool9.jpg" alt="Preschool Craft" class="gallery-image"></figure>
-      <figure class="hidden"><img src="../images/academy/preschool10.jpg" alt="Preschool Celebration" class="gallery-image"></figure>
-      <figure class="hidden"><img src="../images/academy/preschool11.jpg" alt="Preschool Celebration" class="gallery-image"></figure>
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-header" data-aos="fade-up">
+      <h2 data-key="whatWeOffer">What We Offer</h2>
+      <p data-key="offerSubtitle">Comprehensive programs tailored to your goals</p>
     </div>
-    <button class="see-more-btn" onclick="showMoreImages()" data-key="seeMore">See More</button>
+    
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon">
+          <i class="fas fa-language"></i>
+        </div>
+        <h3 data-key="languageLearning">Language Learning</h3>
+        <p data-key="languageDesc">Master multiple languages with tailored courses delivered by expert instructors, focusing on fluency and cultural nuance.</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 data-key="personalDev">Personal Development</h3>
+        <p data-key="personalDesc">Develop leadership, communication, and strategic thinking skills through bespoke coaching programs.</p>
+      </div>
+
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <h3 data-key="eliteEdu">Elite Education</h3>
+        <p data-key="eliteDesc">Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.</p>
+      </div>
+    </div>
   </section>
 
-  <script>
-    function showMoreImages() {
-      const hiddenImages = document.querySelectorAll('.hidden');
-      const seeMoreBtn = document.querySelector('.see-more-btn');
-      if (hiddenImages.length > 0) {
-        hiddenImages.forEach(img => img.classList.remove('hidden'));
-        seeMoreBtn.style.display = 'none';
-      }
-    }
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2 data-key="galleryTitle">Academy Gallery</h2>
+      <p data-key="galleryDesc">Explore our educational programs through photos from various sessions</p>
+    </div>
 
-    function toggleMenu() {
-      const links = document.getElementById('navLinks');
-      links.classList.toggle('show');
-    }
+    <div class="gallery-grid">
+      <!-- Preschool Session 1 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool1.jpg" alt="Colour with your soul" data-lightbox-src="../images/academy/preschool1.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2023 Preschool</span>
+            <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;margin-left:4px;">2023 Team</span>
+          </div>
+          <p>Colour with your soul</p>
+        </div>
+      </div>
+      <!-- Preschool Session 2 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool2.jpg" alt="An Interactive English session" data-lightbox-src="../images/academy/preschool2.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2023 Preschool</span>
+            <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;margin-left:4px;">2023 Team</span>
+          </div>
+          <p>An Interactive English session</p>
+        </div>
+      </div>
+      <!-- Preschool Session 3 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool3.jpg" alt="Painting with English" data-lightbox-src="../images/academy/preschool3.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2023 Preschool</span>
+            <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;margin-left:4px;">2023 Team</span>
+          </div>
+          <p>Painting with English – creative activities in English class.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 4 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="250" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool4.jpg" alt="Day of Life" data-lightbox-src="../images/academy/preschool4.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ff7043;color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2023 Family</span>
+          </div>
+          <p>Day of Life – English activities with family and friends.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 5 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool5.jpg" alt="English picnic" data-lightbox-src="../images/academy/preschool5.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2020 School</span>
+          </div>
+          <p>English picnic – fun and learning outdoors.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 6 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="350" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool6.jpg" alt="Preschool garden" data-lightbox-src="../images/academy/preschool6.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">2020 School</span>
+          </div>
+          <p>Preschool garden – English in nature.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 7 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool7.jpg" alt="Preschool Session 7" data-lightbox-src="../images/academy/preschool7.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
+          </div>
+          <p>Preschool learning session.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 8 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="450" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool8.jpg" alt="Preschool Session 8" data-lightbox-src="../images/academy/preschool8.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
+          </div>
+          <p>Preschool activity session.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 9 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool9.jpg" alt="Preschool Session 9" data-lightbox-src="../images/academy/preschool9.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
+          </div>
+          <p>Preschool educational moment.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 10 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="550" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool10.jpg" alt="Preschool Session 10" data-lightbox-src="../images/academy/preschool10.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
+          </div>
+          <p>Preschool interactive class.</p>
+        </div>
+      </div>
+      <!-- Preschool Session 11 -->
+      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" onclick="openLightbox(this)">
+        <img src="../images/academy/preschool11.jpg" alt="Preschool Session 11" data-lightbox-src="../images/academy/preschool11.jpg">
+        <div class="gallery-item-caption">
+          <div style="margin-bottom:8px;">
+            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
+          </div>
+          <p>Preschool learning experience.</p>
+        </div>
+      </div>
+    </div>
 
-    let translations = {};
-    let currentLang = localStorage.getItem('selectedLanguage') || 'en';
-
-    async function loadTranslations(lang) {
-      try {
-        const basePath = window.location.pathname.includes('/services/') ? '../lang/' : 'lang/';
-        const response = await fetch(`${basePath}${lang}.json`, {
-          headers: {
-            'Cache-Control': 'no-cache',
-            'Accept': 'application/json'
-          }
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        translations = await response.json();
-        console.log(`Successfully loaded translations for ${lang}`);
-      } catch (error) {
-        console.error('Error loading translations:', error.message);
-        translations = {
-          "homeNav": "Home",
-          "partnersNav": "Partners",
-          "missionNav": "Mission",
-          "servicesNav": "Services",
-          "valuesNav": "Values",
-          "founderNav": "Founder",
-          "testimonialsNav": "Testimonials",
-          "galleryNav": "Gallery",
-          "faqsNav": "FAQs",
-          "contactNav": "Contact",
-          "slogan": "Where Elegance Meets Purpose",
-          "partners": "Partners & Clients",
-          "partnersDesc": "We proudly collaborate with embassies, cultural institutions, high-profile individuals, and respected brands who share our vision for excellence, elegance, and purpose.",
-          "mission": "Our Mission",
-          "missionDesc": "To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach — blending timeless elegance with modern ambition.",
-          "services": "Our Services",
-          "academy": "Cravelle Academy",
-          "academyDesc": "Cravelle Academy offers elite language learning and personal development programs designed for individuals and professionals seeking excellence. Our programs combine linguistic mastery with personal growth to empower our clients.",
-          "academyFeature1": "Language Learning",
-          "academyFeature1Desc": "Master multiple languages with tailored courses delivered by expert instructors, focusing on fluency and cultural nuance.",
-          "academyFeature2": "Personal Development",
-          "academyFeature2Desc": "Develop leadership, communication, and strategic thinking skills through bespoke coaching programs.",
-          "academyFeature3": "Elite Education",
-          "academyFeature3Desc": "Exclusive programs for high-profile individuals and organizations, ensuring privacy and personalized attention.",
-          "galleryTitle": "Academy Gallery",
-          "galleryDesc": "Explore our educational programs through photos from various sessions.",
-          "contact": "Contact Us",
-          "contactDesc": "Interested in Cravelle Academy? Reach out to learn more about our programs.",
-          "email": "Email: info@gravenor.com",
-          "whatsapp": "WhatsApp: +1234567890",
-          "linkedin": "LinkedIn: Mahmoud Keweisy",
-          "emailBtn": "Email",
-          "whatsappBtn": "WhatsApp",
-          "linkedinBtn": "LinkedIn",
-          "footer": "&copy; 2025 Cravelle. All rights reserved. Designed with elegance and purpose.",
-          "seeMore": "See More",
-          "title": "Cravelle Academy | Elite Education"
-        };
-      } finally {
-        updatePage();
-        updateLanguageToggle(lang);
-        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        localStorage.setItem('selectedLanguage', lang);
-      }
-    }
-
-    function getFlagUrl(lang) {
-      const flags = {
-        'en': 'https://flagcdn.com/w20/gb.png',
-        'ar': 'https://flagcdn.com/w20/eg.png',
-        'de': 'https://flagcdn.com/w20/de.png',
-        'ru': 'https://flagcdn.com/w20/ru.png',
-        'pl': 'https://flagcdn.com/w20/pl.png',
-        'tr': 'https://flagcdn.com/w20/tr.png',
-        'es': 'https://flagcdn.com/w20/es.png'
-      };
-      return flags[lang] || 'https://flagcdn.com/w20/gb.png';
-    }
-
-    function getLanguageName(lang) {
-      const names = {
-        'en': 'English',
-        'ar': 'العربية',
-        'de': 'Deutsch',
-        'ru': 'Русский',
-        'pl': 'Polski',
-        'tr': 'Türkçe',
-        'es': 'Español'
-      };
-      return names[lang] || 'English';
-    }
-
-    function updatePage() {
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (translations[key]) {
-          if (el.tagName === 'A') {
-            el.textContent = translations[key].split(':')[0].trim();
-            if (translations[key].includes(':')) {
-              const [text, value] = translations[key].split(':');
-              el.href = el.href.split(':')[0] + ':' + value.trim();
-            }
-          } else {
-            el.innerHTML = translations[key];
-          }
-        }
-      });
-      document.title = translations['title'] || 'Cravelle Academy | Elite Education';
-    }
-
-    function updateLanguageToggle(lang) {
-      const toggle = document.getElementById('language-toggle');
-      const flag = document.getElementById('current-flag');
-      toggle.innerHTML = `<img src="${getFlagUrl(lang)}" alt="${getLanguageName(lang)} Flag" id="current-flag"> ${getLanguageName(lang)}`;
-      toggle.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    }
-
-    function changeLanguage(lang) {
-      currentLang = lang;
-      loadTranslations(lang);
-      document.getElementById('language-menu').classList.remove('active');
-    }
-
-    function toggleLanguageMenu() {
-      document.getElementById('language-menu').classList.toggle('active');
-    }
-
-    // Load default on page load
-    window.addEventListener('load', () => loadTranslations(currentLang));
-  </script>
-
-  <section class="contact-section">
-    <h2 data-key="contact">Contact Us</h2>
-    <p data-key="contactDesc">Interested in Cravelle Academy? Reach out to learn more about our programs.</p>
-    <p>Email: <a href="mailto:info@gravenor.com" data-key="email">info@gravenor.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/1234567890" target="_blank" data-key="whatsapp">+1234567890</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedin">Mahmoud Keweisy</a></p>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close">&times;</span>
+      <img id="lightbox-img" src="" alt="">
+    </div>
   </section>
 
-  <div class="floating-buttons">
-    <a href="mailto:info@gravenor.com" data-key="emailBtn">Email</a>
-    <a href="https://wa.me/1234567890" target="_blank" data-key="whatsappBtn">WhatsApp</a>
-    <a href="https://linkedin.com/in/mahmoudkeweisy" target="_blank" data-key="linkedinBtn">LinkedIn</a>
-  </div>
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact" data-aos="fade-up">
+    <h2 data-key="ctaTitle">Ready to Begin Your Journey?</h2>
+    <p data-key="ctaText">Contact us today to learn more about our elite programs</p>
+    <a href="mailto:info@cravelle.com" class="btn-primary" style="background: white; color: var(--accent);">Get in Touch</a>
+    
+    <div class="contact-info">
+      <a href="mailto:info@cravelle.com" class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>info@cravelle.com</span>
+      </a>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    <p data-key="footer">&copy; 2025 Cravelle. All rights reserved. Designed with elegance and purpose.</p>
+    <p>&copy; 2025 Cravelle. All rights reserved. Designed with elegance and purpose.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    // Lightbox functionality (copied from Trade)
+    function openLightbox(element) {
+      const img = element.querySelector('img');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightbox = document.getElementById('lightbox');
+      lightboxImg.src = img.getAttribute('data-lightbox-src') || img.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close lightbox with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Close lightbox when clicking outside the image or on close button
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('lightbox-close')) {
+        closeLightbox();
+      }
+    });
+  </script>
+  <!-- Language/i18n initialization for service pages -->
+  <script type="module">
+    import { i18nManager } from '/src/js/i18n.js';
+    import '/src/js/navigation.js';
+    i18nManager.init();
+  </script>
 </body>
 </html>

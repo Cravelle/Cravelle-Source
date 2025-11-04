@@ -9,7 +9,6 @@ import './css/main.css';
 // Import JavaScript modules
 import { i18nManager } from './js/i18n.js';
 import './js/navigation.js';
-import './js/background.js';
 import './js/gallery.js';
 import './js/services-carousel.js';
 import './js/services-slider.js';

@@ -18,14 +18,15 @@ class GlobeManager {
     this._zoomTimers = [];
     this._savedAutoRotate = true;
     this._currentLocation = null;
+    this._selectedLocationState = 'red'; // States: 'red', 'orange', 'green'
     this.storageKey = 'cravelle:lastCity';
     // 5-step zoom: [approach, zoomIn1, zoomIn2, zoomOut1, zoomOut2]
     this.zoomProfiles = new Map([
-      ['Dubai, UAE', [1.7, 1.2, 0.85, 1.45, 1.85]],
-      ['Cairo, Egypt', [1.7, 1.2, 0.85, 1.45, 1.8]],
-      ['Amsterdam, Netherlands', [1.65, 1.15, 0.80, 1.4, 1.8]],
-      ['London, UK', [1.65, 1.15, 0.80, 1.4, 1.8]],
-      ['Warsaw, Poland', [1.65, 1.15, 0.80, 1.4, 1.8]]
+      ['Dubai, UAE', [1.10, 0.85, 0.65, 0.95, 1.10]],
+      ['Cairo, Egypt', [1.10, 0.85, 0.65, 0.95, 1.10]],
+      ['Amsterdam, Netherlands', [1.08, 0.85, 0.65, 0.95, 1.10]],
+      ['London, UK', [1.08, 0.85, 0.65, 0.95, 1.10]],
+      ['Warsaw, Poland', [1.08, 0.85, 0.65, 0.95, 1.10]]
     ]);
     this.init();
   }
@@ -48,15 +49,11 @@ class GlobeManager {
       // Initialize globe instance first
       this.globe = Globe({ animateIn: true })(this.el);
 
-      // Resolve custom dotted texture if available (with graceful fallback)
+      // Use CDN textures to avoid 404s for missing local assets
       const textureUrl = await this.resolveGlobeTexture([
-        '/images/globe/dots-world.png',
-        '/images/globe/dots-world.jpg',
-        '/images/globe/earth-custom.jpg',
         'https://unpkg.com/three-globe/example/img/earth-dark.jpg'
       ]);
       const bumpUrl = await this.resolveGlobeTexture([
-        '/images/globe/earth-custom-topology.png',
         'https://unpkg.com/three-globe/example/img/earth-topology.png'
       ]);
 
@@ -76,15 +73,17 @@ class GlobeManager {
         .pointResolution(16)
         .pointColor(() => 'rgba(255, 15, 15, 1)');
 
-      // Controls
+      // Controls - locked for user
       const controls = this.globe.controls();
       controls.autoRotate = true;
       controls.autoRotateSpeed = 0.6;
-      controls.enableZoom = true;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.enableRotate = false;
       this.controls = controls;
 
-      // Set initial POV to show Europe/Middle East
-      this.globe.pointOfView({ lat: 30, lng: 25, altitude: 2.4 }, 1200);
+      // Set initial POV closer so the globe remains clearly visible
+      this.globe.pointOfView({ lat: 30, lng: 25, altitude: 1.3 }, 900);
 
       // Add ground glow halos that animate with strobe
       this.initGlowHalos();
@@ -152,19 +151,59 @@ class GlobeManager {
       const now = performance.now();
       const t = (now + phaseMs) % period;
       let res;
+      
+      // Check if this is the selected location and apply state-based color
+      const isSelected = this._currentLocation && p.name === this._currentLocation.name;
+      
       if (t < offWindow) {
-        // OFF: #ff0f0f
-        res = { alt: baseAlt * 0.9, rad: baseRad * 0.9, col: 'rgba(255, 15, 15, 1)' };
+        // OFF state
+        let offCol, onCol, settleBase;
+        if (isSelected && this._selectedLocationState === 'green') {
+          // Green state: OFF #0f8f0f, ON #45ff45
+          offCol = 'rgba(15, 143, 15, 1)';
+          onCol = 'rgba(69, 255, 69, 1)';
+          settleBase = { r: 15, g: 143, b: 15, onR: 69, onG: 255, onB: 69 };
+        } else if (isSelected && this._selectedLocationState === 'orange') {
+          // Orange state: OFF #ff8f0f, ON #ffb545
+          offCol = 'rgba(255, 143, 15, 1)';
+          onCol = 'rgba(255, 181, 69, 1)';
+          settleBase = { r: 255, g: 143, b: 15, onR: 255, onG: 181, onB: 69 };
+        } else {
+          // Red state (default): OFF #ff0f0f, ON #ff4545
+          offCol = 'rgba(255, 15, 15, 1)';
+          onCol = 'rgba(255, 69, 69, 1)';
+          settleBase = { r: 255, g: 15, b: 15, onR: 255, onG: 69, onB: 69 };
+        }
+        res = { alt: baseAlt * 0.9, rad: baseRad * 0.9, col: offCol };
       } else if (t < offWindow + onWindow) {
-        // ON: #ff4545
-        res = { alt: spikeAlt, rad: spikeRad, col: 'rgba(255, 69, 69, 1)' };
+        // ON state
+        let onCol;
+        if (isSelected && this._selectedLocationState === 'green') {
+          onCol = 'rgba(69, 255, 69, 1)';
+        } else if (isSelected && this._selectedLocationState === 'orange') {
+          onCol = 'rgba(255, 181, 69, 1)';
+        } else {
+          onCol = 'rgba(255, 69, 69, 1)';
+        }
+        res = { alt: spikeAlt, rad: spikeRad, col: onCol };
       } else {
         // Settle back to OFF quickly
         const k = (t - offWindow - onWindow) / Math.max(1, settle); // 0..1
         const alt = glowAlt + (baseAlt - glowAlt) * k;
         const rad = glowRad + (baseRad - glowRad) * k;
-        const g = Math.floor(120 + (52 * (1 - k))); // 120..172
-        res = { alt, rad, col: `rgba(255, ${g}, ${g}, 1)` };
+        
+        let settleCol;
+        if (isSelected && this._selectedLocationState === 'green') {
+          const g = Math.floor(143 + (112 * (1 - k))); // 143..255 for green
+          settleCol = `rgba(15, ${g}, 15, 1)`;
+        } else if (isSelected && this._selectedLocationState === 'orange') {
+          const g = Math.floor(143 + (38 * (1 - k))); // 143..181 for orange
+          settleCol = `rgba(255, ${g}, 69, 1)`;
+        } else {
+          const g = Math.floor(120 + (52 * (1 - k))); // 120..172 for red (original)
+          settleCol = `rgba(255, ${g}, ${g}, 1)`;
+        }
+        res = { alt, rad, col: settleCol };
       }
 
       // Hover boost: brighter, slightly larger and taller to emphasize
@@ -199,13 +238,27 @@ class GlobeManager {
       const t = now % period;
       
       if (t >= offWindow && t < offWindow + onWindow) {
-        // ON - generate radar waves
+        // ON - generate radar waves with color matching selected location state
         if (!this._radarActive) {
           const radarData = this.locations.map(p => ({ 
             lat: p.lat, 
             lng: p.lng, 
-            startTime: now 
+            startTime: now,
+            location: p
           }));
+          
+          // Ring color function that matches pin strobe state
+          const getRingColor = (d) => {
+            const isSelected = this._currentLocation && d.location && d.location.name === this._currentLocation.name;
+            if (!isSelected) return 'rgba(255, 86, 86, 0.6)';
+            
+            if (this._selectedLocationState === 'green') {
+              return 'rgba(86, 255, 86, 0.6)';
+            } else if (this._selectedLocationState === 'orange') {
+              return 'rgba(255, 181, 86, 0.6)';
+            }
+            return 'rgba(255, 86, 86, 0.6)';
+          };
           
           // Use custom layer for propagating rings
           this.globe
@@ -213,7 +266,7 @@ class GlobeManager {
             .ringLat('lat')
             .ringLng('lng')
             .ringAltitude(0.01)
-            .ringColor(() => 'rgba(255, 86, 86, 0.6)')
+            .ringColor(getRingColor)
             .ringMaxRadius(2.5)
             .ringPropagationSpeed(1.2)
             .ringRepeatPeriod(800);
@@ -279,16 +332,41 @@ class GlobeManager {
     if (!this.ui.pass) return;
     const code = this.codes.get(loc.name) || '— — —';
     const html = `
-      <div class="bp-head">
-        <div class="bp-route"><span class="bp-iata">${code}</span><span class="bp-arrow">→</span><span class="bp-city">${loc.name}</span></div>
-        <div style="font-size:11px; opacity:.75;">BOARDING · PRIORITY</div>
+      <div class="bp-header">
+        <div class="bp-logo">CRAVELLE</div>
+        <div class="bp-class">BUSINESS</div>
       </div>
-      <div class="bp-perf"></div>
-      <div class="bp-desc">${loc.desc}</div>
-      <div class="bp-meta">
-        <div>Gate <strong>A${Math.abs(Math.floor(loc.lat + loc.lng)) % 9 + 1}</strong></div>
-        <div>Seat <strong>${String.fromCharCode(65 + (Math.abs(Math.floor(loc.lng)) % 6))}${(Math.abs(Math.floor(loc.lat)) % 20) + 1}</strong></div>
-        <div>Zone <strong>${(Math.abs(Math.floor(loc.lat + loc.lng)) % 3) + 1}</strong></div>
+      <div class="bp-main">
+        <div class="bp-route-wrap">
+          <div class="bp-from">
+            <div class="bp-label">FROM</div>
+            <div class="bp-code">${code}</div>
+          </div>
+          <div class="bp-plane">✈</div>
+          <div class="bp-to">
+            <div class="bp-label">TO</div>
+            <div class="bp-city-name">${loc.name.split(',')[0]}</div>
+            <div class="bp-country">${loc.name.split(',')[1]?.trim() || ''}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bp-divider"></div>
+      <div class="bp-info">
+        <div class="bp-info-item">
+          <div class="bp-info-label">GATE</div>
+          <div class="bp-info-value">A${Math.abs(Math.floor(loc.lat + loc.lng)) % 9 + 1}</div>
+        </div>
+        <div class="bp-info-item">
+          <div class="bp-info-label">SEAT</div>
+          <div class="bp-info-value">${String.fromCharCode(65 + (Math.abs(Math.floor(loc.lng)) % 6))}${(Math.abs(Math.floor(loc.lat)) % 20) + 1}</div>
+        </div>
+        <div class="bp-info-item">
+          <div class="bp-info-label">ZONE</div>
+          <div class="bp-info-value">${(Math.abs(Math.floor(loc.lat + loc.lng)) % 3) + 1}</div>
+        </div>
+      </div>
+      <div class="bp-footer">
+        <div class="bp-desc">${loc.desc}</div>
       </div>
     `;
     this.ui.pass.innerHTML = html;
@@ -353,6 +431,9 @@ class GlobeManager {
     
     const isLocationChange = this._currentLocation && this._currentLocation.name !== loc.name;
     
+    // Set initial state to orange (zooming)
+    this._selectedLocationState = 'orange';
+    
     // Pause auto rotate and remember previous state
     if (this.controls) {
       this._savedAutoRotate = !!this.controls.autoRotate;
@@ -383,9 +464,17 @@ class GlobeManager {
       const t4 = setTimeout(() => {
         this.globe.pointOfView({ ...base, altitude: zoomIn2 }, 650);
       }, 2800);
-      // Step 6: hold for 15 seconds
-      // Step 7: zoom out (first) after hold
+      // Step 6: zoom complete - change to green for 15 second hold
+      const tGreen = setTimeout(() => {
+        this._selectedLocationState = 'green';
+      }, 3500);
+      // Step 6b: 5 seconds before zoom out - change to orange
+      const tOrange = setTimeout(() => {
+        this._selectedLocationState = 'orange';
+      }, 13500);
+      // Step 7: zoom out (first) after hold - change to red
       const t5 = setTimeout(() => {
+        this._selectedLocationState = 'red';
         this.globe.pointOfView({ ...base, altitude: zoomOut1 }, 700);
       }, 18500);
       // Step 8: zoom out (second) after hold
@@ -396,7 +485,7 @@ class GlobeManager {
       const t7 = setTimeout(() => {
         if (this.controls) this.controls.autoRotate = this._savedAutoRotate;
       }, 20050);
-      this._zoomTimers.push(t1, t2, t3, t4, t5, t6, t7);
+      this._zoomTimers.push(t1, t2, t3, t4, tGreen, tOrange, t5, t6, t7);
     } else {
       // Same location or first click: only zoom in 2x, hold 15s, zoom out 2x, resume
       // Step 1: approach
@@ -409,9 +498,17 @@ class GlobeManager {
       const t2 = setTimeout(() => {
         this.globe.pointOfView({ ...base, altitude: zoomIn2 }, 650);
       }, 1400);
-      // Step 4: hold for 15 seconds
-      // Step 5: zoom out (first) after hold
+      // Step 4: zoom complete - change to green for 15 second hold
+      const tGreen = setTimeout(() => {
+        this._selectedLocationState = 'green';
+      }, 2100);
+      // Step 4b: 5 seconds before zoom out - change to orange
+      const tOrange = setTimeout(() => {
+        this._selectedLocationState = 'orange';
+      }, 12100);
+      // Step 5: zoom out (first) after hold - change to red
       const t3 = setTimeout(() => {
+        this._selectedLocationState = 'red';
         this.globe.pointOfView({ ...base, altitude: zoomOut1 }, 700);
       }, 17100);
       // Step 6: zoom out (second) after hold
@@ -422,7 +519,7 @@ class GlobeManager {
       const t5 = setTimeout(() => {
         if (this.controls) this.controls.autoRotate = this._savedAutoRotate;
       }, 18650);
-      this._zoomTimers.push(t1, t2, t3, t4, t5);
+      this._zoomTimers.push(t1, t2, tGreen, tOrange, t3, t4, t5);
     }
     
     // Update current location after starting animation

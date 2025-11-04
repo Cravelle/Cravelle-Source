@@ -31,6 +31,9 @@
   --accent-hover: #3a4b5a;
   --border: rgba(10, 10, 10, 0.08);
   --border-subtle: rgba(10, 10, 10, 0.04);
+  /* Subtle UI accents used in menus/popovers */
+  --muted-border: rgba(10, 10, 10, 0.08);
+  --muted-shadow: 0 12px 40px rgba(10, 10, 10, 0.12);
   --shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.05);
   --shadow-md: 0 4px 16px rgba(10, 10, 10, 0.08);
   --shadow-lg: 0 12px 40px rgba(10, 10, 10, 0.12);
@@ -124,4 +127,48 @@
 [dir="rtl"] {
   --text-align: right;
   --flex-direction: row-reverse;
+}
+
+/* Responsive variable adjustments */
+@media (max-width: 980px) {
+  :root {
+    --nav-height: 64px;
+    --nav-offset: calc(var(--nav-height) + 16px);
+    --spacing-16: 3.5rem;
+    --spacing-20: 4.5rem;
+    --spacing-24: 5.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+    --nav-offset: calc(var(--nav-height) + 14px);
+    --spacing-12: 2.5rem;
+    --spacing-16: 3rem;
+    --spacing-20: 4rem;
+    --spacing-24: 5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 56px;
+    --nav-offset: calc(var(--nav-height) + 12px);
+    --spacing-10: 2rem;
+    --spacing-12: 2.25rem;
+    --spacing-16: 2.5rem;
+    --spacing-20: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 56px;
+    --nav-offset: calc(var(--nav-height) + 10px);
+    --spacing-8: 1.75rem;
+    --spacing-10: 1.85rem;
+    --spacing-12: 2rem;
+    --spacing-16: 2.25rem;
+  }
 }

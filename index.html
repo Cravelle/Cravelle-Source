@@ -24,6 +24,10 @@
     
     <title>Cravelle | Where Elegance Meets Purpose</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="/images/assets/logos/logo.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/images/assets/logos/logo.png" type="image/png">
+
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +45,9 @@
 </head>
 <body>
 
-<canvas id="background-canvas" aria-hidden="true"></canvas>
-
 <nav role="navigation" aria-label="Main navigation" class="nav">
     <div class="nav__left">
-        <a href="#home" aria-label="Home"><img src="images/logo.png" alt="Cravelle Logo" class="nav__logo"></a>
+        <a href="#home" aria-label="Home"><img src="images/assets/logos/logo.png" alt="Cravelle Logo" class="nav__logo"></a>
     </div>
 
     <div class="nav__center">
@@ -57,7 +59,6 @@
             <a href="#values" class="nav__link" data-key="valuesNav">Values</a>
             <a href="#testimonials" class="nav__link" data-key="testimonialsNav">Testimonials</a>
             <a href="#founder" class="nav__link" data-key="founderNav">Founder</a>
-            <a href="#gallery" class="nav__link" data-key="galleryNav">Gallery</a>
             <a href="#news" class="nav__link" data-key="newsNav">News</a>
             <a href="#faqs" class="nav__link" data-key="faqsNav">FAQs</a>
             <a href="#contact" class="nav__link" data-key="contactNav">Contact</a>
@@ -84,13 +85,13 @@
 
         
 
-        <button class="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+        <button class="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
 </nav>
 
 <header id="home" class="hero-banner">
     <div class="top-row">
-        <img src="images/logo.png" alt="Cravelle Logo" loading="lazy">
+        <img src="images/assets/logos/logo.png" alt="Cravelle Logo" loading="lazy">
     </div>
     <div class="motto" id="motto">Where Elegance Meets Purpose</div>
 </header>
@@ -105,8 +106,8 @@
     <div class="services-slider" id="servicesSlider" aria-roledescription="carousel" aria-label="Our Services">
         <div class="services-track" id="servicesTrack" role="group">
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="1 of 9">
-                <article class="service-card" data-bg="images/services/academy-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/academy-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/academy/backgrounds/academy-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/academy/backgrounds/academy-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -123,8 +124,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="2 of 9">
-                <article class="service-card" data-bg="images/services/diplomacy-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/diplomacy-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/diplomacy/backgrounds/diplomatic.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/diplomacy/backgrounds/diplomatic.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -141,8 +142,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="3 of 9">
-                <article class="service-card" data-bg="images/services/translation-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/translation-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/translation/backgrounds/translation-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/translation/backgrounds/translation-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -159,8 +160,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="4 of 9">
-                <article class="service-card" data-bg="images/services/trade-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/trade-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/trade/backgrounds/trade-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/trade/backgrounds/trade-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -177,8 +178,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="5 of 9">
-                <article class="service-card" data-bg="images/services/prive-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/prive-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/prive/backgrounds/prive-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/prive/backgrounds/prive-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -195,8 +196,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="6 of 9">
-                <article class="service-card" data-bg="images/services/digital-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/digital-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/digital/backgrounds/digital-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/digital/backgrounds/digital-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -213,8 +214,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="7 of 9">
-                <article class="service-card" data-bg="images/services/voice-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/voice-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/voice/backgrounds/voice-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/voice/backgrounds/voice-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -231,8 +232,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="8 of 9">
-                <article class="service-card" data-bg="images/services/connect-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/connect-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/connect/backgrounds/connect-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/connect/backgrounds/connect-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -249,8 +250,8 @@
             </div>
 
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="9 of 9">
-                <article class="service-card" data-bg="images/services/edu-connect-bg.jpg">
-                    <div class="card-bg service-card__bg" style="background-image:url('images/services/edu-connect-bg.jpg')"></div>
+                <article class="service-card" data-bg="images/edu-connect/backgrounds/edu-connect-bg.jpg">
+                    <div class="card-bg service-card__bg" style="background-image:url('images/edu-connect/backgrounds/edu-connect-bg.jpg')"></div>
                     <div class="card-overlay service-card__overlay"></div>
                     <div class="card-sheen service-card__sheen"></div>
                     <div class="card-content service-card__content">
@@ -276,8 +277,8 @@
     <div class="collab-inner">
         <div class="collab-title" data-key="partnersTrusted">Trusted by leading organizations</div>
         <div class="collab-logos" role="list">
-            <img src="images/collab/Best Academy.png" alt="Best Academy" role="listitem" loading="lazy">
-            <img src="images/collab/Tatweer.png" alt="Tatweer" role="listitem" loading="lazy">
+            <img src="images/assets/logos/Best Academy.png" alt="Best Academy" role="listitem" loading="lazy">
+            <img src="images/assets/logos/Tatweer.png" alt="Tatweer" role="listitem" loading="lazy">
         </div>
     </div>
 </section>
@@ -342,9 +343,7 @@
             </div>
         </aside>
         <div id="map" role="region" aria-label="World map"></div>
-        <div class="map-legend">
-            <span class="map-attr">Map data © OpenStreetMap contributors · Tiles © CARTO</span>
-        </div>
+        
     </div>
 </section>
 
@@ -374,63 +373,35 @@
     </p>
 </section>
 
-<section id="gallery" class="section">
-    <h2 class="section__title" data-key="galleryNav">Gallery</h2>
-    
-    <div class="gallery-full" id="galleryFull" role="region" aria-label="Gallery">
-        <div class="edge-shade left" id="shadeLeft" aria-hidden="true"></div>
-        <div class="edge-shade right" id="shadeRight" aria-hidden="true"></div>
-        
-        <div class="gallery-slide" data-index="0" style="opacity:1; z-index:30;">
-            <img src="images/event1.jpg" alt="PPCC" data-src="images/event1.jpg" draggable="false" loading="lazy" decoding="async">
-            <div class="gallery-overlay" aria-hidden="true">PPCC</div>
-        </div>
-        <div class="gallery-slide" data-index="1" style="opacity:0; z-index:20;">
-            <img src="images/event2.jpg" alt="Egyptian National Day" data-src="images/event2.jpg" draggable="false" loading="lazy" decoding="async">
-            <div class="gallery-overlay" aria-hidden="true">Egyptian National Day By The Egyptian Embassy in Poland</div>
-        </div>
-        <div class="gallery-slide" data-index="2" style="opacity:0; z-index:10;">
-            <img src="images/event3.jpg" alt="PTAK Warsaw Expo" data-src="images/event3.jpg" draggable="false" loading="lazy" decoding="async">
-            <div class="gallery-overlay" aria-hidden="true">PTAK Warsaw Expo</div>
-        </div>
-        
-        <div class="gallery-dots" id="galleryDots" aria-hidden="true">
-            <div class="dot active" data-i="0" aria-label="Slide 1"></div>
-            <div class="dot" data-i="1" aria-label="Slide 2"></div>
-            <div class="dot" data-i="2" aria-label="Slide 3"></div>
-        </div>
-    </div>
-</section>
-
 <section id="news" class="section section--light">
     <h2 class="section__title" data-key="newsHeading">Latest News</h2>
     <div class="news-grid">
         <article class="news-card">
-            <img src="images/news/news1.jpg" alt="Cravelle Academy update" loading="lazy">
+            <img src="images/news/news1.jpg" alt="United Property & Invest Show" loading="lazy">
             <div class="news-body">
-                <div class="news-meta" data-key="news1Date">September 2025 · Academy</div>
-                <h3 data-key="news1Title">New Elite Language Cohort Open</h3>
-                <p data-key="news1Excerpt">We've opened enrollment for our autumn elite language cohort focusing on executive fluency and cultural nuance.</p>
+                <div class="news-meta" data-key="news1Date">November 2025 · Trade</div>
+                <h3 data-key="news1Title">United Property & Invest Show Success</h3>
+                <p data-key="news1Excerpt">Cravelle Trade represented leading international real estate developers at the United Property & Invest Show, showcasing premium properties from Pontus, Silk Towers, and Pafilia.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="#contact" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
         <article class="news-card">
-            <img src="images/news/news2.jpg" alt="Diplomacy and trade insights" loading="lazy">
+            <img src="images/news/news2.jpg" alt="International Real Estate Exhibition" loading="lazy">
             <div class="news-body">
-                <div class="news-meta" data-key="news2Date">September 2025 · Diplomacy</div>
-                <h3 data-key="news2Title">5 Tips for International Negotiations</h3>
-                <p data-key="news2Excerpt">From tone to timing—insider guidance for cross-border negotiations that protect relationships and outcomes.</p>
+                <div class="news-meta" data-key="news2Date">November 2025 · Trade</div>
+                <h3 data-key="news2Title">Premium Real Estate Showcase</h3>
+                <p data-key="news2Excerpt">Featuring Silk Towers and other prestigious international developments at major property exhibitions, connecting investors with world-class real estate opportunities.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="#contact" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
         <article class="news-card">
-            <img src="images/news/news3.jpg" alt="Digital presence upgrade" loading="lazy">
+            <img src="images/news/news3.jpg" alt="PPCC Property Forum" loading="lazy">
             <div class="news-body">
-                <div class="news-meta" data-key="news3Date">August 2025 · Digital</div>
-                <h3 data-key="news3Title">Personal Brand Websites Launched</h3>
-                <p data-key="news3Excerpt">We now offer bespoke personal websites for executives, artists, and public figures—crafted for elegance and clarity.</p>
+                <div class="news-meta" data-key="news3Date">October 2025 · Trade</div>
+                <h3 data-key="news3Title">PPCC Property Forum Success</h3>
+                <p data-key="news3Excerpt">Cravelle represented at the Polish–Portuguese Chamber of Commerce Property Forum, strengthening international business relationships and trade partnerships.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="#contact" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
     </div>
 </section>

@@ -1,0 +1,359 @@
+/**
+ * Mobile-Specific Touch Enhancements
+ * Additional optimizations for touch devices and mobile interactions
+ */
+
+/* ===================================
+   TOUCH-FRIENDLY INTERACTIONS
+   =================================== */
+
+/* Larger touch targets for mobile */
+@media (max-width: 768px) {
+  a, button, .btn, .nav__link, .city-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Keep small UI dots compact (override min-size) */
+  .svc2-dot, .dot {
+    min-width: 0;
+    min-height: 0;
+  }
+  
+  /* Exception for inline links in paragraphs */
+  p a {
+    min-width: auto;
+    min-height: auto;
+  }
+}
+
+/* Active state feedback for touch */
+@media (hover: none) and (pointer: coarse) {
+  .btn:active,
+  .nav__link:active,
+  .city-btn:active,
+  .dot:active,
+  .svc2-dot:active,
+  .language-toggle:active,
+  .lang-list__button:active {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+  
+  /* Service card footer buttons */
+  .service-card__footer .btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* Contact form submit */
+  .cta--send:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ===================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+/* Reduce animations on mobile for better performance */
+@media (max-width: 768px) {
+  * {
+    animation-duration: 0.6s !important;
+  }
+  
+  /* Keep partner logos scrolling smoothly */
+  .collab-logos {
+    animation-duration: 60s !important;
+  }
+  
+  /* Disable complex animations on low-end devices */
+  @media (prefers-reduced-motion: reduce) {
+    .service-card .card-content,
+    .gallery-slide img {
+      animation: none !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .collab-logos {
+    animation-duration: 80s !important;
+  }
+}
+
+/* Optimize scrolling performance */
+@media (max-width: 768px) {
+  .services-grid,
+  .nav__links,
+  .input-group__textarea {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ===================================
+   MOBILE-SPECIFIC LAYOUT FIXES
+   =================================== */
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix viewport issues on mobile browsers */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific fixes */
+  body {
+    min-height: -webkit-fill-available;
+  }
+  
+  header.hero-banner {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Improve text rendering on mobile */
+@media (max-width: 768px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ===================================
+   MOBILE ACCESSIBILITY IMPROVEMENTS
+   =================================== */
+
+/* Ensure sufficient contrast for touch targets */
+@media (max-width: 768px) {
+  .btn:focus-visible,
+  .nav__link:focus-visible,
+  .input-group__input:focus-visible,
+  .input-group__textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Better focus indication for keyboard navigation on mobile */
+@media (max-width: 768px) and (hover: none) {
+  *:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/* ===================================
+   MOBILE SPACING UTILITIES
+   =================================== */
+
+@media (max-width: 768px) {
+  /* Reduce large gaps on mobile */
+  .brand-values,
+  .news-grid,
+  .stats {
+    margin-top: var(--spacing-8);
+  }
+  
+  /* Tighter section spacing */
+  .section + .section {
+    margin-top: var(--spacing-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-values,
+  .news-grid,
+  .stats {
+    margin-top: var(--spacing-6);
+  }
+  
+  .section + .section {
+    margin-top: var(--spacing-4);
+  }
+}
+
+/* ===================================
+   MOBILE SAFE AREAS
+   =================================== */
+
+/* Bottom safe area for devices with notches */
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: max(var(--spacing-12), env(safe-area-inset-bottom));
+  }
+  
+  .nav__links.show {
+    padding-bottom: max(16px, env(safe-area-inset-bottom) + 8px);
+  }
+}
+
+/* ===================================
+   MOBILE TYPOGRAPHY REFINEMENTS
+   =================================== */
+
+/* Better line breaks on mobile */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+  }
+  
+  p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Optimize text selection on mobile */
+@media (max-width: 768px) {
+  ::selection {
+    background: var(--accent);
+    color: var(--ivory);
+    text-shadow: none;
+  }
+}
+
+/* ===================================
+   MOBILE IMAGE OPTIMIZATIONS
+   =================================== */
+
+@media (max-width: 768px) {
+  /* Prevent layout shift from images */
+  img {
+    object-fit: cover;
+    font-family: 'object-fit: cover;'; /* IE11 fallback */
+  }
+  
+  /* News card images */
+  .news-card img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-card img {
+    height: 180px;
+  }
+}
+
+/* ===================================
+   MOBILE GESTURE HINTS
+   =================================== */
+
+/* Visual hint for swipeable content */
+@media (max-width: 640px) {
+  .services-grid::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ===================================
+   MOBILE FORM ENHANCEMENTS
+   =================================== */
+
+/* Prevent zoom on focus for iOS */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents iOS zoom */
+  }
+}
+
+/* Better autocomplete styling on mobile */
+@media (max-width: 768px) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-elevated) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+/* ===================================
+   LANDSCAPE MODE OPTIMIZATIONS
+   =================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  header.hero-banner {
+    height: auto;
+    min-height: 100vh;
+    padding: var(--spacing-10) var(--spacing-4);
+  }
+  
+  .services-slider .services-track {
+    height: 85vh;
+  }
+  
+  .gallery-full {
+    height: 80vh;
+  }
+  
+  /* Adjust nav for landscape */
+  .nav {
+    height: 56px;
+  }
+  
+  :root {
+    --nav-height: 56px;
+  }
+}
+
+/* ===================================
+   MOBILE DARK MODE SUPPORT (if needed)
+   =================================== */
+
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  /* Already using light theme, but adding for future dark mode */
+  /* This is a placeholder for potential dark mode implementation */
+}
+
+/* ===================================
+   MOBILE PRINT STYLES
+   =================================== */
+
+@media print {
+  .nav,
+  .hamburger,
+  .language-dropdown,
+  footer,
+  .svc2-arrow,
+  .svc2-dots,
+  .dot,
+  .gallery-dots {
+    display: none !important;
+  }
+  
+  body {
+    padding-top: 0;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+  }
+}
