@@ -493,7 +493,9 @@ class GlobeManager {
   }
 
   getCameraPosition(loc) {
-    const latOffset = -12; // degrees lower to keep city centered and visible during zoom
+    // Adjust offset based on screen size - desktop needs less offset to prevent weird positioning
+    const isMobile = window.innerWidth <= 980;
+    const latOffset = isMobile ? -12 : -6; // smaller offset for desktop, larger for mobile
     return { lat: loc.lat + latOffset, lng: loc.lng };
   }
 
