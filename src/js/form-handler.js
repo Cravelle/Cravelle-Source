@@ -15,22 +15,24 @@ class FormHandler {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-
+    // Validate form inputs
     const email = this.emailInput?.value.trim();
     const message = this.messageInput?.value.trim();
 
     if (!email || !message) {
+      e.preventDefault();
       alert('Please provide both email and message.');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      e.preventDefault();
       alert('Please provide a valid email address.');
       return;
     }
 
+    // Show loading state
     if (this.sendButton) {
       this.sendButton.disabled = true;
       const icon = document.createElement('i');
@@ -44,25 +46,8 @@ class FormHandler {
       this.sendButton.appendChild(span);
     }
 
-    setTimeout(() => {
-      if (this.sendButton) {
-        this.sendButton.disabled = false;
-        const icon = document.createElement('i');
-        icon.className = 'fas fa-paper-plane';
-        icon.setAttribute('aria-hidden', 'true');
-        const span = document.createElement('span');
-        span.textContent = 'Send Message';
-        this.sendButton.textContent = '';
-        this.sendButton.appendChild(icon);
-        this.sendButton.appendChild(document.createTextNode(' '));
-        this.sendButton.appendChild(span);
-      }
-
-      alert('Thanks — your message was sent successfully!');
-
-      if (this.emailInput) this.emailInput.value = '';
-      if (this.messageInput) this.messageInput.value = '';
-    }, 900);
+    // Let Netlify handle the actual form submission
+    // The form will be submitted naturally to Netlify Forms
   }
 }
 
@@ -81,10 +66,10 @@ if (document.readyState === 'loading') {
 } else {
   new FormHandler();
 }
-
-window.handleContactSubmit = (e) => {
-  e.preventDefault();
-  new FormHandler().handleSubmit(e);
-};
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => new FormHandler());
+} else {
+  new FormHandler();
+}
 
 export { FormHandler };

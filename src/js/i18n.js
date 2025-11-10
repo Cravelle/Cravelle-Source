@@ -221,23 +221,35 @@ class I18nManager {
 }
 
 export const i18nManager = new I18nManager();
+window.i18nManager = i18nManager;
 
+// Debounced language change to prevent rapid clicks
+let languageChangeTimer = null;
 window.changeLanguage = (lang) => {
-  if (window._langChangeTimeout) {
-    clearTimeout(window._langChangeTimeout);
+  if (languageChangeTimer) {
+    clearTimeout(languageChangeTimer);
   }
-  window._langChangeTimeout = setTimeout(() => {
+  
+  languageChangeTimer = setTimeout(() => {
     i18nManager.changeLanguage(lang);
-  }, 100);
+    languageChangeTimer = null;
+  }, 150);
 };
 
+// Toggle language menu
 window.toggleLanguageMenu = () => {
   const menu = document.getElementById('language-menu');
   const toggle = document.getElementById('language-toggle');
   if (!menu || !toggle) return;
 
   const isOpen = menu.classList.contains('is-open');
-  menu.classList.toggle('is-open');
+  
+  if (isOpen) {
+    menu.classList.remove('is-open');
+  } else {
+    menu.classList.add('is-open');
+  }
+  
   toggle.setAttribute('aria-expanded', String(!isOpen));
   menu.setAttribute('aria-hidden', String(isOpen));
 };
@@ -254,4 +266,5 @@ document.addEventListener('click', (e) => {
       menu.setAttribute('aria-hidden', 'true');
     }
   }
-}, { passive: true });
+});
+

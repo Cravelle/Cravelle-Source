@@ -440,7 +440,9 @@
             <p style="margin-top:6px;">Reach out to discuss bespoke services, partnerships, or confidential enquiries. We respond within 48 hours.</p>
         </div>
         
-        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)" novalidate>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mldarykw" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Contact from Cravelle Website" />
+            <input type="text" name="_gotcha" style="display:none" />
             <div class="input-group">
                 <i class="fas fa-envelope input-group__icon" aria-hidden="true"></i>
                 <input id="contactEmail" class="input-group__input" type="email" name="email" placeholder="Your email" required>

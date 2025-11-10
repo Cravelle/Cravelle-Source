@@ -9,3 +9,7 @@
 
 [build.environment]
   NODE_VERSION = "20.19.0"
+
+# Netlify Forms configuration
+[forms]
+  # This matches the form name in the HTML (name="contact")

@@ -112,6 +112,10 @@
       font-size: 24px;
       color: var(--nav-text);
       cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* Hero Section */
@@ -504,23 +508,23 @@
       <a href="../index.html#values" data-key="valuesNav">Values</a>
       <a href="../index.html#contact" data-key="contactNav">Contact</a>
       <div class="language-dropdown" id="languageGroup" style="margin-left:12px;">
-        <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu()">
+        <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu(event)">
           <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" class="language-toggle__flag" id="current-flag"> English
         </button>
         <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
           <div class="lang-block">
             <div class="lang-title">Languages</div>
             <div class="lang-list">
-              <button class="lang-list__button" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
-              <button class="lang-list__button" onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
-              <button class="lang-list__button" onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
-              <button class="lang-list__button" onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
+              <button class="lang-list__button" onclick="changeLanguage('en', event)"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
+              <button class="lang-list__button" onclick="changeLanguage('tr', event)"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
+              <button class="lang-list__button" onclick="changeLanguage('pl', event)"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
+              <button class="lang-list__button" onclick="changeLanguage('ar', event)"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <button class="hamburger" id="hamburgerBtn">☰</button>
   </nav>
 
   <!-- Hero Section -->
@@ -680,16 +684,6 @@
           <p>Preschool interactive class.</p>
         </div>
       </div>
-      <!-- Preschool Session 11 -->
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" onclick="openLightbox(this)">
-        <img src="../images/academy/preschool11.jpg" alt="Preschool Session 11" data-lightbox-src="../images/academy/preschool11.jpg">
-        <div class="gallery-item-caption">
-          <div style="margin-bottom:8px;">
-            <span style="background:#ffd600;color:#222;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;">Preschool</span>
-          </div>
-          <p>Preschool learning experience.</p>
-        </div>
-      </div>
     </div>
 
     <!-- Lightbox -->
@@ -703,12 +697,12 @@
   <section class="cta-section" id="contact" data-aos="fade-up">
     <h2 data-key="ctaTitle">Ready to Begin Your Journey?</h2>
     <p data-key="ctaText">Contact us today to learn more about our elite programs</p>
-    <a href="mailto:Mahmoudkeweisy@gmail.com" class="btn-primary" style="background: white; color: var(--accent);">Get in Touch</a>
+    <a href="../index.html#contact" class="btn-primary" style="background: white; color: var(--accent);">Get in Touch</a>
   
     <div class="contact-info">
-      <a href="mailto:Mahmoudkeweisy@gmail.com" class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <span>Mahmoudkeweisy@gmail.com</span>
+      <a href="../index.html#contact" class="contact-item">
+        <i class="fas fa-comment-dots"></i>
+        <span>Contact Form</span>
       </a>
     </div>
   </section>
@@ -725,11 +719,82 @@
       once: true
     });
 
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('show');
+    function toggleMenu(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks) {
+        navLinks.classList.toggle('show');
+      }
     }
 
-    // Lightbox functionality (copied from Trade)
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburgerBtn');
+      const navLinks = document.getElementById('navLinks');
+      const languageGroup = document.getElementById('languageGroup');
+      
+      if (hamburger) {
+        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('touchstart', toggleMenu, { passive: false });
+      }
+      
+      if (navLinks) {
+        const links = navLinks.querySelectorAll('a[href]');
+        links.forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (link.closest('.language-dropdown')) return;
+            if (navLinks.classList.contains('show')) {
+              navLinks.classList.remove('show');
+            }
+          });
+        });
+      }
+      
+      document.addEventListener('click', function(e) {
+        if (!navLinks || !navLinks.classList.contains('show')) return;
+        
+        const nav = document.querySelector('nav');
+        const isClickInsideNav = nav && nav.contains(e.target);
+        const isClickOnHamburger = hamburger && hamburger.contains(e.target);
+        
+        if (!isClickInsideNav && !isClickOnHamburger) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+
+    function toggleLanguageMenu(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('language-menu');
+      const toggle = document.getElementById('language-toggle');
+      if (!menu || !toggle) return;
+      const isOpen = menu.classList.contains('is-open');
+      menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', !isOpen);
+      menu.setAttribute('aria-hidden', isOpen);
+    }
+
+    function changeLanguage(lang, e) {
+      if (e) e.stopPropagation();
+      if (window.i18nManager) {
+        window.i18nManager.setLanguage(lang);
+      }
+      const menu = document.getElementById('language-menu');
+      if (menu) menu.classList.remove('is-open');
+    }
+
+    document.addEventListener('click', function(e) {
+      const languageGroup = document.getElementById('languageGroup');
+      const menu = document.getElementById('language-menu');
+      if (languageGroup && menu && !languageGroup.contains(e.target) && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        const toggle = document.getElementById('language-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     function openLightbox(element) {
       const img = element.querySelector('img');
       const lightboxImg = document.getElementById('lightbox-img');
@@ -745,14 +810,12 @@
       document.body.style.overflow = '';
     }
 
-    // Close lightbox with ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeLightbox();
       }
     });
 
-    // Close lightbox when clicking outside the image or on close button
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this || e.target.classList.contains('lightbox-close')) {
         closeLightbox();

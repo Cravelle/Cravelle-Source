@@ -79,7 +79,7 @@ class GlobeManager {
       controls.enableRotate = false;
       this.controls = controls;
 
-      this.globe.pointOfView({ lat: 30, lng: 25, altitude: 1.3 }, 900);
+      this.globe.pointOfView({ lat: 30, lng: 50, altitude: 1.3 }, 900);
 
       this.initGlowHalos();
 
