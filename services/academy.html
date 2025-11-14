@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Cravelle Academy offers elite language learning and personal development programs designed for excellence.">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -695,16 +695,19 @@
 
   <!-- CTA Section -->
   <section class="cta-section" id="contact" data-aos="fade-up">
-    <h2 data-key="ctaTitle">Ready to Begin Your Journey?</h2>
-    <p data-key="ctaText">Contact us today to learn more about our elite programs</p>
-    <a href="../index.html#contact" class="btn-primary" style="background: white; color: var(--accent);">Get in Touch</a>
-  
-    <div class="contact-info">
-      <a href="../index.html#contact" class="contact-item">
-        <i class="fas fa-comment-dots"></i>
-        <span>Contact Form</span>
-      </a>
-    </div>
+    <h2>Contact</h2>
+    <p>Reach out about programs or bespoke enquiries. Prefer email? <a href="mailto:cravelle.co@protonmail.com" style="color:#fff;text-decoration:underline;">cravelle.co@protonmail.com</a></p>
+    <form id="contactForm" action="https://formspree.io/f/xgvralwk" method="POST" novalidate style="max-width:600px;margin:24px auto 0;text-align:left;">
+      <input type="hidden" name="_subject" value="New Contact from Cravelle Website" />
+      <input type="text" name="_gotcha" style="display:none" />
+      <label for="contactEmail" style="display:block;margin-bottom:8px;opacity:0.9;">Your email</label>
+      <input id="contactEmail" name="email" type="email" required placeholder="you@example.com" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);margin-bottom:12px;" />
+      <label for="contactMessage" style="display:block;margin:10px 0 8px;opacity:0.9;">Your message</label>
+      <textarea id="contactMessage" name="message" required placeholder="How can we help?" rows="5" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);"></textarea>
+      <div style="margin-top:16px;text-align:right;">
+        <button id="sendBtn" type="submit" class="btn-primary">Send Message</button>
+      </div>
+    </form>
   </section>
 
   <!-- Footer -->
@@ -828,5 +831,6 @@
     import '/src/js/navigation.js';
     i18nManager.init();
   </script>
+  <script type="module" src="/src/js/form-handler.js"></script>
 </body>
 </html>

@@ -45,31 +45,16 @@ class FormHandler {
       this.sendButton.appendChild(document.createTextNode(' '));
       this.sendButton.appendChild(span);
     }
-
-    // Let Netlify handle the actual form submission
-    // The form will be submitted naturally to Netlify Forms
+    // Allow natural submission to Formspree endpoint specified in the form action
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new FormHandler());
-} else {
-  new FormHandler();
-}
-
-window.handleContactSubmit = (e) => {
-  e.preventDefault();
-}
+const initFormHandler = () => new FormHandler();
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new FormHandler());
+  document.addEventListener('DOMContentLoaded', initFormHandler, { once: true });
 } else {
-  new FormHandler();
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new FormHandler());
-} else {
-  new FormHandler();
+  initFormHandler();
 }
 
 export { FormHandler };

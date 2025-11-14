@@ -440,16 +440,19 @@
   </section>
 
   <section class="cta-section" id="contact" data-aos="fade-up">
-    <h2 data-key="ctaTitle">Ready to Get Started?</h2>
-    <p data-key="ctaText">Contact us today to learn more about our services</p>
-    <a href="../index.html#contact" class="btn-primary" style="background: white; color: var(--accent);">Get in Touch</a>
-  
-    <div class="contact-info">
-      <a href="../index.html#contact" class="contact-item">
-        <i class="fas fa-comment-dots"></i>
-        <span>Contact Form</span>
-      </a>
-    </div>
+    <h2>Contact</h2>
+    <p>Explore partnerships and representation. Prefer email? <a href="mailto:cravelle.co@protonmail.com" style="color:#fff;text-decoration:underline;">cravelle.co@protonmail.com</a></p>
+    <form id="contactForm" action="https://formspree.io/f/xgvralwk" method="POST" novalidate style="max-width:600px;margin:24px auto 0;text-align:left;">
+      <input type="hidden" name="_subject" value="New Contact from Cravelle Website" />
+      <input type="text" name="_gotcha" style="display:none" />
+      <label for="contactEmail" style="display:block;margin-bottom:8px;opacity:0.9;">Your email</label>
+      <input id="contactEmail" name="email" type="email" required placeholder="you@example.com" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);margin-bottom:12px;" />
+      <label for="contactMessage" style="display:block;margin:10px 0 8px;opacity:0.9;">Your message</label>
+      <textarea id="contactMessage" name="message" required placeholder="How can we help?" rows="5" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);"></textarea>
+      <div style="margin-top:16px;text-align:right;">
+        <button id="sendBtn" type="submit" class="btn-primary">Send Message</button>
+      </div>
+    </form>
   </section>
 
   <footer>
@@ -545,5 +548,6 @@
     import '/src/js/navigation.js';
     i18nManager.init();
   </script>
+  <script type="module" src="/src/js/form-handler.js"></script>
 </body>
 </html>

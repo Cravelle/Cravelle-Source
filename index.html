@@ -72,17 +72,17 @@
 
     <div class="nav__right">
         <div class="language-dropdown" id="languageGroup">
-            <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu()">
+            <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu(event)">
                 <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" class="language-toggle__flag" id="current-flag"> English
             </button>
             <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
                 <div class="lang-block">
                     <div class="lang-title">Languages</div>
                     <div class="lang-list">
-                        <button class="lang-list__button" onclick="changeLanguage('en')"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
-                        <button class="lang-list__button" onclick="changeLanguage('tr')"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
-                        <button class="lang-list__button" onclick="changeLanguage('pl')"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
-                        <button class="lang-list__button" onclick="changeLanguage('ar')"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
+                        <button class="lang-list__button" onclick="changeLanguage('en', event)"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
+                        <button class="lang-list__button" onclick="changeLanguage('tr', event)"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
+                        <button class="lang-list__button" onclick="changeLanguage('pl', event)"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
+                        <button class="lang-list__button" onclick="changeLanguage('ar', event)"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
                     </div>
                 </div>
             </div>
@@ -437,10 +437,10 @@
         </div>
         
         <div class="contact-info">
-            <p style="margin-top:6px;">Reach out to discuss bespoke services, partnerships, or confidential enquiries. We respond within 48 hours.</p>
+            <p style="margin-top:6px;">Reach out to discuss bespoke services, partnerships, or confidential enquiries. We respond within 48 hours. Prefer email? <a href="mailto:cravelle.co@protonmail.com">cravelle.co@protonmail.com</a></p>
         </div>
-        
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mldarykw" method="POST" novalidate>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgvralwk" method="POST" novalidate>
             <input type="hidden" name="_subject" value="New Contact from Cravelle Website" />
             <input type="text" name="_gotcha" style="display:none" />
             <div class="input-group">

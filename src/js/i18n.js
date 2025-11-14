@@ -225,7 +225,12 @@ window.i18nManager = i18nManager;
 
 // Debounced language change to prevent rapid clicks
 let languageChangeTimer = null;
-window.changeLanguage = (lang) => {
+window.changeLanguage = (lang, event) => {
+  if (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+  
   if (languageChangeTimer) {
     clearTimeout(languageChangeTimer);
   }
@@ -237,7 +242,12 @@ window.changeLanguage = (lang) => {
 };
 
 // Toggle language menu
-window.toggleLanguageMenu = () => {
+window.toggleLanguageMenu = (event) => {
+  if (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+  
   const menu = document.getElementById('language-menu');
   const toggle = document.getElementById('language-toggle');
   if (!menu || !toggle) return;
