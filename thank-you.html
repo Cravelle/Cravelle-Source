@@ -7,16 +7,24 @@
   <link rel="icon" href="/images/assets/logos/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/css/main.css">
   <style>
-    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f5f5f7; }
-    .thankyou-container { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(40,53,64,0.08); padding: 48px 32px; text-align: center; max-width: 400px; }
-    .thankyou-container h1 { color: #283540; font-size: 2.2rem; margin-bottom: 16px; }
-    .thankyou-container p { color: #444; font-size: 1.1rem; margin-bottom: 24px; }
-    .thankyou-container a { color: #283540; text-decoration: underline; font-weight: 600; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--charcoal); position: relative; }
+    .thankyou-container { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); padding: 48px 32px; text-align: center; max-width: 400px; position: relative; z-index: 10; }
+    .thankyou-container h1 { color: var(--pearl); font-size: 2.2rem; margin-bottom: 16px; }
+    .thankyou-container p { color: var(--platinum); font-size: 1.1rem; margin-bottom: 24px; }
+    .thankyou-container a { color: var(--accent); text-decoration: underline; font-weight: 600; transition: color 0.3s ease; }
+    .thankyou-container a:hover { color: var(--accent-hover); }
   </style>
 </head>
 <body>
+  <!-- Iridescence Background -->
+  <div class="iridescence-bg">
+    <div class="iridescence-layer-1"></div>
+    <div class="iridescence-layer-2"></div>
+    <div class="iridescence-layer-3"></div>
+  </div>
+  
   <div class="thankyou-container">
-    <h1>Thank You!</h1>
+    <h1 class="gradient-text">Thank You!</h1>
     <p>Your message has been sent successfully.<br>We will get back to you within 48 hours.</p>
     <a href="/index.html">Return to Home</a>
   </div>

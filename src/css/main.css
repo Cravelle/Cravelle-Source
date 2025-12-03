@@ -9,6 +9,13 @@
 @import './components/gallery.css';
 @import './components/map.css';
 @import './components/footer.css';
+@import './components/glass-buttons.css';
+@import './components/blur-text.css';
+@import './components/shiny-text.css';
+@import './components/gradient-text.css';
+@import './components/iridescence.css';
+@import './components/logo-loop.css';
+@import './components/staggered-menu.css';
 
 /* Service Pages */
 @import './service-page.css';

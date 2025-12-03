@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Import main CSS -->
+  <link rel="stylesheet" href="/src/css/main.css">
 
   <style>
     :root {
@@ -24,27 +27,30 @@
       --platinum: #CFCFCF;
       --pearl: #F5F5F7;
       --ivory: #FAFAFA;
-      --accent: #283540;
-      --accent-hover: #3a4b5a;
-      --border: rgba(10, 10, 10, 0.08);
-      --nav-bg: rgba(250, 250, 250, 0.95);
-      --nav-text: var(--charcoal);
-      --text: var(--charcoal);
-      --text-secondary: var(--silver);
+      --accent: #7A9CC6;
+      --accent-hover: #93B4DB;
+      --border: rgba(255, 255, 255, 0.12);
+      --nav-bg: rgba(10, 10, 10, 0.95);
+      --nav-text: var(--pearl);
+      --text: var(--pearl);
+      --text-secondary: var(--platinum);
+    }
+
+    body {
+      background: var(--charcoal);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+      margin: 0;
+      padding: 0;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--text);
-      background: var(--ivory);
-      overflow-x: hidden;
-      line-height: 1.6;
     }
 
     nav {
@@ -61,67 +67,15 @@
       z-index: 999;
     }
 
-    .nav-logo {
-      height: 50px;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-logo:hover {
-      transform: scale(1.05);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--nav-text);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 15px;
-      transition: color 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Language Dropdown (minimal styles) */
-    .language-dropdown { position: relative; display: inline-flex; align-items: center; }
-    .language-toggle { display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.7); color: var(--nav-text); cursor: pointer; font-weight: 600; }
-    .language-toggle__flag { width: 20px; height: 14px; display: block; }
-    .language-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); padding: 8px; z-index: 1000; }
-    .lang-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; opacity: 0.9; }
-    .lang-list { display: flex; flex-direction: column; gap: 6px; }
-    .lang-list__button { display: flex; gap: 8px; align-items: center; background: transparent; border: none; padding: 6px 8px; cursor: pointer; color: var(--nav-text); border-radius: 8px; font-weight: 600; }
-    .lang-list__button:hover { background: rgba(159,163,166,0.12); }
-    [dir="rtl"] .language-menu { right: 0; left: auto; }
-
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--nav-text);
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-      position: relative;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     .hero {
-      min-height: 65vh;
+      position: relative;
+      overflow: hidden;
+      padding: 130px 5% 90px;
+      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 100%), url('../images/trade/backgrounds/trade-bg.jpg') center/cover no-repeat;
-      position: relative;
-      overflow: hidden;
-      padding: 80px 5%;
-      text-align: center;
+      min-height: 60vh;
     }
 
     .hero::before {
@@ -131,7 +85,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(40, 53, 64, 0.03) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 100%);
       pointer-events: none;
     }
 
@@ -149,6 +103,7 @@
       text-shadow: 0 2px 12px rgba(0,0,0,0.45);
       margin-bottom: 24px;
       line-height: 1.2;
+      text-align: center;
     }
 
     .hero p {
@@ -157,6 +112,7 @@
       text-shadow: 0 1px 8px rgba(0,0,0,0.35);
       margin-bottom: 40px;
       line-height: 1.8;
+      text-align: center;
     }
 
     .hero-cta {
@@ -185,7 +141,7 @@
     }
 
     .btn-secondary {
-      background: white;
+      background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px);
       color: var(--accent);
       padding: 16px 40px;
       border: 2px solid white;
@@ -206,7 +162,9 @@
 
     .features {
       padding: 100px 5%;
-      background: white;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: var(--graphite);
     }
 
     .section-header {
@@ -219,8 +177,12 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      color: var(--accent);
       margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    .section-header h2:not(.gradient-text) {
+      color: var(--accent);
     }
 
     .section-header p {
@@ -238,11 +200,38 @@
     }
 
     .feature-card {
-      background: var(--pearl);
+      position: relative;
+      background: rgba(17, 17, 17, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      overflow: hidden;
+      --mouse-x: 50%;
+      --mouse-y: 50%;
       padding: 40px 32px;
       border-radius: 16px;
       transition: all 0.3s ease;
       border: 1px solid var(--border);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(201, 169, 97, 0.15), transparent 80%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
     }
 
     .feature-card:hover {
@@ -268,8 +257,11 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       font-weight: 600;
-      color: var(--accent);
       margin-bottom: 12px;
+    }
+    
+    .feature-card h3:not(.gradient-text) {
+      color: var(--accent);
     }
 
     .feature-card p {
@@ -278,8 +270,13 @@
     }
 
     .cta-section {
-      padding: 100px 5%;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      padding: 100px 5% 80px 5%;
+      margin: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       text-align: center;
       color: white;
     }
@@ -326,7 +323,9 @@
     /* Gallery Section */
     .gallery-section {
       padding: 100px 5%;
-      background: var(--pearl);
+      background: var(--charcoal);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     .gallery-grid {
@@ -457,25 +456,10 @@
       text-align: center;
       padding: 40px 5%;
       font-size: 14px;
+      margin: 0;
     }
 
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--nav-bg);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 4px 12px rgba(10, 10, 10, 0.1);
-      }
 
       .nav-links.show {
         display: flex;
@@ -493,49 +477,64 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="../index.html">
-      <img src="../images/assets/logos/logo.svg" alt="Cravelle Logo" class="nav-logo">
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="../index.html#home" data-key="homeNav">Home</a>
-      <a href="../index.html#services" data-key="servicesNav">Services</a>
-      <a href="../index.html#values" data-key="valuesNav">Values</a>
-      <a href="../index.html#contact" data-key="contactNav">Contact</a>
-      <div class="language-dropdown" id="languageGroup" style="margin-left:12px;">
-        <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu(event)">
-          <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" class="language-toggle__flag" id="current-flag"> English
-        </button>
-        <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
-          <div class="lang-block">
-            <div class="lang-title">Languages</div>
-            <div class="lang-list">
-              <button class="lang-list__button" onclick="changeLanguage('en', event)"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
-              <button class="lang-list__button" onclick="changeLanguage('tr', event)"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
-              <button class="lang-list__button" onclick="changeLanguage('pl', event)"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
-              <button class="lang-list__button" onclick="changeLanguage('ar', event)"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="iridescence-layer-2"></div>
+    <div class="iridescence-layer-3"></div>
+  </div>
+  
+  <nav role="navigation" aria-label="Main navigation" class="nav">
+    <div class="nav__left">
+        <a href="/" aria-label="Home"><img src="/images/assets/logos/logo.png" alt="Cravelle Logo" class="nav__logo"></a>
     </div>
-    <button class="hamburger" id="hamburgerBtn">☰</button>
-  </nav>
+
+    <div class="nav__center desktop-only">
+        <div id="navLinks" class="nav__links" aria-label="Primary">
+            <a href="/" class="nav__link" data-key="homeNav">Home</a>
+            <a href="/#services" class="nav__link" data-key="servicesNav">Services</a>
+            <a href="/#values" class="nav__link" data-key="valuesNav">Values</a>
+            <a href="/#contact" class="nav__link" data-key="contactNav">Contact</a>
+        </div>
+    </div>
+
+    <div class="nav__right">
+        <div class="language-dropdown" id="languageGroup">
+            <button id="language-toggle" class="language-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageMenu(event)">
+                <img src="https://flagcdn.com/w20/gb.png" alt="UK Flag" class="language-toggle__flag" id="current-flag"> English
+            </button>
+            <div id="language-menu" class="language-menu" role="menu" aria-hidden="true">
+                <div class="lang-block">
+                    <div class="lang-title">Languages</div>
+                    <div class="lang-list">
+                        <button class="lang-list__button" onclick="changeLanguage('en', event)"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</button>
+                        <button class="lang-list__button" onclick="changeLanguage('tr', event)"><img src="https://flagcdn.com/w20/tr.png" alt=""> Türkçe</button>
+                        <button class="lang-list__button" onclick="changeLanguage('pl', event)"><img src="https://flagcdn.com/w20/pl.png" alt=""> Polski</button>
+                        <button class="lang-list__button" onclick="changeLanguage('ar', event)"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
 
   <section class="hero" data-aos="fade-up">
     <div class="hero-content">
-      <h1 data-key="trade">Cravelle Trade</h1>
+      <h1 class="gradient-text" data-key="trade">Cravelle Trade</h1>
       <p data-key="tradeDesc">Facilitating international trade and commercial relations. We connect businesses across borders with expertise and trust.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn-primary" data-key="getStarted">Get Started</a>
-        <a href="#features" class="btn-secondary" data-key="learnMore">Learn More</a>
+        <a href="#contact" class="glass-btn" data-key="getStarted">Get Started</a>
+        <a href="#features" class="glass-btn" data-key="learnMore">Learn More</a>
       </div>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="section-header" data-aos="fade-up">
-      <h2 data-key="whatWeOffer">What We Offer</h2>
+      <h2 class="gradient-text gradient-text--purple" data-key="whatWeOffer">What We Offer</h2>
       <p data-key="offerSubtitle">Comprehensive services tailored to your needs</p>
     </div>
     
@@ -545,24 +544,24 @@
         <div class="feature-icon">
           <i class="fas fa-shipping-fast"></i>
         </div>
-        <h3 data-key="importExport">Import/Export</h3>
-        <p>Streamlined import and export solutions for global markets.</p>
+        <h3 class="" data-key="importExport">Import/Export</h3>
+        <p data-key="importExportDesc">Streamlined import and export solutions for global markets.</p>
       </div>
       
       <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
         <div class="feature-icon">
           <i class="fas fa-handshake"></i>
         </div>
-        <h3 data-key="tradePartnerships">Trade Partnerships</h3>
-        <p>Building strategic partnerships between international businesses.</p>
+        <h3 class="" data-key="tradePartnerships">Trade Partnerships</h3>
+        <p data-key="tradePartnershipsDesc">Building strategic partnerships between international businesses.</p>
       </div>
       
       <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
         <div class="feature-icon">
           <i class="fas fa-file-contract"></i>
         </div>
-        <h3 data-key="tradeConsulting">Trade Consulting</h3>
-        <p>Expert guidance on international trade regulations and opportunities.</p>
+        <h3 class="" data-key="tradeConsulting">Trade Consulting</h3>
+        <p data-key="tradeConsultingDesc">Expert guidance on international trade regulations and opportunities.</p>
       </div>
     </div>
   </section>
@@ -570,7 +569,7 @@
   <!-- Gallery Section -->
   <section class="gallery-section">
     <div class="section-header" data-aos="fade-up">
-      <h2 data-key="galleryTitle">Trade Gallery</h2>
+      <h2 class="gradient-text gradient-text--purple" data-key="galleryTitle">Trade Gallery</h2>
       <p data-key="galleryDesc">Highlights from our international trade events and partnerships</p>
     </div>
 
@@ -622,24 +621,24 @@
   </section>
 
   <section class="cta-section" id="contact" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p>Discuss trade partnerships or services.</p>
+    <h2 class="gradient-text gradient-text--purple" data-key="contact">Contact</h2>
+    <p data-key="contactTrade">Discuss trade partnerships or services.</p>
     <form id="contactForm" action="https://formspree.io/f/xgvralwk" method="POST" novalidate style="max-width:600px;margin:24px auto 0;text-align:left;">
       <input type="hidden" name="_subject" value="New Contact from Cravelle Website" />
       <input type="hidden" name="_next" value="/thank-you.html" />
       <input type="text" name="_gotcha" style="display:none" />
-      <label for="contactEmail" style="display:block;margin-bottom:8px;opacity:0.9;">Your email</label>
-      <input id="contactEmail" name="email" type="email" required placeholder="you@example.com" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);margin-bottom:12px;" />
-      <label for="contactMessage" style="display:block;margin:10px 0 8px;opacity:0.9;">Your message</label>
-      <textarea id="contactMessage" name="message" required placeholder="How can we help?" rows="5" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);"></textarea>
+      <label for="contactEmail" style="display:block;margin-bottom:8px;opacity:0.9;" data-key="yourEmail">Your email</label>
+      <input id="contactEmail" name="email" type="email" required data-placeholder="emailPlaceholder" placeholder="Your email" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);margin-bottom:12px;" />
+      <label for="contactMessage" style="display:block;margin:10px 0 8px;opacity:0.9;" data-key="yourMessage">Your message</label>
+      <textarea id="contactMessage" name="message" required data-placeholder="messagePlaceholder" placeholder="Your message" rows="5" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(10,10,10,0.15);"></textarea>
       <div style="margin-top:16px;text-align:right;">
-        <button id="sendBtn" type="submit" class="btn-primary">Send Message</button>
+        <button id="sendBtn" type="submit" class="glass-btn" data-key="sendMessage">Send Message</button>
       </div>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Cravelle. All rights reserved. Designed with elegance and purpose.</p>
+    <p data-key="footer">&copy; 2025 Cravelle. All rights reserved. Cravelle is a trading name of Cravelle Services.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -754,5 +753,30 @@
     i18nManager.init();
   </script>
   <script type="module" src="/src/js/form-handler.js"></script>
+  <script type="module" src="/src/js/spotlight-cards.js"></script>
+
+  <!-- WebGL Iridescence Background -->
+  <script type="module">
+    import { initIridescence } from '../src/js/iridescence-webgl.js';
+    
+    // Initialize WebGL iridescence on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initIridescence('body', {
+        color: [1, 1, 1],
+        speed: 0.3,
+        amplitude: 0.3,
+        mouseReact: true
+      });
+      });
+    } else {
+      initIridescence('body', {
+        color: [1, 1, 1],
+        speed: 0.3,
+        amplitude: 0.3,
+        mouseReact: true
+      });
+    }
+  </script>
 </body>
 </html>

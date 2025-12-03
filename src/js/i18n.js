@@ -104,6 +104,23 @@ class I18nManager {
       }
     });
 
+    // Handle placeholders
+    document.querySelectorAll('[data-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-placeholder');
+      
+      if (!this.baseTexts[key]) {
+        this.baseTexts[key] = el.getAttribute('placeholder');
+      }
+
+      const translated = this.translations[key];
+      const base = this.baseTexts[key];
+      const value = isEnglish ? base : (translated !== undefined ? translated : base);
+
+      if (value !== undefined) {
+        el.setAttribute('placeholder', value);
+      }
+    });
+
     if (isEnglish) {
       document.title = this.defaultTitle;
     } else if (this.translations.title) {
@@ -135,14 +152,14 @@ class I18nManager {
       return;
     }
 
-    if (this.isLoading) {
-      console.log('Language change already in progress, skipping...');
-      return;
-    }
-
     if (this.currentLang === lang) {
       console.log('Already on language:', lang);
       this.closeLanguageMenu();
+      return;
+    }
+
+    if (this.isLoading) {
+      console.log('Language change already in progress, skipping...');
       return;
     }
 
@@ -152,16 +169,15 @@ class I18nManager {
     
     try {
       await this.loadTranslations(lang);
-      
       this.updateLanguageToggle(lang);
-      
       this.closeLanguageMenu();
-
       window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
     } catch (error) {
       console.error('Error changing language:', error);
     } finally {
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 100);
     }
   }
 
@@ -223,7 +239,7 @@ class I18nManager {
 export const i18nManager = new I18nManager();
 window.i18nManager = i18nManager;
 
-// Debounced language change to prevent rapid clicks
+// Language change with proper debouncing
 let languageChangeTimer = null;
 window.changeLanguage = (lang, event) => {
   if (event) {
@@ -231,14 +247,22 @@ window.changeLanguage = (lang, event) => {
     event.preventDefault();
   }
   
+  // Clear any pending language change
   if (languageChangeTimer) {
     clearTimeout(languageChangeTimer);
   }
   
+  // Immediately close menu for better UX
+  const menu = document.getElementById('language-menu');
+  if (menu) {
+    menu.classList.remove('is-open');
+  }
+  
+  // Debounce the actual language change
   languageChangeTimer = setTimeout(() => {
     i18nManager.changeLanguage(lang);
     languageChangeTimer = null;
-  }, 150);
+  }, 100);
 };
 
 // Toggle language menu
@@ -246,6 +270,11 @@ window.toggleLanguageMenu = (event) => {
   if (event) {
     event.stopPropagation();
     event.preventDefault();
+  }
+  
+  // Don't open menu while loading
+  if (i18nManager.isLoading) {
+    return;
   }
   
   const menu = document.getElementById('language-menu');
@@ -256,12 +285,13 @@ window.toggleLanguageMenu = (event) => {
   
   if (isOpen) {
     menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
   } else {
     menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
   }
-  
-  toggle.setAttribute('aria-expanded', String(!isOpen));
-  menu.setAttribute('aria-hidden', String(isOpen));
 };
 
 document.addEventListener('click', (e) => {

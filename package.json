@@ -23,7 +23,7 @@
   "dependencies": {
     "globe.gl": "^2.44.1",
     "leaflet": "^1.9.4",
-    "three": "^0.180.0"
+    "ogl": "^1.0.11"
   },
   "engines": {
     "node": ">=20.19.0"

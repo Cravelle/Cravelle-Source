@@ -12,6 +12,8 @@ import './js/premium-interactions.js';
 import './js/faq.js';
 import './js/partners.js';
 import './js/security.js';
+import './js/blur-text-init.js';
+import './js/logo-loop.js';
 
 class App {
   constructor() {

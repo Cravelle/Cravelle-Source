@@ -1,0 +1,97 @@
+/* Gradient Text Animation - Based on https://reactbits.dev/text-animations/gradient-text */
+.gradient-text {
+  color: #C9A961 !important; /* Fallback color with !important to override other styles */
+  background: linear-gradient(
+    to right,
+    #C9A961 0%,
+    #D4AF37 25%,
+    #F4D03F 50%,
+    #D4AF37 75%,
+    #C9A961 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: gradient-animation 3s linear infinite;
+  font-weight: 700;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .gradient-text {
+    color: var(--pearl);
+    background: none;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Alternative gradient schemes */
+.gradient-text--default {
+  background: linear-gradient(
+    to right,
+    #C9A961 0%,
+    #D4AF37 25%,
+    #F4D03F 50%,
+    #D4AF37 75%,
+    #C9A961 100%
+  );
+  background-size: 200% auto;
+}
+
+.gradient-text--purple {
+  background: linear-gradient(
+    to right,
+    #C9A961 0%,
+    #E8D4A0 25%,
+    #F4E5C2 50%,
+    #E8D4A0 75%,
+    #C9A961 100%
+  );
+  background-size: 200% auto;
+}
+
+.gradient-text--gold {
+  background: linear-gradient(
+    to right,
+    #D4AF37 0%,
+    #F4E5C2 25%,
+    #FFD700 50%,
+    #F4E5C2 75%,
+    #D4AF37 100%
+  );
+  background-size: 200% auto;
+}
+
+.gradient-text--blue {
+  background: linear-gradient(
+    to right,
+    #A8A9AD 0%,
+    #C0C0C0 25%,
+    #E8E8E8 50%,
+    #C0C0C0 75%,
+    #A8A9AD 100%
+  );
+  background-size: 200% auto;
+}
+
+/* Speed variants */
+.gradient-text--fast {
+  animation-duration: 1.5s;
+}
+
+.gradient-text--slow {
+  animation-duration: 6s;
+}
+
+.gradient-text--paused {
+  animation-play-state: paused;
+}

@@ -15,29 +15,29 @@
   --gold: #C9A961;          /* luxury accent */
   --gold-muted: #B8985A;    /* muted gold */
   
-  /* Semantic Colors (Premium Light Palette) */
-  --bg: var(--ivory);
-  --bg-elevated: #FFFFFF;
-  --surface: var(--pearl);
-  --surface-elevated: #FFFFFF;
-  --nav-bg: rgba(250, 250, 250, 0.72);
-  --nav-bg-scrolled: rgba(250, 250, 250, 0.95);
-  --nav-text: var(--charcoal);
-  --text: var(--charcoal);
-  --text-secondary: var(--silver);
-  --text-muted: var(--platinum);
+  /* Semantic Colors (Premium Dark Palette) */
+  --bg: var(--charcoal);
+  --bg-elevated: var(--graphite);
+  --surface: var(--graphite);
+  --surface-elevated: var(--slate);
+  --nav-bg: rgba(10, 10, 10, 0.85);
+  --nav-bg-scrolled: rgba(10, 10, 10, 0.95);
+  --nav-text: var(--pearl);
+  --text: var(--pearl);
+  --text-secondary: var(--platinum);
+  --text-muted: var(--silver);
   /* Neutral brand accent replacing gold for minimalist aesthetic */
-  --accent: #283540;
-  --accent-hover: #3a4b5a;
-  --border: rgba(10, 10, 10, 0.08);
-  --border-subtle: rgba(10, 10, 10, 0.04);
+  --accent: #7A9CC6;
+  --accent-hover: #93B4DB;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
   /* Subtle UI accents used in menus/popovers */
-  --muted-border: rgba(10, 10, 10, 0.08);
-  --muted-shadow: 0 12px 40px rgba(10, 10, 10, 0.12);
-  --shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.05);
-  --shadow-md: 0 4px 16px rgba(10, 10, 10, 0.08);
-  --shadow-lg: 0 12px 40px rgba(10, 10, 10, 0.12);
-  --shadow-xl: 0 20px 60px rgba(10, 10, 10, 0.15);
+  --muted-border: rgba(255, 255, 255, 0.1);
+  --muted-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
   
   /* Premium Spacing Scale */
   --spacing-1: 0.25rem;     /* 4px */
@@ -116,7 +116,7 @@
   --z-base: 0;
   --z-dropdown: 1000;
   --z-sticky: 1020;
-  --z-fixed: 1030;
+  --z-fixed: 9999;
   --z-modal-backdrop: 1040;
   --z-modal: 1050;
   --z-popover: 1060;

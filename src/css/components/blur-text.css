@@ -1,0 +1,59 @@
+/* Blur Text Animation - CSS-only implementation */
+.blur-text {
+  display: inline-block;
+}
+
+.blur-text-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(-20px);
+  animation: blur-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, filter, opacity;
+}
+
+@keyframes blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(5px);
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Individual word delays - up to 10 words */
+.blur-text-word:nth-child(1) { animation-delay: 0ms; }
+.blur-text-word:nth-child(2) { animation-delay: 150ms; }
+.blur-text-word:nth-child(3) { animation-delay: 300ms; }
+.blur-text-word:nth-child(4) { animation-delay: 450ms; }
+.blur-text-word:nth-child(5) { animation-delay: 600ms; }
+.blur-text-word:nth-child(6) { animation-delay: 750ms; }
+.blur-text-word:nth-child(7) { animation-delay: 900ms; }
+.blur-text-word:nth-child(8) { animation-delay: 1050ms; }
+.blur-text-word:nth-child(9) { animation-delay: 1200ms; }
+.blur-text-word:nth-child(10) { animation-delay: 1350ms; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .blur-text-word {
+    animation: fade-in 0.5s ease forwards;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

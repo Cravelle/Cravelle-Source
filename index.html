@@ -55,7 +55,7 @@
         <a href="#home" aria-label="Home"><img src="images/assets/logos/logo.png" alt="Cravelle Logo" class="nav__logo"></a>
     </div>
 
-    <div class="nav__center">
+    <div class="nav__center desktop-only">
         <div id="navLinks" class="nav__links" aria-label="Primary">
             <a href="#home" class="nav__link" data-key="homeNav">Home</a>
             <a href="#mission" class="nav__link" data-key="missionNav">Mission</a>
@@ -63,7 +63,7 @@
             <a href="#partners" class="nav__link" data-key="partnersNav">Partners</a>
             <a href="#values" class="nav__link" data-key="valuesNav">Values</a>
             <a href="#testimonials" class="nav__link" data-key="testimonialsNav">Testimonials</a>
-            <a href="#founder" class="nav__link" data-key="founderNav">Founder</a>
+            <a href="#founder" class="nav__link" data-key="founderNav">About Us</a>
             <a href="#news" class="nav__link" data-key="newsNav">News</a>
             <a href="#faqs" class="nav__link" data-key="faqsNav">FAQs</a>
             <a href="#contact" class="nav__link" data-key="contactNav">Contact</a>
@@ -90,24 +90,40 @@
 
         
 
-        <button class="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
 </nav>
+
+<!-- Staggered Menu for Mobile -->
+<div class="staggered-menu" id="staggeredMenu">
+    <ul class="staggered-menu__list">
+        <li class="staggered-menu__item"><a href="#home" class="staggered-menu__link" data-key="homeNav">Home</a></li>
+        <li class="staggered-menu__item"><a href="#mission" class="staggered-menu__link" data-key="missionNav">Mission</a></li>
+        <li class="staggered-menu__item"><a href="#services" class="staggered-menu__link" data-key="servicesNav">Services</a></li>
+        <li class="staggered-menu__item"><a href="#partners" class="staggered-menu__link" data-key="partnersNav">Partners</a></li>
+        <li class="staggered-menu__item"><a href="#values" class="staggered-menu__link" data-key="valuesNav">Values</a></li>
+        <li class="staggered-menu__item"><a href="#testimonials" class="staggered-menu__link" data-key="testimonialsNav">Testimonials</a></li>
+        <li class="staggered-menu__item"><a href="#founder" class="staggered-menu__link" data-key="founderNav">About Us</a></li>
+        <li class="staggered-menu__item"><a href="#news" class="staggered-menu__link" data-key="newsNav">News</a></li>
+        <li class="staggered-menu__item"><a href="#faqs" class="staggered-menu__link" data-key="faqsNav">FAQs</a></li>
+        <li class="staggered-menu__item"><a href="#contact" class="staggered-menu__link" data-key="contactNav">Contact</a></li>
+    </ul>
+</div>
 
 <header id="home" class="hero-banner">
     <div class="top-row">
         <img src="images/assets/logos/logo.png" alt="Cravelle Logo" loading="lazy">
     </div>
-    <div class="motto" id="motto">Where Elegance Meets Purpose</div>
+    <div class="motto shiny-text" id="motto">Where Elegance Meets Purpose</div>
 </header>
 
-<section id="mission" class="section section--light">
-    <h2 class="section__title" data-key="mission">Our Mission</h2>
+<section id="mission" class="section">
+    <h2 class="section__title gradient-text" data-key="mission">Our Mission</h2>
     <p data-key="missionDesc" style="max-width:720px; margin:0 auto; text-align:center; font-size:var(--text-lg); line-height:var(--leading-relaxed); color:var(--text-secondary);">To empower purposeful impact through bespoke services rooted in refinement, trust, and global reach, blending timeless elegance with modern ambition.</p>
 </section>
 
 <section id="services" class="section">
-    <h2 class="section__title" data-key="services">Our Services</h2>
+    <h2 class="section__title"><span class="gradient-text gradient-text--default">Our Services</span></h2>
     <div class="services-slider" id="servicesSlider" aria-roledescription="carousel" aria-label="Our Services">
         <div class="services-track" id="servicesTrack" role="group">
             <div class="service-slide" role="group" aria-roledescription="slide" aria-label="1 of 9">
@@ -122,7 +138,7 @@
                             <p class="service-card__description" data-key="academyDesc">Elite language learning and personal development programs designed for excellence.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/academy.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/academy.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -140,7 +156,7 @@
                             <p class="service-card__description" data-key="diplomacyDesc">Strategic mediation and diplomatic consulting for global impact.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/diplomacy.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/diplomacy.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -158,7 +174,7 @@
                             <p class="service-card__description" data-key="translationDesc">Professional translation and personal assistance services with precision.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/translation.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/translation.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -176,7 +192,7 @@
                             <p class="service-card__description" data-key="tradeDesc">Facilitating international trade and commercial relations.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/trade.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/trade.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -194,7 +210,7 @@
                             <p class="service-card__description" data-key="priveDesc">Confidential bespoke services tailored for VIP clients.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/prive.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/prive.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -212,7 +228,7 @@
                             <p class="service-card__description" data-key="digitalDesc">Web presence, branding, and personal website solutions.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/digital.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/digital.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -230,7 +246,7 @@
                             <p class="service-card__description" data-key="voiceDesc">Multilingual voice-over and audio production services.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/voice.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/voice.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -248,7 +264,7 @@
                             <p class="service-card__description" data-key="connectDesc">B2B representation and strategic partnership development.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/connect.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/connect.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -266,7 +282,7 @@
                             <p class="service-card__description" data-key="eduConnectDesc">Certified agency connecting students with prestigious universities.</p>
                         </div>
                         <div class="card-footer service-card__footer">
-                            <a class="btn" href="services/edu-connect.html" data-key="learnMore"><span>Learn More</span></a>
+                            <a class="glass-btn" href="services/edu-connect.html" data-key="learnMore"><span>Learn More</span></a>
                         </div>
                     </div>
                 </article>
@@ -280,16 +296,22 @@
 
 <section id="partners" class="collab-band" aria-label="Partners and clients">
     <div class="collab-inner">
-        <div class="collab-title" data-key="partnersTrusted">Trusted by leading organizations</div>
-        <div class="collab-logos" role="list">
-            <img src="images/assets/logos/Best Academy.png" alt="Best Academy" role="listitem" loading="lazy">
-            <img src="images/assets/logos/Tatweer.png" alt="Tatweer" role="listitem" loading="lazy">
+        <div class="collab-title gradient-text gradient-text--gold" data-key="partnersTrusted">Trusted by leading organizations</div>
+        <div class="logo-loop-container">
+            <div class="logo-loop-track" id="logoLoopTrack">
+                <div class="logo-loop-item">
+                    <img src="images/assets/logos/Best Academy.png" alt="Best Academy" loading="lazy">
+                </div>
+                <div class="logo-loop-item">
+                    <img src="images/assets/logos/Tatweer.png" alt="Tatweer" loading="lazy">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <section id="values" class="section">
-    <h2 class="section__title" data-key="values">Brand Values</h2>
+    <h2 class="section__title"><span class="gradient-text gradient-text--purple">Brand Values</span></h2>
     <div class="brand-values">
         <div>
             <i class="fas fa-crown"></i>
@@ -309,7 +331,7 @@
     </div>
 </section>
 
-<section id="stats" class="section section--light" aria-label="Company statistics">
+<section id="stats" class="section" aria-label="Company statistics">
     <h2 class="section__title" data-key="statsHeading">By the numbers</h2>
     <div class="stats" id="statsGrid">
         <div class="stat-card" data-aos="fade-up">
@@ -330,12 +352,12 @@
         <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
             <div class="stat-icon"><i class="fas fa-language"></i></div>
             <div class="stat-value" data-counter data-target="4" data-suffix=" languages">0</div>
-            <div class="stat-label" data-key="statsLanguages">Languages supported</div>
+            <div class="stat- gradient-textlabel" data-key="statsLanguages">Languages supported</div>
         </div>
     </div>
 </section>
 
-<section id="map-section" class="section section--light" aria-label="Global presence" style="margin-top:28px;">
+<section id="map-section" class="section" aria-label="Global presence" style="margin-top:28px;">
     <h2 class="section__title" data-key="mapHeading">Global Presence</h2>
     <p data-key="mapDesc" style="text-align:center; margin-bottom:12px; opacity:0.9;">Selected locations and partners we collaborate with.</p>
     <div id="mapWrap" data-aos="fade-up">
@@ -352,8 +374,8 @@
     </div>
 </section>
 
-<section id="testimonials" class="section section--light">
-    <h2 class="section__title" data-key="testimonials">Testimonials</h2>
+<section id="testimonials" class="section">
+    <h2 class="section__title"><span class="gradient-text gradient-text--purple">Testimonials</span></h2>
     <div class="testimonials">
         <div class="testimonial">
             <div class="stars">★★★★★</div>
@@ -372,18 +394,19 @@
 </section>
 
 <section id="founder" class="section">
-    <h2 class="section__title" data-key="founder">About the Founder</h2>
-    <p data-key="founderDesc" style="line-height:1.7;">
-        Cravelle is founded by
-        <a id="founderAnchor" href="https://www.linkedin.com/in/mahmoudkeweisy/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+    <h2 class="section__title" data-key="founder">About Us</h2>
+    <p style="line-height:1.7;">
+        <span data-key="founderIntro">Cravelle was founded in 2025 by two young entrepreneurs</span>, <a href="https://www.linkedin.com/in/mahmoudkeweisy/" target="_blank" rel="noopener noreferrer" style="color:#bd7d16; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:4px;">
             <span>Mahmoud Keweisy</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zM7 19h-3v-9h3v9zM5.5 8.8c-.966 0-1.75-.792-1.75-1.77s.784-1.77 1.75-1.77c.966 0 1.75.792 1.75 1.77s-.784 1.77-1.75 1.77zM20 19h-3v-4.635c0-1.108-.397-1.865-1.39-1.865-.758 0-1.21.51-1.408 1.002-.073.172-.091.411-.091.652v4.846h-3s.04-7.865 0-8.675h3v1.23c.398-.615 1.11-1.49 2.703-1.49 1.976 0 3.467 1.29 3.467 4.063v4.872z" fill="currentColor"/></svg>
-        </a>
-        , a multilingual educator, consultant, and creative with a passion for excellence. He brings a unique personal touch and refined vision to every project, blending global insight with local elegance.
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zM7 19h-3v-9h3v9zM5.5 8.8c-.966 0-1.75-.792-1.75-1.77s.784-1.77 1.75-1.77c.966 0 1.75.792 1.75 1.77s-.784 1.77-1.75 1.77zM20 19h-3v-4.635c0-1.108-.397-1.865-1.39-1.865-.758 0-1.21.51-1.408 1.002-.073.172-.091.411-.091.652v4.846h-3s.04-7.865 0-8.675h3v1.23c.398-.615 1.11-1.49 2.703-1.49 1.976 0 3.467 1.29 3.467 4.063v4.872z" fill="#bd7d16"/></svg>
+        </a> <span data-key="founderAnd">and</span> <a href="https://www.linkedin.com/in/metercedes/" target="_blank" rel="noopener noreferrer" style="color:#bd7d16; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+            <span>Kamil Mete Yalçınkaya</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zM7 19h-3v-9h3v9zM5.5 8.8c-.966 0-1.75-.792-1.75-1.77s.784-1.77 1.75-1.77c.966 0 1.75.792 1.75 1.77s-.784 1.77-1.75 1.77zM20 19h-3v-4.635c0-1.108-.397-1.865-1.39-1.865-.758 0-1.21.51-1.408 1.002-.073.172-.091.411-.091.652v4.846h-3s.04-7.865 0-8.675h3v1.23c.398-.615 1.11-1.49 2.703-1.49 1.976 0 3.467 1.29 3.467 4.063v4.872z" fill="#bd7d16"/></svg>
+        </a>. <span data-key="founderRest">In today's rapidly evolving yet equally slow-moving world, where we are subjected to psychological pressure and long waiting times more than ever before, they have always strived passionately to offer an original and unique experience, and they continue to do so.</span>
     </p>
 </section>
 
-<section id="news" class="section section--light">
+<section id="news" class="section">
     <h2 class="section__title" data-key="newsHeading">Latest News</h2>
     <div class="news-grid">
         <article class="news-card">
@@ -393,7 +416,7 @@
                 <h3 data-key="news1Title">United Property & Invest Show Success</h3>
                 <p data-key="news1Excerpt">Cravelle Trade represented leading international real estate developers at the United Property & Invest Show, showcasing premium properties from Pontus, Silk Towers, and Pafilia.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="glass-btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
         <article class="news-card">
             <img src="images/news/news2.jpg" alt="International Real Estate Exhibition" loading="lazy">
@@ -402,7 +425,7 @@
                 <h3 data-key="news2Title">Premium Real Estate Showcase</h3>
                 <p data-key="news2Excerpt">Featuring Silk Towers and other prestigious international developments at major property exhibitions, connecting investors with world-class real estate opportunities.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="glass-btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
         <article class="news-card">
             <img src="images/news/news3.jpg" alt="PPCC Property Forum" loading="lazy">
@@ -411,13 +434,13 @@
                 <h3 data-key="news3Title">PPCC Property Forum Success</h3>
                 <p data-key="news3Excerpt">Cravelle represented at the Polish–Portuguese Chamber of Commerce Property Forum, strengthening international business relationships and trade partnerships.</p>
             </div>
-            <div class="news-actions"><a class="btn" href="services/trade.html" data-key="readMore">Read More</a></div>
+            <div class="news-actions"><a class="glass-btn" href="services/trade.html" data-key="readMore">Read More</a></div>
         </article>
     </div>
 </section>
 
-<section id="faqs" class="section section--light">
-    <h2 class="section__title" data-key="faqs">FAQs</h2>
+<section id="faqs" class="section">
+    <h2 class="section__title gradient-text gradient-text--purple" data-key="faqs">FAQs</h2>
     <div class="faq-item">
         <h4 data-key="faq1Q">What does Cravelle specialize in?</h4>
         <p data-key="faq1A">We specialize in education, diplomacy, translation, publishing, international trade, and confidential consulting.</p>
@@ -429,15 +452,11 @@
 </section>
 
 <section id="contact" class="section">
-    <h2 class="section__title" data-key="contact">Contact</h2>
+    <h2 class="section__title"><span class="gradient-text gradient-text--blue" data-key="contact">Contact</span></h2>
     
-    <div class="contact-card" role="form" aria-labelledby="contactHeading">
-        <div class="card-header">
-            <h3 id="contactHeading">Get in touch</h3>
-        </div>
-        
+    <div class="contact-card" role="form">
         <div class="contact-info">
-            <p style="margin-top:6px;">Reach out to discuss bespoke services, partnerships, or confidential enquiries. We respond within 48 hours.</p>
+            <p data-key="contactInfo">Reach out to discuss bespoke services, partnerships, or confidential enquiries. We respond within 48 hours.</p>
         </div>
 
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgvralwk" method="POST" novalidate>
@@ -446,17 +465,17 @@
             <input type="text" name="_gotcha" style="display:none" />
             <div class="input-group">
                 <i class="fas fa-envelope input-group__icon" aria-hidden="true"></i>
-                <input id="contactEmail" class="input-group__input" type="email" name="email" placeholder="Your email" required>
+                <input id="contactEmail" class="input-group__input" type="email" name="email" data-placeholder="emailPlaceholder" placeholder="Your email" required aria-label="Email address">
             </div>
             <div class="input-group">
                 <i class="fas fa-pen input-group__icon" aria-hidden="true"></i>
-                <textarea id="contactMessage" class="input-group__textarea" name="message" placeholder="Your message" required></textarea>
+                <textarea id="contactMessage" class="input-group__textarea" name="message" data-placeholder="messagePlaceholder" placeholder="Your message" required aria-label="Message"></textarea>
             </div>
             
-            <div class="contact-actions" aria-hidden="false">
-                <button id="sendBtn" type="submit" class="cta cta--send" aria-label="Send message">
+            <div class="contact-actions">
+                <button id="sendBtn" type="submit" class="glass-btn" aria-label="Send message">
                     <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                    <span>Send Message</span>
+                    <span data-key="sendMessage">Send Message</span>
                 </button>
             </div>
         </form>
@@ -464,7 +483,7 @@
 </section>
 
 <footer>
-    <p class="legal">© 2025 Cravelle. All rights reserved. Cravelle is a trading name of Cravelle Services.</p>
+    <p class="legal" data-key="footer">© 2025 Cravelle. All rights reserved. Cravelle is a trading name of Cravelle Services.</p>
 </footer>
 
 <!-- External Scripts -->

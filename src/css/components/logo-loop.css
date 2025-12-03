@@ -1,0 +1,134 @@
+/* Logo Loop Animation - Based on https://reactbits.dev/animations/logo-loop */
+.logo-loop-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 3rem 0;
+}
+
+.logo-loop-container::before,
+.logo-loop-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-loop-container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgb(19, 22, 21) 0%,
+    transparent 100%
+  );
+}
+
+.logo-loop-container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgb(19, 22, 21) 0%,
+    transparent 100%
+  );
+}
+
+.logo-loop-track {
+  display: flex;
+  gap: 8rem;
+  width: max-content;
+  animation: logo-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+.logo-loop-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-loop-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  min-width: 180px;
+  filter: grayscale(100%) brightness(0) invert(0.8);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo-loop-item:hover {
+  filter: grayscale(0%) brightness(1) invert(0);
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.logo-loop-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--scroll-distance, -20%));
+  }
+}
+
+/* Speed variants */
+.logo-loop-track--fast {
+  animation-duration: 20s;
+}
+
+.logo-loop-track--slow {
+  animation-duration: 45s;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .logo-loop-track {
+    animation: none;
+  }
+  
+  .logo-loop-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .logo-loop-container::before,
+  .logo-loop-container::after {
+    width: 50px;
+  }
+  
+  .logo-loop-track {
+    gap: 2.5rem;
+    animation-duration: 25s;
+  }
+  
+  .logo-loop-item {
+    height: 60px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-loop-track {
+    gap: 2rem;
+    animation-duration: 20s;
+  }
+  
+  .logo-loop-item {
+    height: 50px;
+    min-width: 80px;
+  }
+}
